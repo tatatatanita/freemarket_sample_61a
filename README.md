@@ -23,9 +23,9 @@
 |profile_image|text| |
 
 ### Association
-- belongs_to :credit_info
-- belongs_to :current_address
-- belongs_to :delivery_address
+- has_many :credit_infos
+- has_many :current_addresses
+- has_many :delivery_addresses
 - has_many :products
 - has_many :comments
 - has_many :likes
@@ -132,7 +132,7 @@
 |ancestry|string|index:true|
 
 ### Association
-- belongs_to :product
+- has_many  :products
 
 
 ## brandsテーブル
@@ -143,7 +143,7 @@
 |product_id|references|foreign_key:true|
 
 ### Association
-- belongs_to :product
+- has_many  :products
 
 
 ## conditionsテーブル

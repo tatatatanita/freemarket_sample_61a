@@ -60,7 +60,7 @@
 
 ### Association
 - belongs_to :user
-- belongs_to :large_categorie
+- belongs_to :large_category
 - belongs_to :brand
 - belongs_to :condition
 - belongs_to :freight
@@ -116,7 +116,7 @@
 |lc_id|references|foreign_key:true|
 
 ### Association
-- belongs_to :large_categorie
+- belongs_to :large_category
 - has_many :small_categories
 
 
@@ -128,7 +128,7 @@
 |mc_id|references|foreign_key:true|
 
 ### Association
-- belongs_to :middlel_categorie
+- belongs_to :middlel_category
 
 
 ## brandsテーブル

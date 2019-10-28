@@ -8,7 +8,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |nickname|string|null: false|
-|mail_address|string|null: false|
+|email|string|null: false|
 |password|string|null: false|
 |password_confirm|string|null: false|
 |first_name_kanji|string|null: false|
@@ -23,17 +23,17 @@
 |delivery_address_address|string|null: false|
 |delivery_address_building|string| |
 |sex|integer| |
-|tel_number|integer|null:false, (unique: ture)|
-|certification_number|integer|null:false, (unique: ture)|
+|tel_number|integer|null:false|
+|certification_number|integer|null:false|
 |profile_text|text| |
 |profile_image|text| |
 
 ### Association
-- belongs to :credit_infos
+- belongs_to :credit_info
 - has_many :products
 - has_many :comments
 - has_many :likes
-- has_many :rates
+- has_many :liked_products, through: :likes, source: :product
 
 
 ## credit_infosテーブル
@@ -46,7 +46,7 @@
 |user_id|references|foreign_key:true|
 
 ### Association
-- belongs to :users
+- belongs_to :user
 
 
 ## productsテーブル
@@ -59,16 +59,15 @@
 |price|integer|null: false|
 
 ### Association
-- belongs to :users
-- belongs to :large_categories
-- belongs to :brands
-- belongs to :conditions
-- belongs to :freights
-- belongs to :root_areas
-- belongs to :days
+- belongs_to :user
+- belongs_to :large_categorie
+- belongs_to :brand
+- belongs_to :condition
+- belongs_to :freight
+- belongs_to :root_area
+- belongs_to :day
 - has_many :comments
 - has_many :likes
-- has_many :rates
 
 
 ## commentsテーブル
@@ -80,8 +79,8 @@
 |user_id|references|foreign_key:true|
 
 ### Association
-- belongs to :users
-- belongs to :products
+- belongs_to :user
+- belongs_to :product
 
 
 ## likesテーブル
@@ -92,21 +91,8 @@
 |user_id|references|foreign_key:true|
 
 ### Association
-- belongs to :users
-- belongs to :products
-
-
-## ratesテーブル
-
-|Column|Type|Options|
-|------|----|———|
-|rate|integer|null: false|
-|product_id|references|foreign_key:true|
-|user_id|references|foreign_key:true|
-
-### Association
-- belongs to :users
-- belongs to :products
+- belongs_to :user
+- belongs_to :product
 
 
 ## large_categoriesテーブル
@@ -117,7 +103,7 @@
 |product_id|references|foreign_key:true|
 
 ### Association
-- belongs to :products
+- belongs_to :product
 - has_many :middle_categories
 
 
@@ -129,7 +115,7 @@
 |lc_id|references|foreign_key:true|
 
 ### Association
-- belongs to : large_categories
+- belongs_to :large_categorie
 - has_many :small_categories
 
 
@@ -141,7 +127,7 @@
 |mc_id|references|foreign_key:true|
 
 ### Association
-- belongs to :middlel_categories
+- belongs_to :middlel_categorie
 
 
 ## brandsテーブル
@@ -152,7 +138,7 @@
 |product_id|references|foreign_key:true|
 
 ### Association
-- belongs to :products
+- belongs_to :product
 
 
 ## conditionsテーブル
@@ -163,7 +149,7 @@
 |product_id|references|foreign_key:true|
 
 ### Association
-- belongs to :products
+- belongs_to :product
 
 
 ## freightsテーブル
@@ -174,7 +160,7 @@
 |product_id|references|foreign_key:true|
 
 ### Association
-- belongs to :products
+- belongs_to :product
 
 
 ## root_areasテーブル
@@ -185,7 +171,7 @@
 |product_id|references|foreign_key:true|
 
 ### Association
-- belongs to :products
+- belongs_to :product
 
 
 ## daysテーブル
@@ -196,4 +182,4 @@
 |product_id|references|foreign_key:true|
 
 ### Association
-- belongs to :products
+- belongs_to :product

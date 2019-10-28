@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2019_10_27_070101) do
     t.text "title", null: false
     t.text "text"
     t.integer "price", null: false
-# ActiveRecord::Schema.define(version: 2019_10_26_110435) do
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false

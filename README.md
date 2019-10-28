@@ -16,12 +16,6 @@
 |first_name_kana|string|null: false|
 |last_name_kana|string|null: false|
 |birthday|date|null: false|
-|current_address|text| |
-|delivery_address_postal_code|integer|null: false|
-|delivery_address_prefectures|integer|null: false|
-|delivery_address_city|string|null: false|
-|delivery_address_address|string|null: false|
-|delivery_address_building|string| |
 |sex|integer| |
 |tel_number|integer|null:false|
 |certification_number|integer|null:false|
@@ -30,6 +24,8 @@
 
 ### Association
 - belongs_to :credit_info
+- belongs_to :current_address
+- belongs_to :delivery_address
 - has_many :products
 - has_many :comments
 - has_many :likes
@@ -49,6 +45,36 @@
 - belongs_to :user
 
 
+## current_addressテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|current_address_postal_code|integer|null: false|
+|current_address_prefectures|integer|null: false|
+|current_address_city|string|null: false|
+|current_address_address|string|null: false|
+|current_address_building|string| |
+|user_id|references|foreign_key:true|
+
+### Association
+- belongs_to :user
+
+
+## delivery_addressテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|delivery_address_postal_code|integer|null: false|
+|delivery_address_prefectures|integer|null: false|
+|delivery_address_city|string|null: false|
+|delivery_address_address|string|null: false|
+|delivery_address_building|string| |
+|user_id|references|foreign_key:true|
+
+### Association
+- belongs_to :user
+
+
 ## productsテーブル
 
 |Column|Type|Options|
@@ -57,10 +83,11 @@
 |title|text|null:false, index:true|
 |text|text| |
 |price|integer|null: false|
+|user_id|references|foreign_key:true|
 
 ### Association
 - belongs_to :user
-- belongs_to :large_category
+- belongs_to :category
 - belongs_to :brand
 - belongs_to :condition
 - belongs_to :freight
@@ -96,39 +123,16 @@
 - belongs_to :product
 - validates_uniqueness_of :product_id, scope: :user_id
 
-## large_categoriesテーブル
+
+## categoriesテーブル
 
 |Column|Type|Options|
-|------|----|———|
-|large_item|integer|null: false|
-|product_id|references|foreign_key:true|
+|------|----|-------|
+|item|integer|null: false|
+|ancestry|string|index:true|
 
 ### Association
 - belongs_to :product
-- has_many :middle_categories
-
-
-## middle_categoriesテーブル
-
-|Column|Type|Options|
-|------|----|———|
-|middle_item|integer|null: false|
-|lc_id|references|foreign_key:true|
-
-### Association
-- belongs_to :large_category
-- has_many :small_categories
-
-
-## small_categoriesテーブル
-
-|Column|Type|Options|
-|------|----|———|
-|small_item|integer|null: false|
-|mc_id|references|foreign_key:true|
-
-### Association
-- belongs_to :middlel_category
 
 
 ## brandsテーブル

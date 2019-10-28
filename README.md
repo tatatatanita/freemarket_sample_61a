@@ -68,6 +68,7 @@
 - belongs_to :day
 - has_many :comments
 - has_many :likes
+- has_many :liked_users, through: :likes, source: :user
 
 
 ## commentsテーブル
@@ -93,7 +94,7 @@
 ### Association
 - belongs_to :user
 - belongs_to :product
-
+- validates_uniqueness_of :product_id, scope: :user_id
 
 ## large_categoriesテーブル
 

@@ -18,8 +18,7 @@
     .item-price-box
       = @product.price
     .item-buy-btn
-    %a.item-buy-btn{:href => ""}
-      購入画面に進む
+    = link_to "購入画面に進む", ''
     .item-description
       = @product.text
     .item-detail-message

@@ -11,8 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2019_10_28_152751) do
-=======
-ActiveRecord::Schema.define(version: 2019_10_27_070101) do
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image", null: false
@@ -22,7 +20,7 @@ ActiveRecord::Schema.define(version: 2019_10_27_070101) do
     t.text "text"
     t.integer "price", null: false
   end
-  
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "last_name_kanji", null: false

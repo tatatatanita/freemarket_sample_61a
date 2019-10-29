@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  def show
+  end
+
   def edit
   end
 
@@ -21,10 +24,9 @@ class UsersController < ApplicationController
     :last_name_kana,
     :first_name_kana,
     :birthday,
-    :current_address,
-    :delivery_address,
     :sex,
     :tel_number,
+    :certification_number,
     :profile_text,
     :profile_image)
   end

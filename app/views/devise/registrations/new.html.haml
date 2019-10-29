@@ -60,15 +60,11 @@
             = f.text_field :tel_number, autofocus: true
         .field
           .field-label
-            = f.label :delivery_address
+            = f.label :certification_number
           .field-input
-            = f.text_field :delivery_address, autofocus: true
+            = f.text_field :certification_number, autofocus: true
+
         -# 以下の項目については仮で置いているため、別ページが出来次第削除
-        .field
-          .field-label
-            = f.label :current_address
-          .field-input
-            = f.text_field :current_address, autofocus: true
         .field
           .field-label
             = f.label :sex

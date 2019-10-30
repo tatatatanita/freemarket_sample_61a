@@ -1,0 +1,17 @@
+.single-header
+  mercari
+.single-main
+  .l-single-container_buy-item-container
+    .sell-container
+      .sell-container-inner
+        .l-single-head
+          商品の情報を入力
+        .sell-form
+          .sell-upload-box
+            .sell-upload-head
+              出品画像
+            .sell-dropbox-container_clearfix_state-image-number-10
+              = image_tag "#{@product.image}"
+          .sell-content
+            .form-group
+              商品名

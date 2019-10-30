@@ -1,9 +1,13 @@
-    %h1 index
-  .image
-    %h3 画像image
-  .title
-    %h3 タイトルtitle
-  .text
-    %h3 テキストtext
-  .price
-    %h3 価格price
+
+mercari
+
+
+- @product.each do |p|
+  %p.product
+    = p.title
+    = p.image
+    = p.text
+    = p.price
+  .line ------------------------------
+
+= link_to "商品投稿", new_product_path, class: 'new_exhibit'

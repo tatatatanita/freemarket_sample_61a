@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
     @product = Product.all
   end
 
+
   def new
     @product = Product.new
   end
@@ -16,7 +17,12 @@ class ProductsController < ApplicationController
       render 'new'
     end
   end
-
+ 
+  
+  def show
+    @product = Product.find(params[:id])
+  end
+  
   private
   def product_params
     params.require(:product).permit(:title, :image, :text, :price)

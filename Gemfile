@@ -70,6 +70,8 @@ group :production do
 end
 
 gem 'font-awesome-sass'
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'capistrano'

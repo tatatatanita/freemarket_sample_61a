@@ -1,6 +1,13 @@
-
 mercari
 
+- @parents.each do |parent|
+  = parent.name
+  ：
+  - parent.children.each do |child|
+    = child.name
+    ：
+    - child.children.each do |grandchild|
+      = grandchild.name
 
 - @product.each do |p|
   %p.product

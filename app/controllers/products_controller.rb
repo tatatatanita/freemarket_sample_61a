@@ -13,8 +13,6 @@ class ProductsController < ApplicationController
     @product = Product.create(product_params)
     if @product.save
       redirect_to root_path, notice: '出品しました'
-    else
-      render 'new'
     end
   end
 

@@ -8,7 +8,7 @@
           = link_to image_tag("https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg", size: "134x36", alt: "mercari"), root_path
         %input.header__box__upper-search{name: "search", placeholder: "何かお探しですか？", type: "text"}
           %button.header__box__upper-search-btn{type: "submit"}
-            = fa_icon 'search'
+            = icon( 'fas','search')
       .header__box__bottom
         .header__box__bottom__left
           .header__box__bottom__left__categories カテゴリーから探す
@@ -29,6 +29,7 @@
   - @product.each do |p|
     %p.product
       = p.title
+      -# = image_tag p.image.to_s
       = p.image
       = p.text
       = p.price

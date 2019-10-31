@@ -17,3 +17,6 @@
           .header__box__bottom__right--todo やることリスト
           .header__box__bottom__right--my_page
             = link_to "マイページ", user_path(current_user.id), class: "header__box__bottom__right--my_page--link"
+
+
+  = link_to "ログアウト", destroy_user_session_path, method: :delete

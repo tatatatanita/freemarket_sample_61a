@@ -3,7 +3,7 @@
     .header__box
       .header__box__upper
         .header__box__upper-logo
-          = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg", size: "134x36", alt: "mercari"
+          = link_to image_tag "https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg", size: "134x36", alt: "mercari"
         %input.header__box__upper-search{name: "search", placeholder: "何かお探しですか？", type: "text"}
           %button.header__box__upper-search-btn{type: "submit"}
             = fa_icon 'search'
@@ -17,10 +17,3 @@
           .header__box__bottom__right--todo やることリスト
           .header__box__bottom__right--my_page
             = link_to "マイページ", user_path(current_user.id), class: "header__box__bottom__right--my_page--link"
-
-
-
-            
-
-
-

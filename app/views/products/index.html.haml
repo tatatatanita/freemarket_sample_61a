@@ -26,9 +26,6 @@
             .header__box__bottom__right--log_in
               = link_to "ログイン", new_user_session_path,class: "header__box__bottom__right--log_in-btn"
 
-            
-
-
   - @product.each do |p|
     %p.product
       = p.title

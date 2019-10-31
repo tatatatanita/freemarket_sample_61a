@@ -17,6 +17,15 @@ class ProductsController < ApplicationController
       render 'new'
     end
   end
+
+  def destroy
+    @product == Product.find(params[:id])
+      if @product.user_id == current_user.id
+        @product.destroy
+        # redirect_to 'show_exhibit' 実装後コメントアウト外す
+      end
+  end 
+
  
   
   def show

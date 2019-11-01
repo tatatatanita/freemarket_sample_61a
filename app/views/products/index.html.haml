@@ -10,7 +10,7 @@
       .header__box__bottom
         .header__box__bottom__left
           .header__box__bottom__left__categories カテゴリーから探す
-          .header__box__bottom__left__brands　ブランドから探す
+          .header__box__bottom__left__brands ブランドから探す
         .header__box__bottom__right
           - if user_signed_in?
             .header__box__bottom__right--like いいね!一覧
@@ -32,4 +32,4 @@
       = p.price
     .line ------------------------------
 
-  = link_to "商品投稿", new_product_path, class: 'new_exhibit'
+  -# = link_to "商品投稿", new_product_path, class: 'new_exhibit'

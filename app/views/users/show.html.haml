@@ -1,35 +1,34 @@
 %h1 show
-.header
-  .li
-  マイページ
-  .li
-  お知らせ
-  .li
-  やることリスト
-  .li
-  いいね！一覧
-  .li
-  出品する
-  .li
-  = link_to "出品した商品 - 出品中", edit_user_path, class: 'edit_user'
-  .li
-  出品した商品 - 取引中 
-  .li
-  出品した商品 - 売却済み
-  .li
-  購入した商品 - 取引中
-  .li
-  購入した商品 - 過去の取引
-  .li
-  ニュース一覧
-  .li
-  評価一覧
-  .li
-  ガイド
-  .li
-  お問い合わせ
-  .li
-= image_tag "#{@user.profile_image}"
+.li
+マイページ
+.li
+お知らせ
+.li
+やることリスト
+.li
+いいね！一覧
+.li
+出品する
+.li
+= link_to "出品した商品 - 出品中", show_exhibit_path, class: 'product_show_exhibit'
+.li
+出品した商品 - 取引中 
+.li
+出品した商品 - 売却済み
+.li
+購入した商品 - 取引中
+.li
+購入した商品 - 過去の取引
+.li
+ニュース一覧
+.li
+評価一覧
+.li
+ガイド
+.li
+お問い合わせ
+.li
+-# = image_tag "#{@user.profile_image}"
 .li
 お知らせ
 やることリスト

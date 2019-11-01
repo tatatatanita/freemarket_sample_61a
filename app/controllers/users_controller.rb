@@ -3,9 +3,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def edit
-    @product = Product.find(params[:id])
-  end
+  # def edit
+  #   @product = Product.find(params[:id])
+  # end
 
   def update
     if current_user.update(user_params)

@@ -27,7 +27,7 @@
   - @product.each do |p|
     %p.product
       = p.title
-      = image_tag p.image.url
+      = image_tag p.image.url, class: "product_image"
       = p.text
       = p.price
     .line ------------------------------

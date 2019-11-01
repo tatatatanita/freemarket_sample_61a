@@ -65,6 +65,8 @@ gem "devise"
 
 gem 'haml-rails'
 
+gem 'ancestry'
+
 group :production do
   gem 'unicorn', '5.4.1'
 end

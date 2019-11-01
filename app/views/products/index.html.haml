@@ -1,3 +1,14 @@
+mercari
+
+- @parents.each do |parent|
+  = parent.name
+  ：
+  - parent.children.each do |child|
+    = child.name
+    ：
+    - child.children.each do |grandchild|
+      = grandchild.name
+
 .wrapper
   .header
     .header__box

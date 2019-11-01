@@ -1,60 +1,60 @@
-.wrapper
-  .header
-    .header__box
-      .header__box__upper
-        .header__box__upper-logo
-          = link_to image_tag("https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg", size: "134x36", alt: "mercari"), root_path
-        %input.header__box__upper-search{name: "search", placeholder: "何かお探しですか？", type: "text"}
-          %button.header__box__upper-search-btn{type: "submit"}
-            %i.fa.fa-search
-      .header__box__bottom
-        .header__box__bottom__left
-          .header__box__bottom__left__categories カテゴリーから探す
-          .header__box__bottom__left__brands　ブランドから探す
-        .header__box__bottom__right
-          .header__box__bottom__right--like いいね!一覧
-          .header__box__bottom__right--info お知らせ
-          .header__box__bottom__right--todo やることリスト
-          .header__box__bottom__right--my_page
-            = link_to "マイページ", user_path(current_user.id), class: "header__box__bottom__right--my_page--link"
+-# .wrapper
+-#   .header
+-#     .header__box
+-#       .header__box__upper
+-#         .header__box__upper-logo
+-#           = link_to image_tag("https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg", size: "134x36", alt: "mercari"), root_path
+-#         %input.header__box__upper-search{name: "search", placeholder: "何かお探しですか？", type: "text"}
+-#           %button.header__box__upper-search-btn{type: "submit"}
+-#             %i.fa.fa-search
+-#       .header__box__bottom
+-#         .header__box__bottom__left
+-#           .header__box__bottom__left__categories カテゴリーから探す
+-#           .header__box__bottom__left__brands ブランドから探す
+-#         .header__box__bottom__right
+-#           .header__box__bottom__right--like いいね!一覧
+-#           .header__box__bottom__right--info お知らせ
+-#           .header__box__bottom__right--todo やることリスト
+-#           .header__box__bottom__right--my_page
+-#             = link_to "マイページ", user_path(current_user.id), class: "header__box__bottom__right--my_page--link"
 
 
 
-= link_to "ログアウト", destroy_user_session_path, method: :delete
-= @user.nickname
+-# = link_to "ログアウト", destroy_user_session_path, method: :delete
+-# = @user.nickname
 
-%h1 show
-.header
-  .li
-  マイページ
-  .li
-  お知らせ
-  .li
-  やることリスト
-  .li
-  いいね！一覧
-  .li
-  出品する
-  .li
-  = link_to "出品した商品 - 出品中", edit_user_path, class: 'edit_user'
-  .li
-  出品した商品 - 取引中 
-  .li
-  出品した商品 - 売却済み
-  .li
-  購入した商品 - 取引中
-  .li
-  購入した商品 - 過去の取引
-  .li
-  ニュース一覧
-  .li
-  評価一覧
-  .li
-  ガイド
-  .li
-  お問い合わせ
-  .li
--# = image_tag "#{@user.profile_image}"
-.li
-お知らせ
-やることリスト
+-# %h1 show
+-# .header
+-#   .li
+-#   マイページ
+-#   .li
+-#   お知らせ
+-#   .li
+-#   やることリスト
+-#   .li
+-#   いいね！一覧
+-#   .li
+-#   出品する
+-#   .li
+-#   = link_to "出品した商品 - 出品中", edit_user_path, class: 'edit_user'
+-#   .li
+-#   出品した商品 - 取引中 
+-#   .li
+-#   出品した商品 - 売却済み
+-#   .li
+-#   購入した商品 - 取引中
+-#   .li
+-#   購入した商品 - 過去の取引
+-#   .li
+-#   ニュース一覧
+-#   .li
+-#   評価一覧
+-#   .li
+-#   ガイド
+-#   .li
+-#   お問い合わせ
+-#   .li
+-# -# = image_tag "#{@user.profile_image}"
+-# .li
+-# お知らせ
+-# やることリスト

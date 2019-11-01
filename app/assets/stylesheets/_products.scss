@@ -1,0 +1,121 @@
+.wrapper {
+  .header {
+    width: 100vw;
+    height: 100px;
+    background-color: #ffffff;
+    box-shadow: rgba(0,0,0,0.18) 0px 2px 4px; 
+    position: relative;
+    z-index: 3;
+    &__box {
+      width: 1020px;
+      margin: 0 auto;
+      padding: 8px 0 0 ;
+      &__upper {
+        display: flex;
+        justify-content: space-between;
+        &-logo {
+          display: flex;
+          height: 40px;
+          margin-right: 45px;
+          align-items: center;
+          &--img {
+            width: 134px;
+            height: 36px;
+          }
+        }
+        &-search {
+          position: relative;
+          background-color: rgb(245, 245, 245);
+          font-size: 16px;
+          height: 38px;
+          line-height: 1.4em;
+          width: 100%;
+          padding-left: 10px;
+          border-radius: 5px;
+          border-color: rgb(204, 204, 204);
+          border-width: 1px;
+          border-style: solid;
+          border-image: initial;
+          border-radius: 4px;
+          outline: none;
+          &-btn {
+            height:50px;
+            position:absolute; 
+            right:340px;/*アイコン左右の位置調整*/
+            top:0;
+            background:none;
+            color:#666666;
+            border:none; 
+            font-size:15px;
+          
+          }
+        }
+      }
+      &__bottom {
+        display: flex;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        margin-top: 8px;
+        &__left {
+          display: flex;
+          margin-left: -3px;
+          &-categories {
+            padding-left: 0px;
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 36px;
+            white-space: nowrap;
+          }
+          &-brands {
+            padding-right: 0px;
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 36px;
+            white-space: nowrap;
+          }
+        }
+        &__right {
+          display: flex;
+          &--sign_up {
+            text-align: center;
+            &-btn {
+              background-color: rgb(234, 53, 45);
+              color: rgb(255, 255, 255);
+              display: block;
+              font-size: 14px;
+              border-width: 1px;
+              border-style: solid;
+              border-color: rgb(234, 53, 45);
+              border-image: initial;
+              border-radius: 4px;
+              padding: 8px 10px;
+              text-decoration: none;
+            
+            }
+
+          }
+          &--log_in {
+            text-align: center;
+            margin-left: 11px;
+            &-btn {
+              background-color: rgb(255, 255, 255);
+              color: rgb(0, 149, 238);
+              display: block;
+              font-size: 14px;
+              border-width: 1px;
+              border-style: solid;
+              border-color: rgb(0, 149, 238);
+              border-image: initial;
+              border-radius: 4px;
+              padding: 8px 10px;
+              transition: all 0.3s ease-out 0s;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

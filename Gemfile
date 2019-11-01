@@ -73,6 +73,8 @@ gem 'font-awesome-rails'
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem "gretel"
+
 group :development, :test do
   gem 'capistrano'
   gem 'capistrano-rbenv'

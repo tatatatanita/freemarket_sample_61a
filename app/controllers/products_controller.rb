@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
     # raise.params.inspect
     @product = Product.create(product_params)
     if @product.save
-      redirect_to root_path, notice: '出品しました'
+      redirect_to root_path
     end
   end
 

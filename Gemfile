@@ -76,6 +76,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 gem "gretel"
+gem 'pry-rails'
 
 group :development, :test do
   gem 'capistrano'

@@ -10,10 +10,12 @@ class ProductsController < ApplicationController
   end
 
   def create
-    # raise.params.inspect
     @product = Product.create(product_params)
+    # binding.pry
     if @product.save
       redirect_to root_path
+    else 
+      render :new, notice: '保存できませんでした'
     end
   end
 

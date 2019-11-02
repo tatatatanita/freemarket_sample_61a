@@ -1,5 +1,3 @@
-mercari
-
 - @parents.each do |parent|
   = parent.name
   ：
@@ -38,9 +36,9 @@ mercari
   - @product.each do |p|
     %p.product
       = p.title
-      = image_tag p.image.url, class: "product_image"
+      = link_to image_tag(p.image.url, class: "product_image"),buyer_show_product_path(p.id)
       = p.text
       = p.price
     .line ------------------------------
 
-  = link_to "商品投稿", new_product_path, class: 'new_exhibit'
+  = link_to "出品", new_product_path, class: 'new_exhibit'

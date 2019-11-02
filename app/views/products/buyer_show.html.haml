@@ -17,45 +17,12 @@
           .header__box__bottom__right--todo やることリスト
           .header__box__bottom__right--my_page
             = link_to "マイページ", user_path(current_user.id), class: "header__box__bottom__right--my_page--link"
-      - breadcrumb :mypage
-      = render "layouts/breadcrumbs"
 
+%h2= @product.title
+= image_tag(@product.image.url, class: "product_image")
+%li= "出品者: #{@product.saler.nickname}"
+%li= "¥ #{@product.price} (税込)"
 
-= link_to "ログアウト", destroy_user_session_path, method: :delete
-= @user.nickname
+%h3
+  = link_to "購入画面に進む"
 
-%h1 show
-.header
-  .li
-  マイページ
-  .li
-  お知らせ
-  .li
-  やることリスト
-  .li
-  いいね！一覧
-  .li
-  = link_to "出品する", new_product_path, class: 'new_exhibit'
-  .li
-  = link_to "出品した商品 - 出品中", edit_user_path, class: 'edit_user'
-  .li
-  出品した商品 - 取引中 
-  .li
-  出品した商品 - 売却済み
-  .li
-  購入した商品 - 取引中
-  .li
-  購入した商品 - 過去の取引
-  .li
-  ニュース一覧
-  .li
-  評価一覧
-  .li
-  ガイド
-  .li
-  お問い合わせ
-  .li
--# = image_tag "#{@user.profile_image}"
-.li
-お知らせ
-やることリスト

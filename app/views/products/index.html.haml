@@ -33,6 +33,10 @@
             .header__box__bottom__right--log_in
               = link_to "ログイン", new_user_session_path,class: "header__box__bottom__right--log_in-btn"
 
+  = link_to "出品", new_product_path, class: 'new_exhibit'
+  %br/
+  .line ------------------------------
+  
   - @product.each do |p|
     %p.product
       = p.title
@@ -47,4 +51,4 @@
     .line ------------------------------
   
 
-  = link_to "出品", new_product_path, class: 'new_exhibit'
+  

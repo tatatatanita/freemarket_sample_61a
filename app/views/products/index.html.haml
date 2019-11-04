@@ -36,10 +36,13 @@
   - @product.each do |p|
     %p.product
       = p.title
+      %br/
       = link_to p.title ,buyer_show_product_path(p.id)
       - p.images.each do |image|
         = image_tag(image.image_url.url, class: "product_image")
+      %br/
       = p.text
+      %br/
       = p.price
     .line ------------------------------
   

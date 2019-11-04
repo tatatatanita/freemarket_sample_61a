@@ -34,7 +34,7 @@ class ProductsController < ApplicationController
 
   def buyer_show
     @product = Product.find(params[:id])
-    # @image = Image.find(params[:product_id])
+    # @image = Image.find(params[:product_id])　現在詳細画面で画像を表示しないようにしています。（エラーが出るため確認中）
   end
   
   private

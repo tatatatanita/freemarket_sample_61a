@@ -1,7 +1,6 @@
 class Product < ApplicationRecord
   
-  # belongs_to :user, foreign_key: 'user_id'
-  # belongs_to :category
+  # belongs_to :category　カテゴリー実装じにコメントアウト外す
   
   belongs_to :saler, class_name: "User"
   belongs_to :buyer, class_name: "User", optional: true

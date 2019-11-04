@@ -37,8 +37,6 @@
     %p.product
       = p.title
       = link_to p.title ,buyer_show_product_path(p.id)
-      -# = link_to image_tag(p.image_urls, class: "product_image"),buyer_show_product_path(p.id)
-      -# = image_tag　p.@image.image_url
       - p.images.each do |image|
         = image_tag(image.image_url.url, class: "product_image")
       = p.text

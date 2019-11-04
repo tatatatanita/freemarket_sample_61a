@@ -7,11 +7,12 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product.images.build
   end
 
   def create
     @product = Product.create(product_params)
-    # binding.pry
+    binding.pry
     if @product.save
       redirect_to root_path
     else 
@@ -38,6 +39,9 @@ class ProductsController < ApplicationController
   
   private
   def product_params
-    params.require(:product).permit(:title, :image, :text, :price)
+    params.require(:product).permit(
+      :title, :text, :price,
+      images_attributes: {image: []}
+    )
   end
 end

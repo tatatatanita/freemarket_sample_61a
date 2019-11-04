@@ -1,3 +1,12 @@
+-# - @parents.each do |parent|
+-#   = parent.name
+-#   ：
+-#   - parent.children.each do |child|
+-#     = child.name
+-#     ：
+-#     - child.children.each do |grandchild|
+-#       = grandchild.name
+
 .wrapper
   .header
     .header__box
@@ -27,9 +36,12 @@
   - @product.each do |p|
     %p.product
       = p.title
-      = image_tag p.image.url
+      = link_to p.title ,buyer_show_product_path(p.id)
+      - p.images.each do |image|
+        = image_tag(image.image_url.url, class: "product_image")
       = p.text
       = p.price
     .line ------------------------------
+  
 
-  = link_to "商品投稿", new_product_path, class: 'new_exhibit'
+  = link_to "出品", new_product_path, class: 'new_exhibit'

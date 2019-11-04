@@ -27,8 +27,10 @@ ActiveRecord::Schema.define(version: 2019_11_02_083313) do
     t.text "title", null: false
     t.text "text"
     t.integer "price", null: false
+    t.string "ancestry"
     t.integer "buyer_id"
     t.integer "saler_id"
+    t.index ["ancestry"], name: "index_products_on_ancestry"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

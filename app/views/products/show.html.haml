@@ -1,27 +1,39 @@
-.default-container 
-  .item-box-container_l-single-container
-    .item-name
-      = @product.title
-    .item-main-content_clearfix
-      .item-photo
-        = image_tag "#{@product.image}"
-    .item-detail-table
-      出品者
-      カテゴリー
-      ブランド
-      商品のサイズ
-      商品の状態
-      配送料の負担
-      配送の方法
-      配送元地域
-      発送日の目安
-    .item-price-box
-      = @product.price
-    .item-buy-btn
-    = link_to "購入画面に進む", ''
-    .item-description
-      = @product.text
-    .item-detail-message
-      "コメント箇所"
-    %button.message-submit.btn-default.btn-gray{type:"submit"}
-      %span コメントする
+%b my product show
+%li
+= @product.title
+%li
+= image_tag "#{@product.image}"
+%li
+出品者
+= @user.nickname
+%li
+カテゴリー
+%li
+ブランド
+%li
+商品のサイズ
+%li
+商品の状態
+%li
+配送料の負担
+%li
+配送の方法
+%li
+配送元地域
+%li
+発送日の目安
+%li
+= @product.price
+%li
+= @product.text
+%li
+= link_to "商品の編集", edit_product_path, class: ''
+%li
+= link_to "出品を一旦停止する", ''
+%li
+= link_to "この商品を削除する", ''
+%li
+"コメント箇所"
+%li
+%button.message-submit.btn-default.btn-gray{type:"submit"}
+%span コメントする

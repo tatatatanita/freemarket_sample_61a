@@ -1,0 +1,16 @@
+%h1  商品の情報を入力
+.li
+出品画像
+= image_tag "#{@product.image}"
+.li
+商品名
+= form_for(@product) do |f|
+  = f.text_field :title, class: '', placeholder: ''
+  .field
+  商品の説明
+  .field
+  = f.text_field :text, class: '', placeholder: ''  
+  .li
+  = f.submit "変更する", class: ''
+  .li
+  キャンセル

@@ -24,11 +24,32 @@ class ProductsController < ApplicationController
       end
   end 
  
-  
   def show
     @product = Product.find(params[:id])
+    @user = User.find(params[:id])
   end
-  
+
+  def show_exhibit
+    @product = Product.where(user_id: current_user.id)
+  end
+
+ 
+  def edit
+    @product = Product.find(params[:id])
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    @user = User.find(params[:id])
+    if @product.update(product_params)
+      redirect_to product_path, notice: ''
+    else
+      #updateを失敗すると編集ページへ
+      render 'edit'
+    end
+  end
+
   private
   def product_params
     params.require(:product).permit(:title, :image, :text, :price)

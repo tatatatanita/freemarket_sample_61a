@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'products#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users, only: [:show, :edit, :update]
-  resources :products, only: [:index, :new, :create, :destroy, :show]
-
+  resources :users, only: [:show, :edit, :update] 
+  resources :products do
+    member do
+      get :show_exhibit
+    end
+  end
 end

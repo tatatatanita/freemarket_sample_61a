@@ -74,6 +74,7 @@ end
 gem 'font-awesome-rails'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'fog-aws'
 
 gem "gretel"
 gem 'pry-rails'

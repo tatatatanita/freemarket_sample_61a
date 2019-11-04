@@ -36,9 +36,12 @@
   - @product.each do |p|
     %p.product
       = p.title
-      = link_to image_tag(p.image.url, class: "product_image"),buyer_show_product_path(p.id)
+      = link_to p.title ,buyer_show_product_path(p.id)
+      - p.images.each do |image|
+        = image_tag(image.image_url.url, class: "product_image")
       = p.text
       = p.price
     .line ------------------------------
+  
 
   = link_to "出品", new_product_path, class: 'new_exhibit'

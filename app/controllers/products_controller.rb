@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
-    @product = Product.all
+    @product = Product.all.includes(:images)
     @parents = Category.all.order("id ASC").limit(13)
   end
 
@@ -11,8 +11,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.create(product_params)
-    binding.pry
+    @product = Product.new(product_params)
     if @product.save
       redirect_to root_path
     else 
@@ -35,13 +34,14 @@ class ProductsController < ApplicationController
 
   def buyer_show
     @product = Product.find(params[:id])
+    # @image = Image.find(params[:product_id])
   end
   
   private
   def product_params
     params.require(:product).permit(
-      :title, :text, :price,
-      images_attributes: {image: []}
+      :title, :text, :price, :saler_id,
+      images_attributes: [:image_url]
     )
   end
 end

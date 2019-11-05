@@ -1,3 +1,0 @@
-= form_for @product do |f|
-  = f.fields_for :freight do |freight|
-    = freight.select :freight, [["送料込み(出品者負担)","1"],["着払い(購入者負担)","2"]], prompt: "---"

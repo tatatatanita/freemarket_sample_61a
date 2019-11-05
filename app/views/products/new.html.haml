@@ -12,11 +12,14 @@
   = f.text_area :text, placeholder: '商品の説明'
   %br/
   %h4 配送料の負担
-  = render "frights"
+  = f.fields_for :freight do |freight|
+    = freight.select :freight, [["送料込み(出品者負担)","1"],["着払い(購入者負担)","2"]], prompt: "---"
   %h4 発送元の地域
-  = render "cties"
+  = f.fields_for :root_area do |r|
+    = r.select :root_area, [["北海道","1"],["青森","2"],["岩手","3"],["宮城","4"],["秋田","5"],["山形","6"],["福島","7"],["茨城","8"],["栃木","9"],["群馬","10"],["埼玉","11"],["千葉","12"],["東京","13"],["神奈川","14"]], prompt: "---"
   %h4 発送までの日数
-  = render "days"
+  = f.fields_for :day do |d|
+    = d.select :day, [["1~2日で発送","1"],["2~3日で発送","2"],["4~7日で発送","3"]], prompt: "---"
   %h4 価格
   = f.number_field :price, placeholder: '例) 300'
   %br/

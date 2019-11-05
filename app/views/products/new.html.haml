@@ -2,7 +2,8 @@
 %h1  出品フォーム
 = form_for @product do |f|
   %h4 出品画像
-  = f.file_field :image
+  = f.fields_for :images do |c|
+    = c.file_field :image_url
   %br/
   %h4 商品名
   = f.text_field :title, placeholder: '商品名（必須 40文字まで）'
@@ -13,8 +14,10 @@
   %h4 価格
   = f.number_field :price, placeholder: '例) 300'
   %br/
+  = f.hidden_field :saler_id, value: current_user.id
+  %br/ 
   = f.submit :"出品する"
 
-  = link_to "もどる", root_path
+  = link_to 'もどる', :back
 
 

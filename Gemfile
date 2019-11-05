@@ -65,6 +65,8 @@ gem "devise"
 
 gem 'haml-rails'
 
+gem 'ancestry'
+
 group :production do
   gem 'unicorn', '5.4.1'
 end
@@ -72,6 +74,10 @@ end
 gem 'font-awesome-rails'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'fog-aws'
+
+gem "gretel"
+gem 'pry-rails'
 
 group :development, :test do
   gem 'capistrano'

@@ -8,6 +8,9 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.images.build
+    @product.build_freight
+    @product.build_root_area
+    @product.build_day
   end
 
   def create
@@ -41,7 +44,10 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(
       :title, :text, :price, :saler_id,
-      images_attributes: [:image_url]
+      images_attributes: [:image_url],
+      freight_attributes: [:freight],
+      root_area_attributes: [:root_area],
+      day_attributes: [:day]
     )
   end
 end

@@ -49,14 +49,13 @@ class ProductsController < ApplicationController
     if @product.update(product_params)
       redirect_to product_path, notice: ''
     else
-      #updateを失敗すると編集ページへ
       render 'edit'
     end
   end
 
   def buyer_show
     @product = Product.find(params[:id])
-    # @image = Image.find(params[:product_id])　現在詳細画面で画像を表示しないようにしています。（エラーが出るため確認中）
+    # @image = Image.find(params[:product_id]) 現在詳細画面で画像を表示しないようにしています。（エラーが出るため確認中）
   end
   
   private

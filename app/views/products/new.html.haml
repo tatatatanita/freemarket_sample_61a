@@ -2,8 +2,8 @@
 %h1  出品フォーム
 = form_for @product do |f|
   %h4 出品画像
-  = f.fields_for :images do |c|
-    = c.file_field :image_url
+  = f.fields_for :images do |i|
+    = i.file_field :image_url
   %br/
   %h4 商品名
   = f.text_field :title, placeholder: '商品名（必須 40文字まで）'
@@ -11,6 +11,12 @@
   %h4 商品の説明
   = f.text_area :text, placeholder: '商品の説明'
   %br/
+  %h4 配送料の負担
+  = render "frights"
+  %h4 発送元の地域
+  = render "cties"
+  %h4 発送までの日数
+  = render "days"
   %h4 価格
   = f.number_field :price, placeholder: '例) 300'
   %br/

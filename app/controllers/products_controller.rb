@@ -1,4 +1,7 @@
 class ProductsController < ApplicationController
+
+before_action :set_product, only: [:update] 
+
   def index
     @product = Product.all.includes(:images)
     @parents = Category.all.order("id ASC").limit(13)
@@ -32,7 +35,6 @@ class ProductsController < ApplicationController
  
   def show
     @product = Product.find(params[:id])
-    # @user = User.find(params[:id])
     @user = current_user
   end
 
@@ -42,7 +44,6 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product = Product.find(params[:id])
     if @product.update(product_params)
       redirect_to product_path, notice: ''
     else
@@ -65,4 +66,9 @@ class ProductsController < ApplicationController
       day_attributes: [:day]
     )
   end
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
 end

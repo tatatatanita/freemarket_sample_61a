@@ -94,9 +94,9 @@
 - belongs_to :category
 - belongs_to :brand
 - belongs_to :condition
-- belongs_to :freight
-- belongs_to :root_area
-- belongs_to :day
+- has_one :freight
+- has_one :root_area
+- has_one :day
 - belongs_to :saler, class_name: "User"
 - belongs_to :buyer, class_name: "User"
 - has_many :comments

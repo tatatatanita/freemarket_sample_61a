@@ -78,6 +78,7 @@ gem 'fog-aws'
 
 gem "gretel"
 gem 'pry-rails'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'capistrano'

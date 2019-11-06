@@ -8,6 +8,9 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.images.build
+    @product.build_freight
+    @product.build_root_area
+    @product.build_day
   end
 
   def create
@@ -20,7 +23,7 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product == Product.find(params[:id])
+    @product = Product.find(params[:id])
       if @product.user_id == current_user.id
         @product.destroy
         # redirect_to 'show_exhibit' 実装後コメントアウト外す
@@ -29,23 +32,17 @@ class ProductsController < ApplicationController
  
   def show
     @product = Product.find(params[:id])
-    @user = User.find(params[:id])
-  end
-
-  
-  def show_exhibit
-    @products = Product.where(user_id: current_user.id)
+    # @user = User.find(params[:id])
+    @user = current_user
   end
 
  
   def edit
     @product = Product.find(params[:id])
-    @user = User.find(params[:id])
   end
 
   def update
     @product = Product.find(params[:id])
-    @user = User.find(params[:id])
     if @product.update(product_params)
       redirect_to product_path, notice: ''
     else
@@ -55,14 +52,17 @@ class ProductsController < ApplicationController
 
   def buyer_show
     @product = Product.find(params[:id])
-    # @image = Image.find(params[:product_id]) 現在詳細画面で画像を表示しないようにしています。（エラーが出るため確認中）
+    @image = Image.where(product_id: @product)
   end
   
   private
   def product_params
     params.require(:product).permit(
       :title, :text, :price, :saler_id,
-      images_attributes: [:image_url]
+      images_attributes: [:image_url],
+      freight_attributes: [:freight],
+      root_area_attributes: [:root_area],
+      day_attributes: [:day]
     )
   end
 end

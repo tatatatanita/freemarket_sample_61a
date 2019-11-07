@@ -4,7 +4,6 @@
 %li
 - @products.each do |p|
   %p.products
-    -# = image_tag p.image.url
     = image_tag p.image
     = link_to p.title, product_path(p.id)
   line ------------------------------

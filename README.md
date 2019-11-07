@@ -30,6 +30,9 @@
 - has_many :comments
 - has_many :likes
 - has_many :liked_products, through: :likes, source: :product
+- has_many :buyed_products, foreign_key: "buyer_id", class_name: "Product"
+- has_many :saling_products, -> { where("buyer_id is NULL") }, foreign_key: "saler_id", class_name: "Product"
+- has_many :sold_products, -> { where("buyer_id is not NULL") }, foreign_key: "saler_id", class_name: "Product"
 
 
 ## credit_infosテーブル
@@ -79,23 +82,38 @@
 
 |Column|Type|Options|
 |------|----|———|
-|image|string|null: false|
 |title|text|null:false, index:true|
 |text|text| |
 |price|integer|null: false|
 |user_id|references|foreign_key:true|
+|buyer_id|integer||
+|saler_id|integer||
 
 ### Association
 - belongs_to :user
 - belongs_to :category
 - belongs_to :brand
 - belongs_to :condition
-- belongs_to :freight
-- belongs_to :root_area
-- belongs_to :day
+- has_one :freight
+- has_one :root_area
+- has_one :day
+- belongs_to :saler, class_name: "User"
+- belongs_to :buyer, class_name: "User"
 - has_many :comments
 - has_many :likes
 - has_many :liked_users, through: :likes, source: :user
+- has_many :images, inverse_of: :product, dependent: :destroy
+- accepts_nested_attributes_for :images
+
+
+## imagesテーブル
+|Column|Type|Options|
+|------|----|———|
+|image_url|string|null: false|
+|product_id|references|foreign_key:true|
+
+### Association
+- belongs_to :product, inverse_of: :images
 
 
 ## commentsテーブル

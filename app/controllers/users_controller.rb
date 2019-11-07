@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
-  def edit
+  def show
+    @user = User.find(params[:id])
   end
+
+  # def edit
+  #   @product = Product.find(params[:id])
+  # end
 
   def update
     if current_user.update(user_params)
@@ -21,10 +26,9 @@ class UsersController < ApplicationController
     :last_name_kana,
     :first_name_kana,
     :birthday,
-    :current_address,
-    :delivery_address,
     :sex,
     :tel_number,
+    :certification_number,
     :profile_text,
     :profile_image)
   end

@@ -1,0 +1,9 @@
+= form_for @user, url: signup_index_path, method: :post do |f|
+  = f.fields_for :credit_info do |f|
+    number
+    = f.number_field :number
+    limit
+    != sprintf(f.date_select(:limit,with_css_classes:'XXXXX', order:[:month,:year,:day], use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '年'
+    security_code
+    = f.number_field :security_code
+    = f.submit 'Continue'

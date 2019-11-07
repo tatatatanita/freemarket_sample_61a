@@ -10,8 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 2019_11_05_082205) do
 
-ActiveRecord::Schema.define(version: 2019_11_04_112026) do
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
+  end
 
   create_table "credit_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "number", null: false
@@ -21,6 +28,14 @@ ActiveRecord::Schema.define(version: 2019_11_04_112026) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_credit_infos_on_user_id"
+  end
+
+  create_table "days", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "day", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_days_on_product_id"
   end
 
   create_table "delivery_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -37,23 +52,6 @@ ActiveRecord::Schema.define(version: 2019_11_04_112026) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_delivery_addresses_on_user_id"
-
-ActiveRecord::Schema.define(version: 2019_11_05_072040) do
-
-  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "ancestry"
-    t.index ["ancestry"], name: "index_categories_on_ancestry"
-  end
-
-  create_table "days", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "day", null: false
-    t.bigint "product_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_days_on_product_id"
   end
 
   create_table "freights", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -69,18 +67,21 @@ ActiveRecord::Schema.define(version: 2019_11_05_072040) do
     t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_images_on_product_id"
-
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "image", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "title", null: false
     t.text "text"
     t.integer "price", null: false
-    t.integer "buyer_id"
+    t.bigint "user_id_id"
+    t.bigint "user_id"
     t.integer "saler_id"
+    t.integer "buyer_id"
+    t.index ["user_id"], name: "index_products_on_user_id"
+    t.index ["user_id_id"], name: "index_products_on_user_id_id"
   end
 
   create_table "root_areas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -97,7 +98,7 @@ ActiveRecord::Schema.define(version: 2019_11_05_072040) do
     t.string "first_name_kanji", null: false
     t.string "last_name_kana", null: false
     t.string "first_name_kana", null: false
-
+    t.date "birthday", null: false
     t.integer "sex"
     t.integer "tel_number", null: false
     t.text "profile_text"
@@ -109,21 +110,15 @@ ActiveRecord::Schema.define(version: 2019_11_05_072040) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-
-    t.date "birthday"
-
     t.integer "certification_number", null: false
-
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-
   add_foreign_key "credit_infos", "users"
-  add_foreign_key "delivery_addresses", "users"
-
   add_foreign_key "days", "products"
+  add_foreign_key "delivery_addresses", "users"
   add_foreign_key "freights", "products"
-  add_foreign_key "images", "products"
+  add_foreign_key "products", "users"
   add_foreign_key "root_areas", "products"
 end

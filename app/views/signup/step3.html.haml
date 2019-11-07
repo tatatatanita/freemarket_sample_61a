@@ -1,0 +1,21 @@
+= form_for @user, url: step4_signup_index_path, method: :get do |f|
+  = f.fields_for :delivery_addresses do |p|
+    first_name_kanji
+    = p.text_field :first_name_kanji
+    last_name_kanji
+    = p.text_field :last_name_kanji
+    first_name_kana
+    = p.text_field :first_name_kana
+    last_name_kana
+    = p.text_field :last_name_kana
+    postal_code
+    = p.text_field :postal_code
+    prefectures
+    = p.select :prefectures, DeliveryAddress.prefectures.keys, {prompt: '選択してください'}
+    city
+    = p.text_field :city
+    address
+    = p.text_field :address
+    building
+    = p.text_field :building
+  = f.submit 'Continue'

@@ -65,6 +65,9 @@ gem "devise"
 
 gem 'haml-rails'
 
+
+gem 'pry-rails'
+
 gem 'ancestry'
 
 group :production do

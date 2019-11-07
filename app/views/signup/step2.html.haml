@@ -1,0 +1,4 @@
+= form_for @user, url: step3_signup_index_path, method: :get do |f|
+  tel_number
+  = f.number_field :tel_number
+  = f.submit 'Continue'

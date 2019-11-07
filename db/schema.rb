@@ -12,14 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2019_11_05_082205) do
 
-  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "ancestry"
-    t.index ["ancestry"], name: "index_categories_on_ancestry"
-  end
-
   create_table "credit_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "number", null: false
     t.date "limit", null: false
@@ -76,12 +68,6 @@ ActiveRecord::Schema.define(version: 2019_11_05_082205) do
     t.text "title", null: false
     t.text "text"
     t.integer "price", null: false
-    t.bigint "user_id_id"
-    t.bigint "user_id"
-    t.integer "saler_id"
-    t.integer "buyer_id"
-    t.index ["user_id"], name: "index_products_on_user_id"
-    t.index ["user_id_id"], name: "index_products_on_user_id_id"
   end
 
   create_table "root_areas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -119,6 +105,5 @@ ActiveRecord::Schema.define(version: 2019_11_05_082205) do
   add_foreign_key "days", "products"
   add_foreign_key "delivery_addresses", "users"
   add_foreign_key "freights", "products"
-  add_foreign_key "products", "users"
   add_foreign_key "root_areas", "products"
 end

@@ -11,6 +11,10 @@
   %h4 商品の説明
   = f.text_area :text, placeholder: '商品の説明'
   %br/
+  %h4 カテゴリー
+  .listing-product-detail__category
+    = f.select :categories, @category_parent_array, {}, {id: 'parent_category'}
+  %br/
   %h4 配送料の負担
   = f.fields_for :freight do |freight|
     = freight.select :freight, [["送料込み(出品者負担)","1"],["着払い(購入者負担)","2"]], prompt: "---"

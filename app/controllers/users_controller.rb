@@ -3,9 +3,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  # def edit
-  #   @product = Product.find(params[:id])
-  # end
+  def show_exhibit
+    @products = current_user.products.includes(:images)
+  end 
+
 
   def update
     if current_user.update(user_params)

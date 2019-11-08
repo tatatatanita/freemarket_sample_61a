@@ -1,8 +1,13 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!,except: [:index]
+
+  before_action :authenticate_user!, except:[:index]
+
+before_action :set_product, only: [:update, :destroy, :show, :edit, :buyer_show] 
+
+
   def index
-    @product = Product.all.includes(:images)
-    @parents = Category.all.order("id ASC").limit(13)
+    @product = Product.includes(:images)
+    @parents = Category.limit(13)
   end
 
 
@@ -24,20 +29,33 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product == Product.find(params[:id])
-      if @product.user_id == current_user.id
-        @product.destroy
-        # redirect_to 'show_exhibit' 実装後コメントアウト外す
-      end
-  end 
+    if @product.user_id == current_user.id
+      @product.destroy
+      # redirect_to 'show_exhibit' 実装後コメントアウト消す
+    else
+      render :show, notice: '削除できませんでした'
+    end
+  end
  
-  
   def show
-    @product = Product.find(params[:id])
+    @products = current_user.products.includes(:images)
+    @user = current_user
+    @image = Image.where(product_id: @product)
+  end
+
+ 
+  def edit
+  end
+
+  def update
+    if @product.update(product_params)
+      redirect_to product_path, notice: ''
+    else
+      render 'edit'
+    end
   end
 
   def buyer_show
-    @product = Product.find(params[:id])
     @image = Image.where(product_id: @product)
   end
   
@@ -51,4 +69,9 @@ class ProductsController < ApplicationController
       day_attributes: [:day]
     )
   end
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
 end

@@ -12,8 +12,11 @@ Rails.application.routes.draw do
 
   
   root to: 'products#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update] do
+    member do
+      get :show_exhibit
+    end
+  end
   resources :products do
     member do
       get :buyer_show

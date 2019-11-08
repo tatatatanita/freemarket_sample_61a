@@ -31,7 +31,9 @@
   - @product.each do |p|
     %p.product
       = p.title
-      = image_tag p.image.url
+      -# = image_tag p.image_url
+      - p.images.each do |image|
+        = image_tag(image.image_url.url, id: "product_image")
       = p.text
       = p.price
     .line ------------------------------

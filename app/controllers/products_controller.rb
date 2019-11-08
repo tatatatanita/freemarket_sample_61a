@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :buyer_show]
   def index
     @product = Product.all.includes(:images)
     @parents = Category.all.order("id ASC").limit(13)

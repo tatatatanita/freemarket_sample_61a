@@ -29,14 +29,16 @@ before_action :set_product, only: [:update, :destroy, :show, :edit, :buyer_show]
   def destroy
     if @product.user_id == current_user.id
       @product.destroy
-      # redirect_to 'show_exhibit' 実装後コメントアウト外す
+      # redirect_to 'show_exhibit' 実装後コメントアウト消す
     else
       render :show, notice: '削除できませんでした'
     end
   end
  
   def show
+    @products = current_user.products.includes(:images)
     @user = current_user
+    @image = Image.where(product_id: @product)
   end
 
  

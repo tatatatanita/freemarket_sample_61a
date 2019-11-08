@@ -2,7 +2,8 @@
 %li
 = @product.title
 %li
-= image_tag "#{@product.image}"
+- @image.each do |i|
+  = image_tag(i.image_url.url, id: "product_image")
 %li
 出品者
 = @user.nickname
@@ -31,7 +32,7 @@
 %li
 = link_to "出品を一旦停止する", ''
 %li
-= link_to "この商品を削除する", ''
+= link_to "この商品を削除する", show_exhibit_user_path, method: :delete
 %li
 "コメント箇所"
 %li

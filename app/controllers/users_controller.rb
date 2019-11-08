@@ -4,8 +4,8 @@ class UsersController < ApplicationController
   end
 
   def show_exhibit
-    @products = current_user.products
-  end
+    @products = current_user.products.includes(:images)
+  end 
 
 
   def update

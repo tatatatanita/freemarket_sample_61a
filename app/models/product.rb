@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-  belongs_to :user
+  # belongs_to :user
   # belongs_to :category カテゴリー実装じにコメントアウト外す
   
   belongs_to :saler, class_name: "User", optional: true

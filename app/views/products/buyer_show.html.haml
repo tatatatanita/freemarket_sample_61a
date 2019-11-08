@@ -18,11 +18,17 @@
           .header__box__bottom__right--my_page
             = link_to "マイページ", user_path(current_user.id), class: "header__box__bottom__right--my_page--link"
 
-%h2= @product.title
--# = image_tag(@image.image_url.url, class: "product_image")　現在詳細画面で画像を表示しないようにしています。（エラーが出るため確認中）
--# %li= "出品者: #{@product.saler.nickname}"
-%li= "¥ #{@product.price} (税込)"
-
-%h3
-  = link_to "購入画面に進む"
+  = @product.title
+  %br/
+  - @image.each do |i|
+    = image_tag(i.image_url.url, id: "product_image")
+  %br/
+  = "出品者: #{@product.saler.nickname}"
+  %br/
+  = "¥ #{@product.price} (税込)"
+  %br/
+  - if @product.saler_id != current_user.id
+    = link_to "購入画面に進む"
+    %br/
+  = @product.text
 

@@ -65,6 +65,9 @@ gem "devise"
 
 gem 'haml-rails'
 
+
+gem 'pry-rails'
+
 gem 'ancestry'
 
 group :production do
@@ -78,6 +81,7 @@ gem 'fog-aws'
 
 gem "gretel"
 gem 'pry-rails'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'capistrano'
@@ -87,3 +91,4 @@ group :development, :test do
   gem 'capistrano3-unicorn'
 end
 
+gem 'payjp'

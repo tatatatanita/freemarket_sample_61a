@@ -9,6 +9,10 @@ class UsersController < ApplicationController
     render "users/#{params[:name]}", locals: {user: current_user }
   end
 
+  def show_exhibit
+    @products = current_user.products.includes(:images)
+  end
+
   def update
     if current_user.update(user_params)
       redirect_to root_path

@@ -50,9 +50,24 @@ class ProductsController < ApplicationController
   def buyer_show
     @product = Product.find(params[:id])
     @image = Image.where(product_id: @product)
-    # @freights = Freight.find(params[:id])
-    if @freights == 1
+
+    @freights = Freight.find_by product_id: @product
+    if @freights.freight == 1
       @freight = "送料込み(出品者負担)"
+    else
+      @freight = "着払い(購入者負担)"
+    end
+
+    @root_areas = RootArea.find_by product_id: @product
+    @root_area = @root_areas.root_area
+
+    @days = Day.find_by product_id: @product
+    if @days.day == 1
+      @day = "1~2日で発送"
+    elsif @days.day == 2
+      @day = "2~3日で発送"
+    else
+      @day = "4~7日で発送"
     end
   end
   

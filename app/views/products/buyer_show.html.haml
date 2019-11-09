@@ -25,7 +25,11 @@
   %br/
   = "出品者: #{@product.saler.nickname}"
   %br/
-  -# = "配送料の負担 : #{@freight}"
+  = "配送料の負担 : #{@freight}"
+  %br/
+  = "配送元地域 : #{@root_area}"
+  %br/
+  = "発送日の目安 : #{@day}"
   %br/
   = "¥ #{@product.price} (税込)"
   %br/

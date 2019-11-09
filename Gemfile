@@ -91,3 +91,4 @@ group :development, :test do
   gem 'capistrano3-unicorn'
 end
 
+gem 'payjp'

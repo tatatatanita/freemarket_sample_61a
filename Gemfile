@@ -65,6 +65,9 @@ gem "devise"
 
 gem 'haml-rails'
 
+
+gem 'pry-rails'
+
 gem 'ancestry'
 
 group :production do
@@ -88,3 +91,4 @@ group :development, :test do
   gem 'capistrano3-unicorn'
 end
 
+gem 'payjp'

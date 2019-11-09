@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   root to: 'products#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   resources :users, only: [:show, :edit, :update] do
     get 'users/:name', controller: 'users', action: 'edit'
     member do
@@ -21,6 +22,10 @@ Rails.application.routes.draw do
   resources :products do
     member do
       get :buyer_show
+    end
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
     end
   end
 end

@@ -25,6 +25,14 @@
   %br/
   = "出品者: #{@product.saler.nickname}"
   %br/
+  = "カテゴリー: #{@product.categories[0]} #{@product.categories[1]} #{@product.categories[2]}"
+  %br/
+  = "配送料の負担 : #{@freight}"
+  %br/
+  = "配送元地域 : #{@root_area}"
+  %br/
+  = "発送日の目安 : #{@day}"
+  %br/
   = "¥ #{@product.price} (税込)"
   %br/
   - if @product.saler_id != current_user.id

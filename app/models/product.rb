@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
-  # belongs_to :user
-  # belongs_to :category カテゴリー実装じにコメントアウト外す
+
+  
+  # belongs_to :category
   
   belongs_to :saler, class_name: "User", optional: true
   belongs_to :buyer, class_name: "User", optional: true
@@ -16,4 +17,8 @@ class Product < ApplicationRecord
 
   has_many :images, inverse_of: :product, dependent: :destroy
   accepts_nested_attributes_for :images
+
+  validates :images, presence: true
+  serialize :categories, JSON
+
 end

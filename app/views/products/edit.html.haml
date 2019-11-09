@@ -1,7 +1,9 @@
 %h1  商品の情報を入力
 %li
 出品画像
-= image_tag "#{@product.image}"
+-# = image_tag "#{@product.image}"
+- @image.each do |i|
+  = image_tag(i.image_url.url, id: "product_image")
 %li
 商品名
 = form_for(@product) do |f|

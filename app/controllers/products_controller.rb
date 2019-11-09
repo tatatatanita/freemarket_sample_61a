@@ -27,9 +27,10 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    @products = current_user.products
     if @product.user_id == current_user.id
       @product.destroy
-      # redirect_to 'show_exhibit' 実装後コメントアウト消す
+      redirect_to show_exhibit_user_path
     else
       render :show, notice: '削除できませんでした'
     end
@@ -43,6 +44,9 @@ class ProductsController < ApplicationController
 
  
   def edit
+    @products = current_user.products.includes(:images)
+    @user = current_user
+    @image = Image.where(product_id: @product)
   end
 
   def update

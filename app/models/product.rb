@@ -18,6 +18,6 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :images
 
   validates :images, presence: true
-  # serialize :categories, JSON
+  serialize :categories, JSON
 
 end

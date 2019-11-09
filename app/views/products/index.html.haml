@@ -1,32 +1,6 @@
 
 .wrapper
-  .header
-    .header__box
-      .header__box__upper
-        .header__box__upper-logo
-          = link_to image_tag("https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg", size: "134x36", alt: "mercari"), root_path
-        %input.header__box__upper-search{name: "search", placeholder: "何かお探しですか？", type: "text"}
-          %button.header__box__upper-search-btn{type: "submit"}
-            %i.fa.fa-search
-
-
-      .header__box__bottom
-        .header__box__bottom__left
-          .header__box__bottom__left__categories カテゴリーから探す
-          .header__box__bottom__left__brands ブランドから探す
-        .header__box__bottom__right
-          - if user_signed_in?
-            .header__box__bottom__right--like いいね!一覧
-            .header__box__bottom__right--info お知らせ
-            .header__box__bottom__right--todo やることリスト
-            .header__box__bottom__right--my_page
-              = link_to "マイページ", user_path(current_user.id), class: "header__box__bottom__right--my_page--link"
-          - else
-            .header__box__bottom__right--sign_up
-
-              = link_to "新規会員登録", step1_signup_index_path, class: "header__box__bottom__right--sign_up-btn"
-            .header__box__bottom__right--log_in
-              = link_to "ログイン", new_user_session_path,class: "header__box__bottom__right--log_in-btn"
+  = render "header"
 
   - @product.each do |p|
     %p.product

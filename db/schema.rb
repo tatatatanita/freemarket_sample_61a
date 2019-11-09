@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_09_040011) do
+ActiveRecord::Schema.define(version: 2019_11_09_050224) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2019_11_09_040011) do
     t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_images_on_product_id"
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -76,14 +77,13 @@ ActiveRecord::Schema.define(version: 2019_11_09_040011) do
     t.text "title", null: false
     t.text "text"
     t.integer "price", null: false
-    t.bigint "user_id"
-    t.integer "saler_id"
     t.integer "buyer_id"
-    t.index ["user_id"], name: "index_products_on_user_id"
+    t.integer "saler_id"
+    t.text "categories"
   end
 
   create_table "root_areas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "root_area", null: false
+    t.text "root_area", null: false
     t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -122,6 +122,6 @@ ActiveRecord::Schema.define(version: 2019_11_09_040011) do
   add_foreign_key "days", "products"
   add_foreign_key "delivery_addresses", "users"
   add_foreign_key "freights", "products"
-  add_foreign_key "products", "users"
+  add_foreign_key "images", "products"
   add_foreign_key "root_areas", "products"
 end

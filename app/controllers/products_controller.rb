@@ -44,6 +44,9 @@ class ProductsController < ApplicationController
 
  
   def edit
+    @products = current_user.products.includes(:images)
+    @user = current_user
+    @image = Image.where(product_id: @product)
   end
 
   def update

@@ -2,22 +2,6 @@
 .wrapper
   = render "header"
 
-  - @product.each do |p|
-    %p.product
-      = p.title
-      -# = image_tag p.image_url
-      - p.images.each do |image|
-        = image_tag(image.image_url.url, id: "product_image")
-      = p.text
-      = p.price
-    .line ------------------------------
-
-  -# = link_to "商品投稿", new_product_path, class: 'new_exhibit'
-
-              = link_to "新規会員登録", new_user_registration_path, class: "header__box__bottom__right--sign_up-btn"
-            .header__box__bottom__right--log_in
-              = link_to "ログイン", new_user_session_path,class: "header__box__bottom__right--log_in-btn"
-
   = link_to "出品", new_product_path, class: 'new_exhibit'
   %br/
   .line ------------------------------

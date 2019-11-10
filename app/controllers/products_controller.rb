@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
     @product.build_root_area
     @product.build_day
     @category_parent_array = ["---"]
-    Category.where(ancestry: nil).limit(13).each do |parent|
+    Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
     end
   end

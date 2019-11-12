@@ -4,7 +4,6 @@ $(document).on('turbolinks:load', function() {
       var data = $('#price_calc').val();
       var profit = Math.round(data * 0.9)
       var fee =(data - profit)
-      console.log(fee);
       $('.calculation__right').html(fee)
       $('.calculation__right').prepend('¥')
       $('.result__right').html(profit)

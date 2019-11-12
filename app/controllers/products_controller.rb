@@ -12,6 +12,7 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.images.build
+    @product.build_condition
     @product.build_freight
     @product.build_root_area
     @product.build_day
@@ -72,6 +73,21 @@ class ProductsController < ApplicationController
   def buyer_show
     @image = Image.where(product_id: @product)
 
+    @conditions = Condition.find_by product_id: @product
+    if @conditions.condition == 1
+      @condition = "新品、未使用"
+    elsif @conditions.condition == 2
+      @condition = "未使用に近い"
+    elsif @conditions.condition == 3
+      @condition = "目立った傷や汚れなし"
+    elsif @conditions.condition == 4
+      @condition = "やや傷や汚れあり"
+    elsif @conditions.condition == 5
+      @condition = "傷や汚れあり"
+    else
+      @condition = "全体的に状態が悪い"
+    end
+
     @freights = Freight.find_by product_id: @product
     if @freights.freight == 1
       @freight = "送料込み(出品者負担)"
@@ -97,6 +113,7 @@ class ProductsController < ApplicationController
     params.require(:product).permit(
       :title, :text, :price, :saler_id, {categories: []},
       images_attributes: [:image_url],
+      condition_attributes: [:condition],
       freight_attributes: [:freight],
       root_area_attributes: [:root_area],
       day_attributes: [:day]

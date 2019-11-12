@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
-  get 'signup' => 'signup#signup'
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :signup do
     collection do
       get 'step1'

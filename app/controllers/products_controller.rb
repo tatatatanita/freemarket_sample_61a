@@ -74,15 +74,16 @@ class ProductsController < ApplicationController
     @image = Image.where(product_id: @product)
 
     @conditions = Condition.find_by product_id: @product
-    if @conditions.condition == 1
+    case 
+    when @conditions.condition == 1
       @condition = "新品、未使用"
-    elsif @conditions.condition == 2
+    when @conditions.condition == 2
       @condition = "未使用に近い"
-    elsif @conditions.condition == 3
+    when @conditions.condition == 3
       @condition = "目立った傷や汚れなし"
-    elsif @conditions.condition == 4
+    when @conditions.condition == 4
       @condition = "やや傷や汚れあり"
-    elsif @conditions.condition == 5
+    when @conditions.condition == 5
       @condition = "傷や汚れあり"
     else
       @condition = "全体的に状態が悪い"

@@ -1,81 +1,17 @@
-#account-page.account-page
-  .account-page__inner.clearfix
-    .account-page__inner--left.account-page__header
-      %h2 Create Account
-      %h5 新規アカウントの作成
-      = render "devise/shared/links"
-    .account-page__inner--right.user-form
-      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-        = devise_error_messages!
-        .field
-          .field-label
-            = f.label :nickname
-          .field-input
-            = f.text_field :nickname, autofocus: true
-        .field
-          .field-label
-            = f.label :email
-          .field-input
-            = f.email_field :email
-        .field
-          .field-label
-            = f.label :password
-            %i (英数字8文字以上)
-          .field-input
-            = f.password_field :password, autocomplete: "off"
-        .field
-          .field-label
-            = f.label :password_confirmation
-          .field-input
-            = f.password_field :password_confirmation, autocomplete: "off"
-        .field
-          .field-label
-            = f.label :last_name_kanji
-          .field-input
-            = f.text_field :last_name_kanji, autofocus: true
-        .field
-          .field-label
-            = f.label :first_name_kanji
-          .field-input
-            = f.text_field :first_name_kanji, autofocus: true
-        .field
-          .field-label
-            = f.label :last_name_kana
-          .field-input
-            = f.text_field :last_name_kana, autofocus: true
-        .field
-          .field-label
-            = f.label :first_name_kana
-          .field-input
-            = f.text_field :first_name_kana, autofocus: true
-        
-        .field
-          .field-label
-            = f.label :tel_number
-          .field-input
-            = f.text_field :tel_number, autofocus: true
-        .field
-          .field-label
-            = f.label :certification_number
-          .field-input
-            = f.text_field :certification_number, autofocus: true
-
-        -# 以下の項目については仮で置いているため、別ページが出来次第削除
-        .field
-          .field-label
-            = f.label :sex
-          .field-input
-            = f.text_field :sex, autofocus: true
-        .field
-          .field-label
-            = f.label :profile_text
-          .field-input
-            = f.text_field :profile_text, autofocus: true
-        .field
-          .field-label
-            = f.label :profile_image
-          .field-input
-            = f.text_field :profile_image, autofocus: true
-
-        .actions
-          = f.submit "Create Account", class: 'btn'
+.single-container
+  .single-container__single-main
+    .single-container__single-main__l-single-container
+      .single-container__single-main__l-single-container__registration-head
+        新規会員登録
+      .single-container__single-main__l-single-container__registration-form
+        .single-container__single-main__l-single-container__registration-form__l-single-content
+          .btn-default__btn-mail
+            = link_to "メールアドレスで登録する", step1_signup_index_path(resource_name)
+            - if devise_mapping.omniauthable?
+              - resource_class.omniauth_providers.each do |provider|
+                .btn-default__btn-sns__btn-sns-facebook
+                  - if OmniAuth::Utils.camelize(provider) == "Facebook"
+                    = link_to "Facebookで登録する", omniauth_authorize_path(resource_name, provider)
+                .btn-default__btn-sns__btn-sns-google
+                  - if OmniAuth::Utils.camelize(provider) == "GoogleOauth2"
+                    = link_to "Googleで登録する", omniauth_authorize_path(resource_name, provider)

@@ -1,8 +1,8 @@
 = form_for @user, url: step2_signup_index_path, method: :get do |f|
   nickname
-  = f.text_field :nickname
+  = f.text_field :nickname  #, value: @snsusername（あとで実装予定）
   email
-  = f.email_field :email
+  = f.email_field :email  #, value: @snsuseremail（あとで実装予定）
   password
   = f.password_field :password
   password_confirmation

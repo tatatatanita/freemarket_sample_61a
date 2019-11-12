@@ -1,0 +1,286 @@
+.footer-image {
+  position: relative;
+  &__smartphone {
+    position: absolute;
+    right: 350px;
+    bottom: 0px;
+  }
+  &__sentence1 {
+    color: rgb(255, 255, 255);
+    position: absolute;
+    left: 300px;
+    bottom: 200px;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  &__sentence2 {
+    color: rgb(255, 255, 255);
+    position: absolute;
+    left: 300px;
+    bottom: 150px;
+    font-size: 35px;
+  }
+  &__mercari-logo {
+    position: absolute;
+    left: 300px;
+    bottom: 70px;
+  }
+  &__appstore-logo {
+    position: absolute;
+    left: 380px;
+    bottom: 90px;
+  }
+  &__googleplay-logo {
+    position: absolute;
+    left: 530px;
+    bottom: 90px;
+  }
+}
+.footer {
+  background-color: rgb(34, 34, 34);
+    color: rgb(255, 255, 255);
+    font-size: 12px;
+  .footer-box {
+    width: 1100px;
+    height: 330px;
+    margin: 0px auto;
+    padding-top: 16px;
+    display: flex;
+
+    &__column1 {
+      padding-left: 0px;
+      margin-right: 50px;
+      &__title {
+        font-size: 16px;
+      }
+      &__aboutmercari {
+        list-style: none;
+        &__topic {
+          line-height: 1.4em;
+          margin: 16px 0px 0px;
+          &__li1 {
+            line-height: 1.4em;
+            margin: 16px 0px 0px;
+            color: rgb(255, 255, 255);
+            opacity: 0.7;
+          }
+          &__li2 {
+            line-height: 1.4em;
+            margin: 16px 0px 0px;
+            color: rgb(255, 255, 255);
+            opacity: 0.7;
+          }
+          &__li3 {
+            line-height: 1.4em;
+            margin: 16px 0px 0px;
+            color: rgb(255, 255, 255);
+            opacity: 0.7;
+          }
+          &__li4 {
+            line-height: 1.4em;
+            margin: 16px 0px 0px;
+            color: rgb(255, 255, 255);
+            opacity: 0.7;
+          }
+          &__li5 {
+            line-height: 1.4em;
+            margin: 16px 0px 0px;
+            color: rgb(255, 255, 255);
+            opacity: 0.7;
+          }
+          &__tweeter-logo {
+            float: left;
+            .fab.fa-twitter {
+              &::before {
+                display: inline-block;
+                margin-top: 30px;
+                margin-right: 20px;
+                font: normal normal normal 30px/1 FontAwesome;
+              }
+            }
+          }
+          &__facebook-logo {
+            .fab.fa-facebook-square {
+              &::before {
+                display: inline-block;
+                margin-top: 30px;
+                font: 30px/1 FontAwesome;
+              }           
+            }
+          }
+          &__mercari-logo {
+          padding-top: 60px;
+          }   
+        }
+      }
+    }
+    &__column2 {
+      padding-left: 0px;
+      margin-right: 50px;
+      &__title {
+        font-size: 16px;
+      }
+      &__helpandguide {
+        list-style: none;
+        &__topic {
+          line-height: 1.4em;
+          margin: 16px 0px 0px;
+          &__li1 {
+            line-height: 1.4em;
+            margin: 16px 0px 0px;
+            color: rgb(255, 255, 255);
+            opacity: 0.7;
+          }
+          &__li2 {
+            line-height: 1.4em;
+            margin: 16px 0px 0px;
+            color: rgb(255, 255, 255);
+            opacity: 0.7;
+          }
+          &__li3 {
+            line-height: 1.4em;
+            margin: 16px 0px 0px;
+            color: rgb(255, 255, 255);
+            opacity: 0.7;
+          }
+          &__li4 {
+            line-height: 1.4em;
+            margin: 16px 0px 0px;
+            color: rgb(255, 255, 255);
+            opacity: 0.7;
+          }
+          &__li5 {
+            line-height: 1.4em;
+            margin: 16px 0px 0px;
+            color: rgb(255, 255, 255);
+            opacity: 0.7;
+          }
+          &__li6 {
+            line-height: 1.4em;
+            margin: 16px 0px 0px;
+            color: rgb(255, 255, 255);
+            opacity: 0.7;
+          }
+          &__li7 {
+            line-height: 1.4em;
+            margin: 16px 0px 0px;
+            color: rgb(255, 255, 255);
+            opacity: 0.7;
+          }
+          &__li8 {
+            line-height: 1.4em;
+            margin: 16px 0px 0px;
+            color: rgb(255, 255, 255);
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+    &__column3 {
+      padding-left: 0px;
+      margin-right: 50px;
+      &__title {
+        font-size: 16px;
+      }
+      &__privacy {
+        list-style: none;
+        &__topic {
+          line-height: 1.4em;
+          margin: 16px 0px 0px;
+          &__li1 {
+            line-height: 1.4em;
+            margin: 16px 0px 0px;
+            color: rgb(255, 255, 255);
+            opacity: 0.7;
+          }
+          &__li2 {
+            line-height: 1.4em;
+            margin: 16px 0px 0px;
+            color: rgb(255, 255, 255);
+            opacity: 0.7;
+          }
+          &__li3 {
+            line-height: 1.4em;
+            margin: 16px 0px 0px;
+            color: rgb(255, 255, 255);
+            opacity: 0.7;
+          }
+          &__li4 {
+            line-height: 1.4em;
+            margin: 16px 0px 0px;
+            color: rgb(255, 255, 255);
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+    &__column4 {
+      padding-left: 0px;
+      margin-top: 20px;
+      margin-right: 50px;
+      &__privacy {
+        list-style: none;
+        &__topic {
+          line-height: 1.4em;
+          margin: 16px 0px 0px;
+          &__li1 {
+            line-height: 1.4em;
+            margin: 16px 0px 0px;
+            color: rgb(255, 255, 255);
+            opacity: 0.7;
+          }
+          &__li2 {
+            line-height: 1.4em;
+            margin: 16px 0px 0px;
+            color: rgb(255, 255, 255);
+            opacity: 0.7;
+          }
+          &__li3 {
+            line-height: 1.4em;
+            margin: 16px 0px 0px;
+            color: rgb(255, 255, 255);
+            opacity: 0.7;
+          }
+          &__li4 {
+            line-height: 1.4em;
+            margin: 16px 0px 0px;
+            color: rgb(255, 255, 255);
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+    &__column5 {
+      padding-left: 0px;
+      &__title {
+        font-size: 16px;
+      }
+      &__country {
+        list-style: none;
+        &__topic {
+          line-height: 1.4em;
+          margin: 16px 0px 0px;
+          &__li1 {
+            line-height: 1.4em;
+            margin: 16px 0px 0px;
+            color: rgb(255, 255, 255);
+            opacity: 0.7;
+          }
+          &__li2 {
+            line-height: 1.4em;
+            margin: 16px 0px 0px;
+            color: rgb(255, 255, 255);
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+  }
+  .year-mercari {
+    color: #ffff;
+    font-size: 10px;
+    text-align: center;
+    padding-bottom: 20px;
+    font-weight: bold;
+  }
+}

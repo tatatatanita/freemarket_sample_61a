@@ -1,4 +1,5 @@
 .single-container
+  = render partial: "shared/new_header.html.haml"
   .single-container__single-main
     .single-container__single-main__login-panel
       .single-container__single-main__login-panel__login-no-account
@@ -24,3 +25,4 @@
           .btn-default__btn-red
             = f.submit "ログイン", class: 'btn'
           = link_to "パスワードをお忘れの方", new_password_path(resource_name)
+  = render partial: "shared/new_footer.html.haml"

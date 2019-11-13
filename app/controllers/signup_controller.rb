@@ -3,8 +3,8 @@ class SignupController < ApplicationController
     @user = User.new
     @user.delivery_addresses.build
     @user.build_credit_info
-    @snsusername = session["devise.provider_data"]["info"]["name"]
-    @snsuseremail = session["devise.provider_data"]["info"]["email"]
+    # @snsusername = session["devise.provider_data"]["info"]["name"]
+    # @snsuseremail = session["devise.provider_data"]["info"]["email"]
   end
   
   def step2

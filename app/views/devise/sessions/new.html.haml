@@ -5,24 +5,28 @@
       .single-container__single-main__login-panel__login-no-account
         アカウントをお持ちでない方はこちら
         %br
-        = link_to "新規会員登録", new_user_registration_path
+        = link_to "新規会員登録", new_user_registration_path, class: "single-container__single-main__login-panel__login-no-account__btn"
       .single-container__single-main__login-panel__login-form-inner
         - if devise_mapping.omniauthable?
           - resource_class.omniauth_providers.each do |provider|
-            .btn-default__btn-sns__btn-sns-facebook
-              - if OmniAuth::Utils.camelize(provider) == "Facebook"
-                = link_to "Facebookでログイン", omniauth_authorize_path(resource_name, provider)
-            .btn-default__btn-sns__btn-sns-google
-              - if OmniAuth::Utils.camelize(provider) == "GoogleOauth2"
-                = link_to "Googleでログイン", omniauth_authorize_path(resource_name, provider)
+            - if OmniAuth::Utils.camelize(provider) == "Facebook"
+              = link_to omniauth_authorize_path(resource_name, provider), class: "btn-default__btn-sns__btn-sns-facebook" do
+                .btn-default__btn-sns__btn-sns-facebook__icon-facebook
+                  = fa_icon 'facebook-square'
+                Facebookでログイン
+          - resource_class.omniauth_providers.each do |provider|
+            - if OmniAuth::Utils.camelize(provider) == "GoogleOauth2"
+              = link_to omniauth_authorize_path(resource_name, provider), class: "btn-default__btn-sns__btn-sns-google" do
+                .btn-default__btn-sns__btn-sns-google__icon-google
+                  = image_tag("https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1024px-Google_%22G%22_Logo.svg.png", class: "btn-default__btn-sns__btn-sns-google__icon-google__image")
+                Googleでログイン
 
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .login-form-inner
           .login-form-inner__form-group
-            = f.email_field :email, placeholder: 'メールアドレス'
+            = f.email_field :email, placeholder: 'メールアドレス',class: "login-form-inner__form-group__login-input-mail"
           .login-form-inner__form-group
-            = f.password_field :password, placeholder: 'パスワード', autocomplete: "off"
-          .btn-default__btn-red
-            = f.submit "ログイン", class: 'btn'
-          = link_to "パスワードをお忘れの方", new_password_path(resource_name)
+            = f.password_field :password, placeholder: 'パスワード', autocomplete: "off", class: "login-form-inner__form-group__login-input-password"
+            = f.submit "ログイン", class: 'btn-default__btn-red'
+          = link_to "パスワードをお忘れの方", new_password_path(resource_name), class: "forgot-password"
   = render partial: "shared/new_footer.html.haml"

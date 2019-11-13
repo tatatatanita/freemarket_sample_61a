@@ -6,7 +6,8 @@ class UsersController < ApplicationController
   end
 
   def show_exhibit
-    @products = current_user.products.includes(:images)
+    @saler_id = Product.select("saler_id")
+    @products = Product.where(current_user.id == @saler_id)  #productsテーブル上で現在のユーザーidとsaler_idが同じレコードを取得
   end
 
   def edit

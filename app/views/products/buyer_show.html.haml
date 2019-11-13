@@ -63,7 +63,7 @@
           %span.price-bar__tax (税込)
           %span.price-bar__shipping-fee
             = @freight
-        - if @product.saler_id = current_user.id
+        - if @product.saler_id != current_user.id
           = link_to "購入画面に進む", {}, class: 'status-bar__purchase'
         .product-introduce
           = @product.text

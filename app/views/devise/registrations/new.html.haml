@@ -15,7 +15,7 @@
               - if OmniAuth::Utils.camelize(provider) == "Facebook"
                 = link_to omniauth_authorize_path(resource_name, provider), class: "btn-default__btn-sns__btn-sns-facebook" do
                   .btn-default__btn-sns__btn-sns-facebook__icon-facebook
-                    = fa_icon 'facebook-square'
+                    = fa_icon 'facebook-square', class: "btn-default__btn-sns__btn-sns-facebook__icon-facebook__image"
                   Facebookで登録する
             - resource_class.omniauth_providers.each do |provider|
               - if OmniAuth::Utils.camelize(provider) == "GoogleOauth2"

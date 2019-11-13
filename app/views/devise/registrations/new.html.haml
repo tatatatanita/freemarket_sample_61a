@@ -1,17 +1,26 @@
 .single-container
+  = render partial: "shared/new_header.html.haml"
   .single-container__single-main
     .single-container__single-main__l-single-container
       .single-container__single-main__l-single-container__registration-head
         新規会員登録
       .single-container__single-main__l-single-container__registration-form
         .single-container__single-main__l-single-container__registration-form__l-single-content
-          .btn-default__btn-mail
-            = link_to "メールアドレスで登録する", step1_signup_index_path(resource_name)
-            - if devise_mapping.omniauthable?
-              - resource_class.omniauth_providers.each do |provider|
-                .btn-default__btn-sns__btn-sns-facebook
-                  - if OmniAuth::Utils.camelize(provider) == "Facebook"
-                    = link_to "Facebookで登録する", omniauth_authorize_path(resource_name, provider)
-                .btn-default__btn-sns__btn-sns-google
-                  - if OmniAuth::Utils.camelize(provider) == "GoogleOauth2"
-                    = link_to "Googleで登録する", omniauth_authorize_path(resource_name, provider)
+          = link_to step1_signup_index_path(resource_name) , class: "btn-default__btn-mail" do
+            .btn-default__btn-mail__icon-mail
+              = fa_icon 'envelope-o', class: "btn-default__btn-mail__icon-mail__image"
+            メールアドレスで登録する
+          - if devise_mapping.omniauthable?
+            - resource_class.omniauth_providers.each do |provider|
+              - if OmniAuth::Utils.camelize(provider) == "Facebook"
+                = link_to omniauth_authorize_path(resource_name, provider), class: "btn-default__btn-sns__btn-sns-facebook" do
+                  .btn-default__btn-sns__btn-sns-facebook__icon-facebook
+                    = fa_icon 'facebook-square'
+                  Facebookで登録する
+            - resource_class.omniauth_providers.each do |provider|
+              - if OmniAuth::Utils.camelize(provider) == "GoogleOauth2"
+                = link_to omniauth_authorize_path(resource_name, provider), class: "btn-default__btn-sns__btn-sns-google" do
+                  .btn-default__btn-sns__btn-sns-google__icon-google
+                    = image_tag("https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1024px-Google_%22G%22_Logo.svg.png", class: "btn-default__btn-sns__btn-sns-google__icon-google__image")
+                  Googleで登録する
+  = render partial: "shared/new_footer.html.haml"

@@ -1,8 +1,10 @@
 class SignupController < ApplicationController
   def step1
-    @user = User.new 
+    @user = User.new
     @user.delivery_addresses.build
     @user.build_credit_info
+    @snsusername = session["devise.provider_data"]["info"]["name"]
+    @snsuseremail = session["devise.provider_data"]["info"]["email"]
   end
   
   def step2
@@ -33,6 +35,8 @@ class SignupController < ApplicationController
     @user = User.new(session[:user_params_after_step2])
     @user.delivery_addresses.build(session[:delivery_addresses_attributes]["0"])
     @user.build_credit_info(user_params[:credit_info_attributes])
+    @user.uid = session["devise.provider_data"]["uid"]
+    @user.provider = session["devise.provider_data"]["provider"]
     if @user.save
       session[:id] = @user.id
       redirect_to done_signup_index_path

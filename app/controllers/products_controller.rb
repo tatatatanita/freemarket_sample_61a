@@ -107,6 +107,7 @@ class ProductsController < ApplicationController
     else
       @day = "4~7日で発送"
     end
+
   end
   
   private

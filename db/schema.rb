@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2019_11_12_025318) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -106,7 +105,6 @@ ActiveRecord::Schema.define(version: 2019_11_12_025318) do
     t.string "first_name_kanji", null: false
     t.string "last_name_kana", null: false
     t.string "first_name_kana", null: false
-    t.date "birthday", null: false
     t.integer "sex"
     t.integer "tel_number", null: false
     t.text "profile_text"
@@ -118,7 +116,7 @@ ActiveRecord::Schema.define(version: 2019_11_12_025318) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-
+    t.date "birthday"
     t.integer "certification_number"
     t.integer "postal_code"
     t.integer "prefectures"

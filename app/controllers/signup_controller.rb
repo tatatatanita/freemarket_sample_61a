@@ -29,7 +29,7 @@ class SignupController < ApplicationController
     @user.build_delivery_address(session[:delivery_address_attributes])
 
 
-    Payjp.api_key = 'sk_test_09403f1b165246152e9b05e5'
+    Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
 
     if params['payjp-token'].blank?
       redirect_to action: "step4"

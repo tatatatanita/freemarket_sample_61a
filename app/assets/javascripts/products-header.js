@@ -12,16 +12,16 @@ $( document ).on('turbolinks:load', function() {
       });
     });
 
-    // $(function(){
-    //   $("#categories-parent").on("mouseenter",function(){
-    //     $('#categories-children').animate({ height: 'show'}, 'fast' );
-    //   });
-    // });
+    $(function(){
+      $(".header__box__bottom__left__brands__link").on("mouseenter",function(){
+        $('.header__box__bottom__left__brands__lists').animate({ height: 'show'}, 'fast' );
+      });
+    });
 
-    // $(function(){
-    //   $(".header__box__bottom__left__categories").on("mouseleave",function(){
-    //     $('#categories-children').animate({ height: 'hide'}, 'fast' );
-    //   });
-    // });
+    $(function(){
+      $(".header__box__bottom__left__brands").on("mouseleave",function(){
+        $('.header__box__bottom__left__brands__lists').animate({ height: 'hide'}, 'fast' );
+      });
+    });
 
 });

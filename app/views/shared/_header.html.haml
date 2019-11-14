@@ -32,9 +32,20 @@
             = fa_icon "tag", class: "header__box__bottom__left__brands__link__icon"
             ブランドから探す
           .header__box__bottom__left__brands__lists
-
-
-
+            %ul.header__box__bottom__left__brands__lists__hidden-lists
+              %li.header__box__bottom__left__brands__lists__hidden-lists__list
+                = link_to "", class: "header__box__bottom__left__brands__lists__hidden-lists__list__brand-name" do
+                  シャネル
+                = link_to "", class: "header__box__bottom__left__brands__lists__hidden-lists__list__brand-name" do
+                  ナイキ
+                = link_to "", class: "header__box__bottom__left__brands__lists__hidden-lists__list__brand-name" do
+                  ルイ ヴィトン
+                = link_to "", class: "header__box__bottom__left__brands__lists__hidden-lists__list__brand-name" do
+                  シュプリーム
+                = link_to "", class: "header__box__bottom__left__brands__lists__hidden-lists__list__brand-name" do
+                  アディダス
+                = link_to "", class: "header__box__bottom__left__brands__lists__hidden-lists__list__brand-name" do
+                  ブランド一覧
 
       %ul.header__box__bottom__right
         - if user_signed_in?

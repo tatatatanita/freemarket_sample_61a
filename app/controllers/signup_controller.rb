@@ -63,14 +63,6 @@ class SignupController < ApplicationController
     redirect_to products_path
   end
 
-  def edit
-    @card = CreditInfo.where(user_id: current_user.id).first
-    redirect_to action: "index" if card.present?
-  end
-
-  def update
-
-  end
   private
     def user_params
       params.require(:user).permit(

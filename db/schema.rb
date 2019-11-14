@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_08_104235) do
+
+ActiveRecord::Schema.define(version: 2019_11_12_025318) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -18,6 +19,14 @@ ActiveRecord::Schema.define(version: 2019_11_08_104235) do
     t.datetime "updated_at", null: false
     t.string "ancestry"
     t.index ["ancestry"], name: "index_categories_on_ancestry"
+  end
+
+  create_table "conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "condition", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_conditions_on_product_id"
   end
 
   create_table "credit_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -43,13 +52,14 @@ ActiveRecord::Schema.define(version: 2019_11_08_104235) do
     t.string "first_name_kana", null: false
     t.string "last_name_kana", null: false
     t.integer "postal_code", null: false
-    t.integer "prefectures", default: 0, null: false
+    t.integer "prefectures", null: false
     t.string "city", null: false
     t.string "address", null: false
     t.string "building"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "tel_number"
     t.index ["user_id"], name: "index_delivery_addresses_on_user_id"
   end
 
@@ -77,10 +87,13 @@ ActiveRecord::Schema.define(version: 2019_11_08_104235) do
     t.integer "price", null: false
     t.integer "buyer_id"
     t.integer "saler_id"
+    t.text "categories"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "root_areas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "root_area", null: false
+    t.text "root_area", null: false
     t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -93,6 +106,7 @@ ActiveRecord::Schema.define(version: 2019_11_08_104235) do
     t.string "first_name_kanji", null: false
     t.string "last_name_kana", null: false
     t.string "first_name_kana", null: false
+    t.date "birthday", null: false
     t.integer "sex"
     t.integer "tel_number", null: false
     t.text "profile_text"
@@ -104,16 +118,25 @@ ActiveRecord::Schema.define(version: 2019_11_08_104235) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "birthday"
+
     t.integer "certification_number"
+    t.integer "postal_code"
+    t.integer "prefectures"
+    t.string "city"
+    t.string "address"
+    t.string "building"
+    t.string "uid"
+    t.string "provider"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "conditions", "products"
   add_foreign_key "credit_infos", "users"
   add_foreign_key "days", "products"
   add_foreign_key "delivery_addresses", "users"
   add_foreign_key "freights", "products"
   add_foreign_key "images", "products"
+  add_foreign_key "products", "users"
   add_foreign_key "root_areas", "products"
 end

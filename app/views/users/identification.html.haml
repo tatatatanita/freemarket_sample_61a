@@ -18,14 +18,26 @@
 %br
 生年月日
 %br
-1987/09/01
-%br
-郵便番号
-%br
-都道府県
-%br
-市区町村
-%br
-番地 
-%br
-建物名 
+= @user.birthday.strftime("%Y/%m/%d")
+= form_with model: @user do |f|
+  郵便番号
+  %br
+  = f.text_field :postal_code
+  %br
+  都道府県
+  %br
+  = f.text_field :prefectures
+  %br
+  市区町村
+  %br
+  = f.text_field :city
+  %br
+  番地
+  %br
+  = f.text_field :address
+  %br
+  建物名
+  %br
+  = f.text_field :building
+  %br
+  = f.submit '登録する'

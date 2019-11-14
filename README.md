@@ -190,7 +190,7 @@
 
 |Column|Type|Options|
 |------|----|———|
-|root_area|integer|null: false|
+|root_area|text|null: false|
 |product_id|references|foreign_key:true|
 
 ### Association

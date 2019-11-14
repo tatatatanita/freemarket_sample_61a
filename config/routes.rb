@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :signup, except: [:index, :show] do
+
     collection do
       get 'step1'
       get 'step2'
@@ -10,10 +11,10 @@ Rails.application.routes.draw do
       get 'done' 
     end
   end
-  # resources :cards , only: [:new, :index, :create, :destroy]
-  
+
   root to: 'products#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   resources :users, only: [:show, :edit, :update] do
     get 'users/:name', controller: 'users', action: 'edit'
     member do
@@ -23,6 +24,10 @@ Rails.application.routes.draw do
   resources :products do
     member do
       get :buyer_show
+    end
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
     end
   end
 end

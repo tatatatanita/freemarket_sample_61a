@@ -6,8 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show_exhibit
-    @saler_id = Product.select("saler_id")
-    @products = Product.where(current_user.id == @saler_id)  #productsテーブル上で現在のユーザーidとsaler_idが同じレコードを取得
+    @products = User.find(params[:id]).saling_products  # ログイン中のユーザが現在売っている商品
   end
 
   def edit

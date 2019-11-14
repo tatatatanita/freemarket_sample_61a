@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
 
   def index
     @product = Product.includes(:images)
-    @parents = Category.limit(13)
+    @parents = Category.where(ancestry: nil)
   end
 
 

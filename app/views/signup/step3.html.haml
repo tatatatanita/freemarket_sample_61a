@@ -1,5 +1,5 @@
 = form_for @user, url: step4_signup_index_path, method: :get do |f|
-  = f.fields_for :delivery_addresses do |p|
+  = f.fields_for :delivery_address do |p|
     first_name_kanji
     = p.text_field :first_name_kanji
     last_name_kanji

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_08_044505) do
+ActiveRecord::Schema.define(version: 2019_11_08_104235) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -21,12 +21,11 @@ ActiveRecord::Schema.define(version: 2019_11_08_044505) do
   end
 
   create_table "credit_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "number", null: false
-    t.date "limit", null: false
-    t.integer "security_code", null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
     t.index ["user_id"], name: "index_credit_infos_on_user_id"
   end
 
@@ -71,7 +70,6 @@ ActiveRecord::Schema.define(version: 2019_11_08_044505) do
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "image", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "title", null: false
@@ -107,7 +105,6 @@ ActiveRecord::Schema.define(version: 2019_11_08_044505) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "birthday"
-
     t.integer "certification_number"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

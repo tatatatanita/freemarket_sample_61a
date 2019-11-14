@@ -3,7 +3,6 @@ class SignupController < ApplicationController
   before_action :set_card, except: [:step1, :step2, :step3, :step4, :create, :done]
   def step1
     @user = User.new
-    @user.delivery_addresses.build
     @user.build_credit_info
     # @snsusername = session["devise.provider_data"]["info"]["name"]
     # @snsuseremail = session["devise.provider_data"]["info"]["email"]

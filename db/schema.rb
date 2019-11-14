@@ -29,12 +29,11 @@ ActiveRecord::Schema.define(version: 2019_11_12_025318) do
   end
 
   create_table "credit_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "number", null: false
-    t.date "limit", null: false
-    t.integer "security_code", null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
     t.index ["user_id"], name: "index_credit_infos_on_user_id"
   end
 
@@ -106,7 +105,6 @@ ActiveRecord::Schema.define(version: 2019_11_12_025318) do
     t.string "first_name_kanji", null: false
     t.string "last_name_kana", null: false
     t.string "first_name_kana", null: false
-    t.date "birthday", null: false
     t.integer "sex"
     t.integer "tel_number", null: false
     t.text "profile_text"
@@ -118,6 +116,7 @@ ActiveRecord::Schema.define(version: 2019_11_12_025318) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "birthday"
     t.integer "certification_number"
     t.integer "postal_code"
     t.integer "prefectures"

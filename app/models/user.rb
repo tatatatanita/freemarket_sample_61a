@@ -19,10 +19,9 @@ class User < ApplicationRecord
           user
         end
 
-  has_many :delivery_addresses, class_name: 'DeliveryAddress'
-  accepts_nested_attributes_for :delivery_addresses
+  has_one :delivery_address, class_name: 'DeliveryAddress'
+  accepts_nested_attributes_for :delivery_address
   has_one :credit_info, class_name: 'CreditInfo'
-  accepts_nested_attributes_for :credit_info
 
  
   has_many :products

@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show_exhibit
-    @products = current_user.products.includes(:images)
+    @products = User.find(params[:id]).saling_products  # ログイン中のユーザが現在売っている商品
   end
 
   def edit

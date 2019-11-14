@@ -104,9 +104,9 @@ h4 {
 
 
 .form__right {
-  float: right;
   width: 400px;
   margin: 0;
+  margin-left: 215px;
 }
 
 .btn-default {
@@ -157,13 +157,12 @@ h4 {
       .title {
         padding: 40px;
         border-top: 1px solid #eee;
-        height: 355px;
         
       }
       .category {
         padding: 40px;
         border-top: 1px solid #eee;
-        height: 261px;
+        height: 100%;
       }
       .delivery {
         padding: 40px;

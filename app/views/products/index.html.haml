@@ -1,8 +1,10 @@
 .wrapper
-  = render "shared/header"
+  = render "shared/header", parents: @parent
   .product-index-main
     .product-index-main__contents-box
       .product-index-main__contents-box__top-special-contents
+        .product-index-main__contents-box__top-special-contents__top-image
+          .product-index-main__contents-box__top-special-contents__top-image__image
         .product-index-main__contents-box__top-special-contents__top-image
           .product-index-main__contents-box__top-special-contents__top-image__slider
             %ul.product-index-main__contents-box__top-special-contents__top-image__slider__lists
@@ -56,24 +58,6 @@
 
       .product-index-main__contents-box__popular-brands
       .product-index-main__contents-box__popular-brands-contents
-
-
-  -# %br/
-  -# .line ------------------------------
   
-  -# - @product.each do |p|
-  -#   %p.product
-  -#     = p.title
-  -#     %br/
-  -#     = link_to p.title ,buyer_show_product_path(p.id)
-  -#     - p.images.each do |image|
-  -#       = image_tag(image.image_url.url, id: "product_image", class: 'index_image')
-  -#     %br/
-  -#     = p.text
-  -#     %br/
-  -#     = p.price
-  -#   .line ------------------------------
-  
-.footer
   = render 'shared/footer'
 

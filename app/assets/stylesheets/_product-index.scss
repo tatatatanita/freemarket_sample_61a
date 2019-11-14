@@ -29,6 +29,15 @@
           visibility: inherit;
           width: 100%;
 
+          &__image{
+            color: inherit;
+            height: 390px;
+            background-size: auto;
+            position: relative;
+            background-position: center center;
+            background-image: url(https://web-jp-assets.mercdn.net/_next/static/images/top-banner-camp-4f3fd88c685e8932d7dde2ad3a8336ba.jpg);
+          }
+
           &__slider{
             box-sizing: border-box;
             display: block;
@@ -79,7 +88,7 @@
                     background-size: auto;
                     position: relative;
                     background-position: center center;
-                    background-image: url(ttps://web-jp-assets.mercdn.net/_next/static/images/top-banner-camp-4f3fd88….jpg);
+                    background-image: url(https://web-jp-assets.mercdn.net/_next/static/images/top-banner-camp-4f3fd88c685e8932d7dde2ad3a8336ba.jpg);
                   }
                 }
               }
@@ -88,6 +97,7 @@
         }
       }
       &__top-like-contents{}
+
       &__popular-categories{
         padding: 56px 0px 30px;
         background-color: rgb(255, 255, 255);

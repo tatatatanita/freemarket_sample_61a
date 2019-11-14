@@ -37,6 +37,7 @@ class SignupController < ApplicationController
     @user.build_credit_info(user_params[:credit_info_attributes])
     # @user.uid = session["devise.provider_data"]["uid"]
     # @user.provider = session["devise.provider_data"]["provider"]
+
     if @user.save
       session[:id] = @user.id
       redirect_to done_signup_index_path

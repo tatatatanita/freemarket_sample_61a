@@ -56,6 +56,7 @@
 
               &__image{
                 font-weight: bold;
+                color: #fff;
               }
             }
           }
@@ -90,6 +91,10 @@
               text-transform: none;
               line-height: 1;
               -webkit-font-smoothing: antialiased;
+
+              &__image{
+                color: #fff;
+              }
             }
           }
           .btn-default__btn-sns__btn-sns-google{
@@ -130,6 +135,7 @@
                 transform: translate(0, -50%);
                 height: 18px;
                 width: 18px;
+                color: #fff;
               }
             }
 

@@ -1,21 +1,78 @@
 .wrapper
   = render "shared/header"
+  .product-index-main
+    .product-index-main__contents-box
+      .product-index-main__contents-box__top-special-contents
+        .product-index-main__contents-box__top-special-contents__top-image
+          .product-index-main__contents-box__top-special-contents__top-image__slider
+            %ul.product-index-main__contents-box__top-special-contents__top-image__slider__lists
+              %li.product-index-main__contents-box__top-special-contents__top-image__slider__lists__list
+                = link_to "", class: "product-index-main__contents-box__top-special-contents__top-image__slider__lists__list__special-link" do
+                  .product-index-main__contents-box__top-special-contents__top-image__slider__lists__list__special-link__image
 
-  %br/
-  .line ------------------------------
+      .product-index-main__contents-box__top-like-contents
+      .product-index-main__contents-box__popular-categories
+        %h2.product-index-main__contents-box__popular-categories__title
+          人気のカテゴリー
+        .product-index-main__contents-box__popular-categories__tags
+          %ul.product-index-main__contents-box__popular-categories__tags__tag-lists
+            %li.product-index-main__contents-box__popular-categories__tags__tag-lists__tag
+              .product-index-main__contents-box__popular-categories__tags__tag-lists__tag__text
+                レディース
+            %li.product-index-main__contents-box__popular-categories__tags__tag-lists__tag
+              .product-index-main__contents-box__popular-categories__tags__tag-lists__tag__text
+                メンズ
+            %li.product-index-main__contents-box__popular-categories__tags__tag-lists__tag
+              .product-index-main__contents-box__popular-categories__tags__tag-lists__tag__text
+                家電・スマホ・カメラ
+            %li.product-index-main__contents-box__popular-categories__tags__tag-lists__tag
+              .product-index-main__contents-box__popular-categories__tags__tag-lists__tag__text
+                おもちゃ・ホビー・グッズ
+
+      .product-index-main__contents-box__popular-categories-contents
+        .product-index-main__contents-box__popular-categories-contents__box
+          .product-index-main__contents-box__popular-categories-contents__box__title
+            %h3.product-index-main__contents-box__popular-categories-contents__box__title__text
+              レディース新着アイテム
+            =link_to "もっと見る", "", class: "product-index-main__contents-box__popular-categories-contents__box__title__more-contents"
+
+          .product-index-main__contents-box__popular-categories-contents__box__main-contents
+            .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap
+              %ul.product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list
+                - @product.each do |p|
+                  %li.product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items
+                    .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item
+                      = link_to buyer_show_product_path(p.id), class: "product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link" do
+                        .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure
+                          .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__image-box
+                            %span.product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__image-box__price
+                              ¥
+                              = p.price
+                            - p.images.each do |image|
+                              = image_tag(image.image_url.url, class:"product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__image-box__image")
+                          .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__text
+                            %span
+                              = p.title
+
+      .product-index-main__contents-box__popular-brands
+      .product-index-main__contents-box__popular-brands-contents
+
+
+  -# %br/
+  -# .line ------------------------------
   
-  - @product.each do |p|
-    %p.product
-      = p.title
-      %br/
-      = link_to p.title ,buyer_show_product_path(p.id)
-      - p.images.each do |image|
-        = image_tag(image.image_url.url, id: "product_image", class: 'index_image')
-      %br/
-      = p.text
-      %br/
-      = p.price
-    .line ------------------------------
+  -# - @product.each do |p|
+  -#   %p.product
+  -#     = p.title
+  -#     %br/
+  -#     = link_to p.title ,buyer_show_product_path(p.id)
+  -#     - p.images.each do |image|
+  -#       = image_tag(image.image_url.url, id: "product_image", class: 'index_image')
+  -#     %br/
+  -#     = p.text
+  -#     %br/
+  -#     = p.price
+  -#   .line ------------------------------
   
 .footer
   = render 'shared/footer'

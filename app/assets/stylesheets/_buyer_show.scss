@@ -1,8 +1,5 @@
 * {
   font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
-  font-size: 14px;
-  color: #333;
-  line-height: 1;
   border-style: solid;
   border-width: 0;
   box-sizing: inherit;
@@ -13,13 +10,14 @@
 
 
 a {
-  color: #0099e8;
+  
   text-decoration: none;
 }
 
 .buyer-show-main {
   background-color: whitesmoke;
   padding-top: 40px;
+  color: #333;
   .product-box{
     background: #fff;
     width: 700px;
@@ -70,11 +68,17 @@ a {
               &__title {
                 line-height: 70px;
               }
+              &__title {
+                line-height: 70px;
+              }
               &__content {
                 padding-left: 7px;
                 .add-height {
                   line-height: 70px;
                   font-size: 13px;
+                  .username-mp-link {
+                    color: #0099e8;
+                  }
                 }
                 &--categories {
                   font-size: 12px;
@@ -123,6 +127,9 @@ a {
           float: right;
           font-size: 14px;
           .fa-lock {
+            color: #0099e8;
+          }
+          .safety {
             color: #0099e8;
           }
         }

@@ -50,9 +50,7 @@ class ProductsController < ApplicationController
   end
  
   def show
-    @products = current_user.products.includes(:images)
-    @user = current_user
-    @image = Image.where(product_id: @product)
+    buyer_show
   end
 
  
@@ -107,7 +105,6 @@ class ProductsController < ApplicationController
     else
       @day = "4~7日で発送"
     end
-
   end
   
   private

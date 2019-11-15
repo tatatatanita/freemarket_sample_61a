@@ -48,8 +48,7 @@
                         .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure
                           .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__image-box
                             %span.product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__image-box__price
-                              ¥
-                              = p.price
+                              ¥#{p.price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,')}
                             - p.images.each do |image|
                               = image_tag(image.image_url.url, class:"product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__image-box__image")
                           .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__text

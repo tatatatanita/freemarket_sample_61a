@@ -1,0 +1,14 @@
+.wrapper {
+  .large-mp-main-contents {
+    .mp-main-contents {
+      margin: 40px auto;
+      width: 1020px;
+      display: flex;
+      .mp-right-box {
+        width: 700px;
+        height: 1190px;
+        background-color: black;
+      }
+    }
+  }
+}

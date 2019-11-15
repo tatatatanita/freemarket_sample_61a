@@ -1,17 +1,20 @@
 .wrapper
   = render 'shared/header'
   .show-exhibit__main
-    
-
-
-  出品した商品
-  %li
-  出品中、取引中、売却済み
-  %li
-  - @products.each do |p|
-    %p.products
-      - p.images.each do |image|
-        = image_tag(image.image_url.url, id: "product_image")
-      = link_to p.title, product_path(p.id)
-    line ------------------------------
-  = render 'shared/footer'
+    .show-exhibit__main__box
+      .show-exhibit__main__box__left
+      .show-exhibit__main__box__right
+        .show-exhibit__main__box__right__head
+          .show-exhibit__main__box__right__head-title 出品した商品
+        .show-exhibit__main__box__right__body
+          出品中、取引中、売却済み
+          %li
+          - @products.each do |p|
+            %p.products
+              - p.images.each do |image|
+                = image_tag(image.image_url.url, id: "product_image", class: 'exhibit-image')
+              = link_to p.title, product_path(p.id)
+            line ------------------------------
+          .show-exhibit__main__box__right__foot
+        
+    = render 'shared/footer'

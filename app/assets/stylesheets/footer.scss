@@ -1,5 +1,9 @@
 .footer-image {
+  // padding-bottom: 5px;
+  // margin-bottom: 5px;
   position: relative;
+  vertical-align: bottom;
+  box-sizing: border-box;
   &__smartphone {
     position: absolute;
     right: 350px;

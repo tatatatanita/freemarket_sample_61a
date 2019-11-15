@@ -110,7 +110,7 @@ class ProductsController < ApplicationController
   private
   def product_params
     params.require(:product).permit(
-      :title, :text, :price, :saler_id, {categories: []},
+      :title, :image, :text, :price, :saler_id, {categories: []},
       images_attributes: [:image_url],
       condition_attributes: [:condition],
       freight_attributes: [:freight],

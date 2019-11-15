@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def show_exhibit
     @products = User.find(params[:id]).saling_products  # ログイン中のユーザが現在売っている商品
+    @parents = Category.where(ancestry: nil)
   end
 
   def edit

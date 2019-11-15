@@ -2,10 +2,11 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :buyer_show]
 
   before_action :set_product, only: [:update, :destroy, :show, :edit, :buyer_show] 
+  before_action :load_mydata, only: [:show, :destroy, :buyer_show]
+  before_action :load_category, only: [:index, :show, :destroy, :buyer_show, :edit]
 
   def index
     @product = Product.includes(:images)
-    @parents = Category.where(ancestry: nil)
   end
 
 
@@ -41,16 +42,15 @@ class ProductsController < ApplicationController
 
   def destroy
     @products = current_user.products
-    if @product.user_id == current_user.id
+    if @product.saler_id == current_user.id
       @product.destroy
-      redirect_to show_exhibit_user_path
+      redirect_to show_exhibit_user_path(current_user)
     else
       render :show, notice: '削除できませんでした'
     end
   end
  
   def show
-    buyer_show
   end
 
  
@@ -69,8 +69,30 @@ class ProductsController < ApplicationController
   end
 
   def buyer_show
-    @image = Image.where(product_id: @product)
+  end
+  
+  private
+  def product_params
+    params.require(:product).permit(
+      :title, :image, :text, :price, :saler_id, {categories: []},
+      images_attributes: [:image_url],
+      condition_attributes: [:condition],
+      freight_attributes: [:freight],
+      root_area_attributes: [:root_area],
+      day_attributes: [:day]
+    )
+  end
 
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
+  def load_category
+    @parents = Category.where(ancestry: nil)
+  end
+
+  def load_mydata
+    @image = Image.where(product_id: @product)
     @conditions = Condition.find_by product_id: @product
     case @conditions.condition
     when 1
@@ -105,22 +127,6 @@ class ProductsController < ApplicationController
     else
       @day = "4~7日で発送"
     end
-  end
-  
-  private
-  def product_params
-    params.require(:product).permit(
-      :title, :text, :price, :saler_id, {categories: []},
-      images_attributes: [:image_url],
-      condition_attributes: [:condition],
-      freight_attributes: [:freight],
-      root_area_attributes: [:root_area],
-      day_attributes: [:day]
-    )
-  end
-
-  def set_product
-    @product = Product.find(params[:id])
   end
 
 end

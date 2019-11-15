@@ -18,7 +18,7 @@ class Product < ApplicationRecord
   has_one :day, dependent: :destroy 
   accepts_nested_attributes_for :day
 
-  has_many :images, inverse_of: :product, dependent: :destroy
+  has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images
 
   validates :images, presence: true

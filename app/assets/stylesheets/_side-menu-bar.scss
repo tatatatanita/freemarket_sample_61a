@@ -1,0 +1,64 @@
+.main-contents {
+  width: 100px;
+  height: 1292px;
+  margin: 40px auto 0;
+  padding: 0 0 40px;
+  .large-block {
+      float: left;
+      width: 280px;
+      margin: 0 40px 0 0;
+    
+    .left-side {
+      background-repeat: no-repeat;
+      margin: 0;
+      padding: 0;
+
+      &__menu-bar {
+        background-repeat: no-repeat;
+        margin: 0;
+        padding: 0;
+        width: 280px;
+        height: 1252px;
+
+        &__list {
+          width: 280px;
+          height: 685px;
+
+          &__element {
+            width: 280px;
+            height: 48px;
+            border:1px solid #bbb;
+            position: relative;
+            display: block;
+            cursor: pointer;
+            line-height: 48px;
+            padding-left: 10px;
+            text-decoration: none;
+            color: black;
+            font-size: 14px;
+              
+              &__icon {
+                position: absolute;
+                top: 10px;
+                right: 20px;
+
+                .far.fa-angle-right {
+                  &::before {
+                    display: inline-block;
+                    font: normal normal normal 30px/1 FontAwesome;
+                    color: #bbb;
+                    position: absolute;
+                  }
+                }
+              }
+            &__title {
+              margin: 40px 0 0;
+              font-size: 16px;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+  }
+}

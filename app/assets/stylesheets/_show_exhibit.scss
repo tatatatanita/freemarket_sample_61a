@@ -1,0 +1,39 @@
+.show-exhibit__main__box {
+  margin: 40px auto;
+  width: 1020px;
+  display: flex;
+  &__left {
+    width: 250px;
+    height: 1252px;
+    background-color: yellowgreen;
+
+  }
+  &__right {
+    width: 700px;
+    margin: 0 0 0 40px;
+    background: #fafafa;
+
+    font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    border-style: solid;
+    border-width: 0;
+    box-sizing: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: #333;
+    &__head {
+      padding: 0 16px;
+      height: 72px;
+      &-title {
+        line-height: 72px;
+        font-size: 16px;
+      }
+    }
+    
+  }
+}
+
+.exhibit-image {
+  width: 48px;
+  height: 48px;
+
+}

@@ -70,7 +70,7 @@ class ProductsController < ApplicationController
 
   def buyer_show
     @image = Image.where(product_id: @product)
-
+    @parents = Category.where(ancestry: nil)
     @conditions = Condition.find_by product_id: @product
     case @conditions.condition
     when 1

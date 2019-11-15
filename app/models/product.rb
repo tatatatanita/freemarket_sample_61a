@@ -1,10 +1,13 @@
 class Product < ApplicationRecord
 
   
-  # belongs_to :category
+  belongs_to :user, optional: true
   
   belongs_to :saler, class_name: "User", optional: true
   belongs_to :buyer, class_name: "User", optional: true
+
+  has_one :condition, dependent: :destroy 
+  accepts_nested_attributes_for :condition
 
   has_one :freight, dependent: :destroy 
   accepts_nested_attributes_for :freight
@@ -15,7 +18,7 @@ class Product < ApplicationRecord
   has_one :day, dependent: :destroy 
   accepts_nested_attributes_for :day
 
-  has_many :images, inverse_of: :product, dependent: :destroy
+  has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images
 
   validates :images, presence: true

@@ -1,10 +1,81 @@
-出品した商品
-%li
-出品中、取引中、売却済み
-%li
-- @products.each do |p|
-  %p.products
-    - p.images.each do |image|
-      = image_tag(image.image_url.url, id: "product_image")
-    = link_to p.title, product_path(p.id)
-  line ------------------------------
+.wrapper
+  = render 'shared/header'
+  .show-exhibit__main
+    .show-exhibit__main__box
+      = render 'shared/side-menu-bar'
+      .show-exhibit__main__box__right
+        .show-exhibit__main__box__right__head
+          .show-exhibit__main__box__right__head-title 出品した商品
+        
+        .show-exhibit__main__box__right__tabs
+          %ul.show-exhibit__main__box__right__tabs__tab
+            %li.active 出品中
+            %li 取引中
+            %li 売却済み
+        
+        .show-exhibit__main__box__right__body-group
+          %li.show-exhibit__main__box__right__body.show
+            - @selling_products.each do |selling_p|
+              = link_to product_path(selling_p.id), class: "show-exhibit__main__box__right__body__product-link" do
+                .show-exhibit__main__box__right__body__product-link--box
+                  .show-exhibit__main__box__right__body__product-link--box__left
+                    - selling_p.images.each do |image|
+                      = image_tag(image.image_url.url, id: "product_image", class: 'exhibit-image')
+                  .show-exhibit__main__box__right__body__product-link--box__center
+                    .show-exhibit__main__box__right__body__product-link--box__center__top
+                      = selling_p.title
+                    .show-exhibit__main__box__right__body__product-link--box__center__bottom
+                      .show-exhibit__main__box__right__body__product-link--box__center__bottom__likes
+                        = fa_icon "heart-o", class: "show-exhibit__main__box__right__body__product-link--box__center__bottom__likes--icon"
+                        0
+                      .show-exhibit__main__box__right__body__product-link--box__center__bottom__comments
+                        = fa_icon "comment-o", class: "show-exhibit__main__box__right__body__product-link--box__center__bottom__comments--icon"
+                        0
+                      .show-exhibit__main__box__right__body__product-link--box__center__bottom__salling
+                        出品中
+                  = fa_icon "angle-right", class: "show-exhibit__main__box__right__body__product-link--box__right"
+          %li.show-exhibit__main__box__right__body
+            - @trading_products.each do |trading_p|
+              = link_to product_path(trading_p.id), class: "show-exhibit__main__box__right__body__product-link" do
+                .show-exhibit__main__box__right__body__product-link--box
+                  .show-exhibit__main__box__right__body__product-link--box__left
+                    - trading_p.images.each do |image|
+                      = image_tag(image.image_url.url, id: "product_image", class: 'exhibit-image')
+                  .show-exhibit__main__box__right__body__product-link--box__center
+                    .show-exhibit__main__box__right__body__product-link--box__center__top
+                      = trading_p.title
+                    .show-exhibit__main__box__right__body__product-link--box__center__bottom
+                      .show-exhibit__main__box__right__body__product-link--box__center__bottom__likes
+                        = fa_icon "heart-o", class: "show-exhibit__main__box__right__body__product-link--box__center__bottom__likes--icon"
+                        0
+                      .show-exhibit__main__box__right__body__product-link--box__center__bottom__comments
+                        = fa_icon "comment-o", class: "show-exhibit__main__box__right__body__product-link--box__center__bottom__comments--icon"
+                        0
+                      .show-exhibit__main__box__right__body__product-link--box__center__bottom__salling
+                        出品中
+                  = fa_icon "angle-right", class: "show-exhibit__main__box__right__body__product-link--box__right"
+          %li.show-exhibit__main__box__right__body
+            - @sold_products.each do |sold_p|
+              = link_to product_path(sold_p.id), class: "show-exhibit__main__box__right__body__product-link" do
+                .show-exhibit__main__box__right__body__product-link--box
+                  .show-exhibit__main__box__right__body__product-link--box__left
+                    - sold_p.images.each do |image|
+                      = image_tag(image.image_url.url, id: "product_image", class: 'exhibit-image')
+                  .show-exhibit__main__box__right__body__product-link--box__center
+                    .show-exhibit__main__box__right__body__product-link--box__center__top
+                      = sold_p.title
+                    .show-exhibit__main__box__right__body__product-link--box__center__bottom
+                      .show-exhibit__main__box__right__body__product-link--box__center__bottom__likes
+                        = fa_icon "heart-o", class: "show-exhibit__main__box__right__body__product-link--box__center__bottom__likes--icon"
+                        0
+                      .show-exhibit__main__box__right__body__product-link--box__center__bottom__comments
+                        = fa_icon "comment-o", class: "show-exhibit__main__box__right__body__product-link--box__center__bottom__comments--icon"
+                        0
+                      .show-exhibit__main__box__right__body__product-link--box__center__bottom__sold
+                        売却済
+                  = fa_icon "angle-right", class: "show-exhibit__main__box__right__body__product-link--box__right"
+
+        .show-exhibit__main__box__right__foot
+    
+        
+    = render 'shared/footer'

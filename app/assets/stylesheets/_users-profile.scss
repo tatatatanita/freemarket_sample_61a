@@ -1,0 +1,98 @@
+.l-chapter-container{
+  background: #fff;
+  margin: 0;
+  padding: 0;
+
+  &__title{
+    font-size: 24px;
+    padding: 8px 24px;
+    border-bottom: 1px solid #f5f5f5;
+    text-align: center;
+    line-height: 1.4;
+    font-weight: bold;
+  }
+
+  &__profile-form{
+    
+    &__top-image{
+      padding: 72px 16px 24px;
+      // background: url(https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwju46eD_e3lAhWEJaYKHcjGCcAQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.wired.co.uk%2Farticle%2Fwhat-happens-when-the-bitcoin-bubble-pops&psig=AOvVaw0KmEK4phCeV5gWHKIlMFUy&ust=1573967739404665);
+      background-repeat: no-repeat;
+      background-size: cover;
+      text-align: center;
+      font-size: 0;
+      border-style: solid;
+      border-width: 0;
+      line-height: inherit;
+      box-sizing: inherit;
+      display: block;
+
+      &__image{
+        display: inline-block;
+        overflow: hidden;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        vertical-align: middle;
+
+        &__box{
+          vertical-align: middle;
+          width: 60px;
+          height: 60px;
+        }
+      }
+      &__nickname{
+        box-sizing: border-box;
+        width: 220px;
+        margin: 0 0 0 8px;
+        vertical-align: middle;
+        height: 48px;
+        padding: 10px 16px 8px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        background: #fff;
+        line-height: 1.5;
+        font-size: 16px;
+        outline: 0;
+        font-family: inherit;
+        -webkit-appearance: none;
+        touch-action: manipulation;
+      }
+    }
+    &__content{
+      padding: 40px 16px;
+
+      &__textarea{
+        box-sizing: border-box;
+        min-height: 216px;
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background: #fff;
+        font-size: 16px;
+        line-height: 1.5;
+        border-radius: 0;
+        outline: 0;
+        -webkit-appearance: none;
+        overflow: auto;
+      }
+      .btn-default__btn-red{
+        margin: 16px 0 0;
+        background: #ea352d;
+        border: 1px solid #ea352d;
+        color: #fff;
+        display: block;
+        width: 100%;
+        line-height: 48px;
+        font-size: 14px;
+        transition: all ease-out .3s;
+        cursor: pointer;
+        text-align: center;
+      }
+
+    }
+
+  }
+}

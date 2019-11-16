@@ -2,8 +2,6 @@
   margin-right: 40px;
   .large-block {
       float: left;
-      width: 280px;
-      margin: 0 40px 0 0;
     
     .left-side {
       background-repeat: no-repeat;
@@ -14,14 +12,11 @@
         background-repeat: no-repeat;
         margin: 0;
         padding: 0;
-        width: 280px;
 
         &__list {
-          width: 280px;
 
           &__element-mypage {
             background-color: #EEEEEE;
-            width: 280px;
             height: 48px;
             border:0px solid #bbb;
             position: relative;

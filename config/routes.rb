@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  resources :purchase, only: [:show] do
+    collection do
+      get 'show/:id', to: 'purchase#show'
+      post 'pay/:id', to: 'purchase#pay'
+      get 'done/:id', to: 'purchase#done'
+      get 'update/:id', to: 'purchase#update'
+    end
+  end
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :signup, except: [:index, :show] do
 

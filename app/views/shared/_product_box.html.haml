@@ -61,7 +61,7 @@
       %span.price-bar__shipping-fee
         = @freight
     - if @product.saler_id != current_user.id
-      = link_to "購入画面に進む", {}, class: 'status-bar__purchase'
+      = link_to "購入画面に進む", "/purchase/show/#{@product.id}", class: 'status-bar__purchase'
     .product-introduce
       = @product.text
     .product-bottom

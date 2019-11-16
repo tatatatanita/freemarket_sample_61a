@@ -1,14 +1,15 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :load_category, only: [:show_exhibit, :show]
   
   def show
     @user = User.find(params[:id])
-    @parents = Category.where(ancestry: nil)
   end
 
   def show_exhibit
-    @products = User.find(params[:id]).saling_products  # ログイン中のユーザが現在売っている商品
-    @parents = Category.where(ancestry: nil)
+    @selling_products = User.find(params[:id]).saling_products  # ログイン中のユーザが現在売っている商品
+    @trading_products = User.find(params[:id]).saling_products #仮置き
+    @sold_products = User.find(params[:id]).sold_products
   end
 
   def edit
@@ -26,6 +27,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def load_category
+    @parents = Category.where(ancestry: nil)
+  end
 
   def user_params
     params.require(:user).permit(

@@ -100,9 +100,13 @@
           = link_to({controller: "users", action: "edit", name: "sms_confirmation"}, class: "left-side__menu-bar__list__element") do
             電話番号の確認
             .left-side__menu-bar__list__element__icon
-              %i.far.fa-angle-right   
-
-          = link_to(destroy_user_session_path, class: "left-side__menu-bar__list__element", method: :delete) do
+              %i.far.fa-angle-right  
+          = link_to(logout_user_path, class: "left-side__menu-bar__list__element") do
             ログアウト
             .left-side__menu-bar__list__element__icon
-              %i.far.fa-angle-right
+              %i.far.fa-angle-right 
+
+          -# = link_to(destroy_user_session_path, class: "left-side__menu-bar__list__element", method: :delete) do
+          -#   ログアウト
+          -#   .left-side__menu-bar__list__element__icon
+          -#     %i.far.fa-angle-right

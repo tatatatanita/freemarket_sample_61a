@@ -3,7 +3,6 @@ class ProductsController < ApplicationController
 
   before_action :set_product, only: [:update, :destroy, :show, :edit, :buyer_show] 
   before_action :load_mydata, only: [:show, :destroy, :buyer_show]
-  before_action :load_category, only: [:index, :show, :destroy, :buyer_show, :edit]
 
   def index
     @product = Product.includes(:images)
@@ -85,10 +84,6 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
-  end
-
-  def load_category
-    @parents = Category.where(ancestry: nil)
   end
 
   def load_mydata

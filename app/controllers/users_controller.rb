@@ -26,6 +26,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def logout
+
+  end
+
   private
 
   def load_category

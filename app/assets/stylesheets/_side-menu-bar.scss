@@ -14,6 +14,7 @@
         padding: 0;
 
         &__list {
+          background-color: #FFFFFF;          
 
           &__element-mypage {
             background-color: #EEEEEE;
@@ -32,7 +33,7 @@
           &__element {
             width: 280px;
             height: 48px;
-            border:1px solid #bbb;
+            border-bottom:1px solid #eee;
             position: relative;
             display: block;
             cursor: pointer;
@@ -41,17 +42,21 @@
             text-decoration: none;
             color: black;
             font-size: 14px;
+
+            &:hover{
+              background-color: rgb(251, 251, 251);
+            }
               
               &__icon {
                 position: absolute;
                 top: 10px;
                 right: 20px;
 
-                .far.fa-angle-right {
+                .fa-angle-right {
                   &::before {
                     display: inline-block;
                     font: normal normal normal 30px/1 FontAwesome;
-                    color: #bbb;
+                    color: rgb(212, 211, 211);
                     position: absolute;
                   }
                 }

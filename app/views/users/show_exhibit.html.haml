@@ -19,8 +19,8 @@
               = link_to product_path(selling_p.id), class: "show-exhibit__main__box__right__body__product-link" do
                 .show-exhibit__main__box__right__body__product-link--box
                   .show-exhibit__main__box__right__body__product-link--box__left
-                    - selling_p.images.each do |image|
-                      = image_tag(image.image_url.url, id: "product_image", class: 'exhibit-image')
+                    - selling_p.images.each_with_index do |image, index|
+                      = image_tag(image.image_url.url, id: "product_image", class: "exhibit-image eximg#{index}")
                   .show-exhibit__main__box__right__body__product-link--box__center
                     .show-exhibit__main__box__right__body__product-link--box__center__top
                       = selling_p.title

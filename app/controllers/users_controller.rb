@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_category, only: [:show_exhibit, :show]
   
   def show
     @user = User.find(params[:id])
@@ -31,10 +30,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def load_category
-    @parents = Category.where(ancestry: nil)
-  end
 
   def user_params
     params.require(:user).permit(

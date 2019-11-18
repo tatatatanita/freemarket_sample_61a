@@ -1,12 +1,12 @@
 .wrapper
   = render 'shared/header'
   .large-mp-main-contents
-    .mp-side-menu
+    .mp-main-contents
       = render "shared/side-menu-bar"
       .mp-right-box
         .mp-right-box__user-icon
           = image_tag 'mypage_backimage', alt: 'mercari', height: '200px', width: '100%'
-          = link_to(user_path, class: "mp-right-box__user-icon__bar") do
+          = link_to(users_path, class: "mp-right-box__user-icon__bar") do
             .mp-right-box__user-icon__bar__figure
               .mp-right-box__user-icon__bar__figure__img
                 = image_tag("https://static.mercdn.net/images/member_photo_noimage_thumb.png", class: "", height: '60', width: '60')

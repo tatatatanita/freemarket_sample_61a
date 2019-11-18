@@ -4,8 +4,12 @@
       = @product.title 
     .product-main-content
       .product-image
-        - @image.each do |i|
-          = image_tag(i.image_url.url, id: "product_image", class: "image-top")
+        .product-image__main
+          - @image.each_with_index do |i, index|
+            = image_tag(i.image_url.url, id: "product_image", class: "image-top imagemain#{index}")
+        .product-image__sub
+          - @image.each_with_index do |i, index|
+            = image_tag(i.image_url.url, id: "product_image", class: "image-subtop imagesub#{index}")
       .product-detail
         .sideways
           .sideways__left-thick

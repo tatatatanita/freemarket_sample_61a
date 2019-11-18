@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @product.images.build
+    10.times {@product.images.build}
     @product.build_condition
     @product.build_freight
     @product.build_root_area
@@ -61,7 +61,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to product_path, notice: ''
+      redirect_to product_path
     else
       render 'edit'
     end

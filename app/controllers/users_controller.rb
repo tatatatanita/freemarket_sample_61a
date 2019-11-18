@@ -3,11 +3,12 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @parents = Category.where(ancestry: nil)
   end
 
   def show_exhibit
-    @products = User.find(params[:id]).saling_products  # ログイン中のユーザが現在売っている商品
+    @selling_products = User.find(params[:id]).saling_products  # ログイン中のユーザが現在売っている商品
+    @trading_products = User.find(params[:id]).saling_products #仮置き
+    @sold_products = User.find(params[:id]).sold_products
   end
 
   def edit
@@ -22,6 +23,10 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def logout
+
   end
 
   private

@@ -1,0 +1,12 @@
+.wrapper
+  = render 'shared/header'
+  .large-mp-main-contents
+    .mp-main-contents
+      = render "shared/side-menu-bar"
+      .mp-right-box
+        .l-chapter-container
+          .l-chapter-container__loguout-box
+            .l-chapter-container__loguout-box__content
+              = link_to "ログアウト", destroy_user_session_path, method: :delete , class: "l-chapter-container__loguout-box__content__btn"
+
+    = render 'shared/footer'

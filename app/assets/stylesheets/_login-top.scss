@@ -105,6 +105,7 @@
           padding: 24px 64px 32px;
 
           &__form-group{
+            box-sizing: border-box;
 
             &__login-input-mail{
               width: 100%;

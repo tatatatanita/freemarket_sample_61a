@@ -1,0 +1,6 @@
+%h2 購入が完了しました！
+- @image.each do |i|
+  = image_tag(i.image_url.url, id: "product_image", class: "image-top")
+= @product.text
+= "¥ #{@product.price}"
+= @freight

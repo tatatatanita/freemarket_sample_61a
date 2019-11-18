@@ -2,9 +2,7 @@
   margin-right: 40px;
   .large-block {
       float: left;  
-      width: 280px;
-      margin: 0 0px 0 0;
-    
+
     .left-side {
       background-repeat: no-repeat;
       margin: 0;
@@ -14,14 +12,12 @@
         background-repeat: no-repeat;
         margin: 0;
         padding: 0;
-        width: 280px;
 
         &__list {
-          width: 280px;
+          background-color: #FFFFFF;          
 
           &__element-mypage {
             background-color: #EEEEEE;
-            width: 280px;
             height: 48px;
             border:0px solid #bbb;
             position: relative;
@@ -37,7 +33,7 @@
           &__element {
             width: 280px;
             height: 48px;
-            border:1px solid #bbb;
+            border-bottom:1px solid #eee;
             position: relative;
             display: block;
             cursor: pointer;
@@ -46,17 +42,21 @@
             text-decoration: none;
             color: black;
             font-size: 14px;
+
+            &:hover{
+              background-color: rgb(251, 251, 251);
+            }
               
               &__icon {
                 position: absolute;
                 top: 10px;
                 right: 20px;
 
-                .far.fa-angle-right {
+                .fa-angle-right {
                   &::before {
                     display: inline-block;
                     font: normal normal normal 30px/1 FontAwesome;
-                    color: #bbb;
+                    color: rgb(212, 211, 211);
                     position: absolute;
                   }
                 }

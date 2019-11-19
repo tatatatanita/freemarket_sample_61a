@@ -37,10 +37,23 @@ a {
           max-width: 300px;
           min-height: 375px;
           background-color: #fafafa;
+          &__sub {
+            display: flex;
+            margin-top: 15px;
+            .image-subtop {
+              width: 60px;
+              height: 60px;
+            }
+          }
           .image-top {
             margin: 0 33px;                    
             width: 225px;
             height: 300px;
+            object-fit: cover;
+            display: none;
+          }
+          .imagemain0 {
+            display: block;
           }
         }
         .product-detail {

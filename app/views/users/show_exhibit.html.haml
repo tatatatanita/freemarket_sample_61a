@@ -1,5 +1,7 @@
 .wrapper
   = render 'shared/header'
+  - breadcrumb :show_exhibit_user, current_user
+  = render 'layouts/breadcrumbs'
   .show-exhibit__main
     .show-exhibit__main__box
       = render 'shared/side-menu-bar'

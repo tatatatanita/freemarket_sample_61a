@@ -4,8 +4,10 @@ class SignupController < ApplicationController
   def step1
     @user = User.new
     @user.build_credit_info
-    # @snsusername = session["devise.provider_data"]["info"]["name"]
-    # @snsuseremail = session["devise.provider_data"]["info"]["email"]
+    if session["devise.provider_data"] != nil
+      @snsusername = session["devise.provider_data"]["info"]["name"]
+      @snsuseremail = session["devise.provider_data"]["info"]["email"]
+    end
   end
   
   def step2
@@ -30,7 +32,11 @@ class SignupController < ApplicationController
   def create
     @user = User.new(session[:user_params_after_step2])
     @user.build_delivery_address(session[:delivery_address_attributes])
-
+    
+    if session["devise.provider_data"] != nil
+      @user.uid = session["devise.provider_data"]["uid"]
+      @user.provider = session["devise.provider_data"]["provider"]
+    end
 
     Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
 

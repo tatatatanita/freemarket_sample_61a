@@ -7,28 +7,10 @@
   line-height: inherit;
 }
 
-
-a {
-  
+a { 
   text-decoration: none;
 }
 
-.breadcrumbs {
-  border-top: 1px solid #eee;
-  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
-  background: #fff;
-
-  .breadcrumbs-list {
-    width: 1020px;
-    height: 25px;
-    overflow: visible;
-    margin: 0 auto;
-    padding: 12px 0px;
-    white-space: normal;
-    font-size: 14px;
-    font-weight: 600;
-  }
-}
 .buyer-show-main {
   background-color: whitesmoke;
   padding-top: 40px;
@@ -184,6 +166,26 @@ a {
         color: #fff;
         line-height: 48px;
       }
+    }
+  }
+  .breadcrumbs-buyer {
+    border-top: 1px solid #eee;
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+
+    &__list{
+      width: 1020px;
+      height: 25px;
+      overflow: visible;
+      margin: 0 auto;
+      padding: 12px 0px;
+      white-space: normal;
+      font-size: 14px;
+      color: #333333;
+      font-weight: 600;
+    }
+
+    &__list a {
+      color: #333333;
     }
   }
 }

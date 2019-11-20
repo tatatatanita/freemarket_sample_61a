@@ -13,9 +13,14 @@ crumb :show_exhibit_user do
   parent :user
 end
 
-crumb :buyer_show_product do
+crumb :product do
   link "出品商品画面", product_path(current_user)
   parent :show_exhibit_user
+end
+
+crumb :buyer_show_product do |product|
+  link "#{product.title}", buyer_show_product_path(current_user)
+  parent :root
 end
 
 

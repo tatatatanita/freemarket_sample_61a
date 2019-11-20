@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :buyer_show]
 
   before_action :set_product, only: [:update, :destroy, :show, :edit, :buyer_show] 
-  before_action :load_mydata, only: [:show, :destroy, :buyer_show]
+  before_action :load_mydata, only: [:show, :destroy, :buyer_show, :edit]
 
   def index
     @product = Product.includes(:images)

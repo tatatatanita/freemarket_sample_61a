@@ -67,9 +67,9 @@
 
     - unless user_signed_in? && @product.saler_id == current_user.id
       - if user_signed_in?
-        = link_to "購入画面に進む", "/purchase/show/#{@product.id}", class: 'status-bar__purchase'
+        = link_to "購入画面に進む", purchase_path(@product.id) , class: 'status-bar__purchase'
       - else
-        = link_to "購入画面に進む", "/users/sign_in", class: 'status-bar__purchase'
+        = link_to "購入画面に進む", new_user_session_path, class: 'status-bar__purchase'
 
     .product-introduce
       = @product.text
@@ -78,3 +78,7 @@
       .product-bottom__right
         %i.fa.fa-lock 
         = link_to "あんしん・あんぜんへの取り組み", "https://www.mercari.com/jp/safe/description/", class: "safety"
+
+
+
+        

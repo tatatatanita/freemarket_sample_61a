@@ -4,8 +4,10 @@ class SignupController < ApplicationController
   def step1
     @user = User.new
     @user.build_credit_info
-    # @snsusername = session["devise.provider_data"]["info"]["name"]
-    # @snsuseremail = session["devise.provider_data"]["info"]["email"]
+    if session["devise.provider_data"] != nil
+      @snsusername = session["devise.provider_data"]["info"]["name"]
+      @snsuseremail = session["devise.provider_data"]["info"]["email"]
+    end
   end
   
   def step2
@@ -30,7 +32,11 @@ class SignupController < ApplicationController
   def create
     @user = User.new(session[:user_params_after_step2])
     @user.build_delivery_address(session[:delivery_address_attributes])
-
+    
+    if session["devise.provider_data"] != nil
+      @user.uid = session["devise.provider_data"]["uid"]
+      @user.provider = session["devise.provider_data"]["provider"]
+    end
 
     Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
 
@@ -60,6 +66,29 @@ class SignupController < ApplicationController
   def done
     sign_in User.find(session[:id]) unless user_signed_in?
     redirect_to products_path
+  end
+
+  def delete
+    card = Card.where(user_id: current_user.id).first
+    if card.blank?
+    else
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      customer.delete
+      card.delete
+    end
+      redirect_to action: "new"
+  end
+
+  def show
+    card = Card.where(user_id: current_user.id).first
+    if card.blank?
+      redirect_to action: "new" 
+    else
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @default_card_information = customer.cards.retrieve(card.card_id)
+    end
   end
 
   private

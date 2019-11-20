@@ -60,12 +60,20 @@
                 = @day
     .price-bar  
       %span.price-bar__bold
-        = "¥ #{@product.price}"
+        = "¥#{@product.price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,')} "
       %span.price-bar__tax (税込)
       %span.price-bar__shipping-fee
         = @freight
-    - if @product.saler_id != current_user.id
-      = link_to "購入画面に進む", "/purchase/show/#{@product.id}", class: 'status-bar__purchase'
+
+
+    - unless user_signed_in? && @product.saler_id == current_user.id
+      - if user_signed_in?
+        = link_to "購入画面に進む", purchase_path(@product.id) , class: 'status-bar__purchase'
+      - else
+        = link_to "購入画面に進む", new_user_session_path, class: 'status-bar__purchase'
+
+
+
     .product-introduce
       = @product.text
     .product-bottom
@@ -73,3 +81,7 @@
       .product-bottom__right
         %i.fa.fa-lock 
         = link_to "あんしん・あんぜんへの取り組み", "https://www.mercari.com/jp/safe/description/", class: "safety"
+
+
+
+        

@@ -1,19 +1,20 @@
 .wrapper
   = render 'shared/header'
+  - breadcrumb :user, current_user
+  = render 'layouts/breadcrumbs'
   .large-mp-main-contents
     .mp-main-contents
       = render "shared/side-menu-bar"
       .mp-right-box
         .mp-right-box__user-icon
-          = image_tag 'mypage_backimage', alt: 'mercari', height: '200px', width: '100%'
           = link_to(user_path, class: "mp-right-box__user-icon__bar") do
             .mp-right-box__user-icon__bar__figure
               .mp-right-box__user-icon__bar__figure__img
-                = image_tag("https://static.mercdn.net/images/member_photo_noimage_thumb.png", class: "", height: '60', width: '60')
+                = image_tag("https://static.mercdn.net/images/member_photo_noimage_thumb.png", height: '60', width: '60')
             .mp-right-box__user-icon__bar__name
               61_mercari_team-B
             .mp-right-box__user-icon__bar__my-data
-              評価&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;出品数&nbsp;&nbsp;1
+              評価&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;出品数&nbsp;&nbsp;0
         .mp-right-box__tab-container-top
           .mp-right-box__tab-container-top__tabs
             .mp-right-box__tab-container-top__tabs__inform
@@ -29,7 +30,7 @@
               .mp-right-box__tab-container-top__contents__inform__li1
                 .mp-right-box__tab-container-top__contents__inform__li1__link
                   .mp-right-box__tab-container-top__contents__inform__li1__link__figure
-                    = image_tag 'mercari_gray.png', alt: 'mercari', height: '48', width: '48'
+                    = image_tag("https://www.juku90.com/wp-content/uploads/2019/05/000-2.jpg", size: "53x53", alt: "mercari")
                   .mp-right-box__tab-container-top__contents__inform__li1__link__body
                     .mp-right-box__tab-container-top__contents__inform__li1__link__body__text
                     《友達・家族を招待するとP1,000プレゼント》お互いの招待コードを交換して一緒にはじめればそれぞれP2,000もらえる
@@ -45,7 +46,7 @@
               .mp-right-box__tab-container-top__contents__inform__li1
                 .mp-right-box__tab-container-top__contents__inform__li1__link
                   .mp-right-box__tab-container-top__contents__inform__li1__link__figure
-                    = image_tag 'mercari_gray.png', alt: 'mercari', height: '48', width: '48'
+                    = image_tag("https://www.juku90.com/wp-content/uploads/2019/05/000-2.jpg", size: "53x53", alt: "mercari")
                   .mp-right-box__tab-container-top__contents__inform__li1__link__body
                     .mp-right-box__tab-container-top__contents__inform__li1__link__body__text
                     《販売手数料も梱包資材も実質無料！》超！出品祭開催中♪大好評につき第二弾！
@@ -60,7 +61,7 @@
               .mp-right-box__tab-container-top__contents__inform__li1
                 .mp-right-box__tab-container-top__contents__inform__li1__link
                   .mp-right-box__tab-container-top__contents__inform__li1__link__figure
-                    = image_tag 'mercari_gray.png', alt: 'mercari', height: '48', width: '48'
+                    = image_tag("https://www.juku90.com/wp-content/uploads/2019/05/000-2.jpg", size: "53x53", alt: "mercari")
                   .mp-right-box__tab-container-top__contents__inform__li1__link__body
                     .mp-right-box__tab-container-top__contents__inform__li1__link__body__text
                       7日後、P999還元クーポンの有効期限が切れます！タップして詳細を確認しましょう。
@@ -75,7 +76,7 @@
               .mp-right-box__tab-container-top__contents__inform__li1
                 .mp-right-box__tab-container-top__contents__inform__li1__link
                   .mp-right-box__tab-container-top__contents__inform__li1__link__figure
-                    = image_tag 'mercari_gray.png', alt: 'mercari', height: '48', width: '48'
+                    = image_tag("https://www.juku90.com/wp-content/uploads/2019/05/000-2.jpg", size: "53x53", alt: "mercari")
                   .mp-right-box__tab-container-top__contents__inform__li1__link__body
                     .mp-right-box__tab-container-top__contents__inform__li1__link__body__text
                       メルカリの商品が世界100か国以上のお客さまにも売れるようになりました！
@@ -90,7 +91,7 @@
               .mp-right-box__tab-container-top__contents__inform__li1
                 .mp-right-box__tab-container-top__contents__inform__li1__link
                   .mp-right-box__tab-container-top__contents__inform__li1__link__figure
-                    = image_tag 'mercari_gray.png', alt: 'mercari', height: '48', width: '48'
+                    = image_tag("https://www.juku90.com/wp-content/uploads/2019/05/000-2.jpg", size: "53x53", alt: "mercari")
                   .mp-right-box__tab-container-top__contents__inform__li1__link__body
                     .mp-right-box__tab-container-top__contents__inform__li1__link__body__text
                       招待コード「MOTTAINAI」を入力してメルペイをはじめるとP1,000が必ずもらえる！
@@ -124,7 +125,7 @@
           .mp-right-box__tab-container-bottom__contents
             .mp-right-box__tab-container-bottom__contents__deal-now
               .mp-right-box__tab-container-bottom__contents__deal-now__logo
-                = image_tag 'mercari_light-gray', alt: 'mercari', height: '80', width: '90'
+                = link_to image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?404657508", size: "120x120", alt: "mercari")
               .mp-right-box__tab-container-bottom__contents__deal-now__list
                 取引中の商品がありません
             .mp-right-box__tab-container-bottom__contents__old-deal

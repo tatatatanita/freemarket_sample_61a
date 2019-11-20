@@ -3,6 +3,7 @@
     padding: 64px;
 
     &__section{
+      
       &__middle-title{
         max-width: 320px;
         margin: 0 auto;
@@ -18,10 +19,47 @@
       }
       &__payment-list{
         list-style: none;
+        margin: 0;
 
         li{
           padding: 24px 0;
           border-bottom: 1px solid #eee;
+
+          .credit-form{
+            position: relative;
+            max-width: 320px;
+            margin: 0 auto;
+            font-size: 14px;
+
+            &__card-image{
+              img{
+                vertical-align: middle;
+              }
+            }
+            &__card-number{
+              margin: 8px 0 0;
+              font-size: 16px;
+            }
+            &__card-limit{
+              margin: 8px 0 0;
+              font-size: 16px;
+            }
+
+            &__delete-btn{
+              position: absolute;
+              top: 0;
+              right: 0;
+              padding: 1px 5px;
+              background: #fff;
+              border-radius: 3px;
+              border: 1px solid #ea352d;
+              color: #ea352d;
+              outline: 0;
+              cursor: pointer;
+              -webkit-appearance: button;
+              overflow: visible;
+            }
+          }
         }
       }
     }

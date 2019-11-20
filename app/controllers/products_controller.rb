@@ -57,13 +57,17 @@ class ProductsController < ApplicationController
     @products = current_user.products.includes(:images)
     @user = current_user
     @image = Image.where(product_id: @product)
+    @category_parent_array = ["---"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
   end
 
   def update
     if @product.update(product_params)
       redirect_to product_path
     else
-      render 'edit'
+      render 'buyer_show'
     end
   end
 
@@ -123,5 +127,4 @@ class ProductsController < ApplicationController
       @day = "4~7日で発送"
     end
   end
-
 end

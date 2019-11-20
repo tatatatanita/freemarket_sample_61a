@@ -5,9 +5,8 @@ class ProductsController < ApplicationController
   before_action :load_mydata, only: [:show, :destroy, :buyer_show]
 
   def index
-    @product = Product.includes(:images).order("id DESC").limit(10)
+    @product = Product.includes(:images).order("id DESC")
   end
-
 
   def new
     @product = Product.new

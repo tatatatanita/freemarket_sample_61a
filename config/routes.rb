@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   resources :purchase, only: [:show] do
     collection do
-      get 'show/:id', to: 'purchase#show'
       post 'pay/:id', to: 'purchase#pay'
       get 'done/:id', to: 'purchase#done'
       get 'update/:id', to: 'purchase#update'

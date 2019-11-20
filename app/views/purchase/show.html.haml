@@ -28,20 +28,19 @@
               %button.purchase-conteiner__box__main__conteiner__red-btn 購入する
             
       .root-area
-        - @addresses.each do |a|
-          .root-area__box
-            配送先
-          .post-cord
-            = "〒#{a.postal_code}"
-          .address
-            = a.prefectures
-            = a.city
-            = a.address
-            = a.building
-          .name
-            = a.last_name_kanji
-            = a.first_name_kanji
-          
+        .root-area__box
+          配送先
+        .post-cord
+          = "〒#{current_user.delivery_address.postal_code}"
+        .address
+          = current_user.delivery_address.prefectures
+          = current_user.delivery_address.city
+          = current_user.delivery_address.address
+          = current_user.delivery_address.building
+        .name
+          = current_user.delivery_address.last_name_kanji
+          = current_user.delivery_address.first_name_kanji
+        
       .credit-box
         .how-to-pay
           支払い方法

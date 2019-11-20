@@ -60,7 +60,7 @@
                 = @day
     .price-bar  
       %span.price-bar__bold
-        = "¥ #{@product.price}"
+        = "¥#{@product.price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,')} "
       %span.price-bar__tax (税込)
       %span.price-bar__shipping-fee
         = @freight

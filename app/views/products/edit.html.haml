@@ -6,13 +6,20 @@
       = form_for @product do |f|
         .image
           %h4 出品画像
-          - @image.each_with_index do |i, index|
-            = image_tag(i.image_url.url, id: "product_image", class: "image-top imagemain#{index}", height: '120', width: '120')
+          .image__images
+            - @image.each_with_index do |i, index|
+              - if i.image_url.present?
+                .image__images__box{"data-image-id": "#{i.id}"}
+                  = image_tag(i.image_url.url, id: "product_image", class: "image-top imagemain#{index}", height: '120', width: '120')
+                  .delete_btn 削除
+
+          -#   = image_tag(i.image_url.url, id: "product_image", class: "image-top imagemain#{index}", height: '120', width: '120')
           -# = f.fields_for :images do |i|
           -#   = i.file_field :image_url, class: "file-field"
-          - if i.image_url.present?
 
-          %br/
+
+
+
         .title
           .form-group
             .form-group__top
@@ -93,31 +100,3 @@
           
   = render 'shared/new_footer'
 
--# .wrapper 
--#   = render "shared/header"
-
--# .new-conteiner
--#   = render 'shared/new_header'
-
--# %h1  商品の情報を入力
--# = form_for(@product) do |f|
--#   %li
--#   出品画像
--#   - @image.each do |i|
--#     = image_tag(i.image_url.url, id: "product_image")
--#   = f.fields_for :images do |i|
--#     = i.file_field :image_url, class: "file-field"
--#   %li
--#   商品名
--#   = form_for(@product) do |f|
--#     = f.text_field :title, class: '', placeholder: ''
--#   %li
--#   商品の説明
--#   %li
--#   = f.text_field :text, class: '', placeholder: ''  
--#   %li
-  -# = f.submit "変更する", class: ''
--#   %li
--#   キャンセル
-
--# = render 'shared/new_footer'

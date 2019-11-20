@@ -1,6 +1,7 @@
 .wrapper
   = render 'shared/header'
-  -# = render 'layouts/breadcrumbs'
+  - breadcrumb :user, current_user
+  = render 'layouts/breadcrumbs'
   .large-mp-main-contents
     .mp-main-contents
       = render "shared/side-menu-bar"

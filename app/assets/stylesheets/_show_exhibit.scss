@@ -1,3 +1,20 @@
+.breadcrumbs {
+  border-top: 1px solid #eee;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  background: #fff;
+
+  .breadcrumbs-list{
+    width: 1020px;
+    height: 25px;
+    overflow: visible;
+    margin: 0 auto;
+    padding: 12px 0px;
+    white-space: normal;
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
+
 .show-exhibit__main__box {
   margin: 40px auto;
   width: 1020px;

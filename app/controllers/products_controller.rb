@@ -67,6 +67,10 @@ class ProductsController < ApplicationController
   def buyer_show
   end
 
+  def search
+    @products = Product.where('title LIKE(?) OR text LIKE(?)', "%#{params[:keyword]}%","%#{params[:keyword]}%").order(created_at:"desc")
+  end
+
 
   def get_category_children
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children

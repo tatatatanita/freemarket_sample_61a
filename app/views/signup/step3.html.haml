@@ -37,16 +37,21 @@
                 = f.label "市区町村"
                 %span.single-container__single-main__account-single-container__registration-form__upper-box__input-box__importance
                   必須
-                = p.text_field :city, placeholder: "例) ", class: "single-container__single-main__account-single-container__registration-form__upper-box__input-box__text"
+                = p.text_field :city, placeholder: "例) 横浜市緑区 ", class: "single-container__single-main__account-single-container__registration-form__upper-box__input-box__text"
               .single-container__single-main__account-single-container__registration-form__upper-box__input-box
                 = f.label "番地"
                 %span.single-container__single-main__account-single-container__registration-form__upper-box__input-box__importance
                   必須
-                = p.text_field :address, placeholder: "例) ", class: "single-container__single-main__account-single-container__registration-form__upper-box__input-box__text"
+                = p.text_field :address, placeholder: "例) 青山1-1-1", class: "single-container__single-main__account-single-container__registration-form__upper-box__input-box__text"
               .single-container__single-main__account-single-container__registration-form__upper-box__input-box
                 = f.label "建物名"
                 %span.single-container__single-main__account-single-container__registration-form__upper-box__input-box__importance-low
                   任意
-                = p.text_field :building, placeholder: "例) ", class: "single-container__single-main__account-single-container__registration-form__upper-box__input-box__text"
+                = p.text_field :building, placeholder: "例) 柳ビル103", class: "single-container__single-main__account-single-container__registration-form__upper-box__input-box__text"
+              .single-container__single-main__account-single-container__registration-form__upper-box__input-box
+                = f.label "建物名"
+                %span.single-container__single-main__account-single-container__registration-form__upper-box__input-box__importance-low
+                  任意
+                = p.text_field :tel_number, placeholder: "例) 09012345678", class: "single-container__single-main__account-single-container__registration-form__upper-box__input-box__text"
               = f.submit '次へ進む', class: "single-container__single-main__account-single-container__registration-form__upper-box__input-box__btn"
   = render partial: "new-account-footer"

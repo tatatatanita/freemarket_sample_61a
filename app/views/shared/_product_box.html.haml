@@ -65,12 +65,12 @@
       %span.price-bar__shipping-fee
         = @freight
 
-
-      - unless user_signed_in? && @product.saler_id == current_user.id
-        - if user_signed_in?
-          = link_to "購入画面に進む", purchase_path(@product.id) , class: 'status-bar__purchase'
-        - else
-          = link_to "購入画面に進む", new_user_session_path, class: 'status-bar__purchase'
+      - unless user_signed_in? && @product.buyer_id == current_user.id
+        - unless user_signed_in? && @product.saler_id == current_user.id
+          - if user_signed_in?
+            = link_to "購入画面に進む", purchase_path(@product.id) , class: 'status-bar__purchase'
+          - else
+            = link_to "購入画面に進む", new_user_session_path, class: 'status-bar__purchase'
 
 
 

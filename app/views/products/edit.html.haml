@@ -11,14 +11,7 @@
               - if i.image_url.present?
                 .image__images__box{"data-image-id": "#{i.id}"}
                   = image_tag(i.image_url.url, id: "product_image", class: "image-top imagemain#{index}", height: '120', width: '120')
-                  .delete_btn 削除
-
-          -#   = image_tag(i.image_url.url, id: "product_image", class: "image-top imagemain#{index}", height: '120', width: '120')
-          -# = f.fields_for :images do |i|
-          -#   = i.file_field :image_url, class: "file-field"
-
-
-
+                  -# .delete_btn 削除 今後実装予定
 
         .title
           .form-group
@@ -42,7 +35,7 @@
                 .form-require 必須
               .listing-product-detail__category
                 .select-wrap
-                  = f.select :categories, @category_parent_array, {}, {:name => 'product[categories][]', id: 'parent_category', class: 'select-default'}
+                  = f.select :categories, @category_parent_array, {}, {:name => "product[categories][]", id: 'parent_category', class: 'select-default'}
               %br/
             .form-group
               .form-group__top

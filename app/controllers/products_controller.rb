@@ -22,12 +22,15 @@ class ProductsController < ApplicationController
     end
   end
 
-  def get_category_children
-    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
-  end
-
-  def get_category_grandchildren
-    @category_grandchildren = Category.find("#{params[:child_id]}").children
+  def edit
+    # @products = current_user.products.includes(:images)
+    @product = Product.find(params[:id])
+    @user = current_user
+    @image = Image.where(product_id: @product)
+    @category_parent_array = ["---"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
   end
 
   def create
@@ -53,16 +56,7 @@ class ProductsController < ApplicationController
   end
 
  
-  def edit
-    @products = current_user.products.includes(:images)
-    @user = current_user
-    @image = Image.where(product_id: @product)
-    @category_parent_array = ["---"]
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-    end
-  end
-
+  
   def update
     if @product.update(product_params)
       redirect_to product_path
@@ -73,6 +67,21 @@ class ProductsController < ApplicationController
 
   def buyer_show
   end
+
+
+  def get_category_children
+    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+  end
+
+  def get_category_grandchildren
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
+
+  # 今後実装予定
+  # def image_destroy
+  #   @image = Image.find_by(id: 'image_id')
+  #     @image.destroy
+  # end
   
   private
   def product_params

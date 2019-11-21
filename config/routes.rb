@@ -30,6 +30,9 @@ Rails.application.routes.draw do
     end
   end
   resources :products do
+    collection do
+      get :search
+    end
     member do
       get :buyer_show
     end

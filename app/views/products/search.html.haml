@@ -1,0 +1,118 @@
+.wrapper
+  = render "shared/header", parents: @parent
+  .search-contents
+    .search-contents__left-select-box
+      = form_with url: search_products_path , method: :get, local: true, class: "search-contents__left-select-box__form" do |f|
+        .search-contents__left-select-box__form__sort-tool
+          = fa_icon "chevron-down", class: "search-contents__left-select-box__form__sort-tool__icon"
+          = f.select :keyword, [["並び替え",""]]
+        .search-contents__left-select-box__form__detail-search
+          .search-contents__left-select-box__form__detail-search__box
+            .search-contents__left-select-box__form__detail-search__box__main-title
+              詳細検索
+            .search-contents__left-select-box__form__detail-search__box__middle-title
+              キーワードを追加する
+              = f.text_field :keyword, value: params[:keyword], class: "search-contents__left-select-box__form__detail-search__box__middle-title__input-box"
+            .search-contents__left-select-box__form__detail-search__box__middle-title
+              カテゴリーを選択する
+              .search-contents__left-select-box__form__detail-search__box__middle-title__select-lists
+                = fa_icon "chevron-down", class: "search-contents__left-select-box__form__detail-search__box__middle-title__select-lists__icon"
+                = f.select :keyword, [["すべて",""]], class: "search-contents__left-select-box__form__detail-search__box__middle-title__select-lists__select-box"
+            .search-contents__left-select-box__form__detail-search__box__middle-title
+              ブランド名から探す
+              = f.text_field :keyword, placeholder: "例）シャネル", class: "search-contents__left-select-box__form__detail-search__box__middle-title__input-box"
+            .search-contents__left-select-box__form__detail-search__box__middle-title
+              サイズを指定する
+              .search-contents__left-select-box__form__detail-search__box__middle-title__select-lists
+                = fa_icon "chevron-down", class: "search-contents__left-select-box__form__detail-search__box__middle-title__select-lists__icon"
+                = f.select :keyword, [["すべて",""]], class: "search-contents__left-select-box__form__detail-search__box__middle-title__select-lists__select-box"
+            .search-contents__left-select-box__form__detail-search__box__middle-title
+              価格
+              .search-contents__left-select-box__form__detail-search__box__middle-title__select-lists
+                = fa_icon "chevron-down", class: "search-contents__left-select-box__form__detail-search__box__middle-title__select-lists__icon"
+                = f.select :keyword, [["選択してください",""]], class: "search-contents__left-select-box__form__detail-search__box__middle-title__select-lists__select-box"
+              = f.text_field :keyword, placeholder: "¥ Min", class: "search-contents__left-select-box__form__detail-search__box__middle-title__input-helf-box"
+              〜
+              = f.text_field :keyword, placeholder: "¥ Max",class: "search-contents__left-select-box__form__detail-search__box__middle-title__input-helf-box"
+            .search-contents__left-select-box__form__detail-search__box__middle-check-box
+              商品の状態
+              .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes
+                .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
+                  = f.check_box :keyword, {multiple: true}
+                  .check-box-title すべて
+                .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
+                  = f.check_box :keyword, {multiple: true}
+                  .check-box-title 新品、未使用
+                .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
+                  = f.check_box :keyword, {multiple: true}
+                  .check-box-title 未使用に近い
+                .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
+                  = f.check_box :keyword, {multiple: true}
+                  .check-box-title 目立った傷や汚れなし
+                .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
+                  = f.check_box :keyword, {multiple: true}
+                  .check-box-title やや傷や汚れあり
+                .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
+                  = f.check_box :keyword, {multiple: true}
+                  .check-box-title 傷や汚れあり
+                .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
+                  = f.check_box :keyword, {multiple: true}
+                  .check-box-title 全体的に状態が悪い
+            .search-contents__left-select-box__form__detail-search__box__middle-check-box
+              配送料の負担
+              .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes
+                .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
+                  = f.check_box :keyword, {multiple: true}
+                  .check-box-title すべて
+                .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
+                  = f.check_box :keyword, {multiple: true}
+                  .check-box-title 着払い(購入者負担)
+                .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
+                  = f.check_box :keyword, {multiple: true}
+                  .check-box-title 送料込み(出品者負担)
+
+            .search-contents__left-select-box__form__detail-search__box__middle-check-box
+              販売状況
+              .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes
+                .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
+                  = f.check_box :keyword, {multiple: true}
+                  .check-box-title すべて
+                .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
+                  = f.check_box :keyword, {multiple: true}
+                  .check-box-title 販売中
+                .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
+                  = f.check_box :keyword, {multiple: true}
+                  .check-box-title 売り切れ
+            .search-contents__left-select-box__form__detail-search__box__search-btn
+              .search-contents__left-select-box__form__detail-search__box__search-btn__clear
+                クリア
+              .search-contents__left-select-box__form__detail-search__box__search-btn__search
+                完了
+
+    .search-contents__search-results
+      .search-contents__search-results__title
+        #{params[:keyword]}
+        %span の検索結果
+      .search-contents__search-results__count
+        件表示
+      .search-contents__search-results__search-items
+        .search-contents__search-results__search-items__main-contents
+          .search-contents__search-results__search-items__main-contents__wrap
+            %ul.search-contents__search-results__search-items__main-contents__wrap__contents-list
+              - @products.each do |p|
+                %li.search-contents__search-results__search-items__main-contents__wrap__contents-list__items
+                  .search-contents__search-results__search-items__main-contents__wrap__contents-list__items__item
+                    = link_to buyer_show_product_path(p.id), class: "search-contents__search-results__search-items__main-contents__wrap__contents-list__items__item__link" do
+                      .search-contents__search-results__search-items__main-contents__wrap__contents-list__items__item__link__figure
+                        .search-contents__search-results__search-items__main-contents__wrap__contents-list__items__item__link__figure__image-box
+                          %span.search-contents__search-results__search-items__main-contents__wrap__contents-list__items__item__link__figure__image-box__price
+                            ¥#{p.price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,')}
+                          - p.images.each do |image|
+                            = image_tag(image.image_url.url, class:"product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__image-box__image")
+                        .search-contents__search-results__search-items__main-contents__wrap__contents-list__items__item__link__figure__text
+                          %span
+                            = p.title
+  
+.footer
+  = render 'shared/footer'
+

@@ -5,9 +5,10 @@
         = link_to root_path do
           = image_tag("https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg", size: "134x36", alt: "mercari")
       .header__box__upper__form
-        %input.header__box__upper__form__upper-search{name: "search", placeholder: "何かお探しですか？", type: "text"}
-        %button.header__box__upper__form__upper-search-btn{type: "submit"}
-          = fa_icon "search"
+        =form_with url: search_products_path, method: :get, local: true, class: "search-box" do |f|
+          = f.text_field :keyword, type: "text", placeholder: "何かお探しですか？", class: "header__box__upper__form__upper-search"
+          %button.header__box__upper__form__upper-search-btn{type: "submit"}
+            = fa_icon "search"
 
     .header__box__bottom
       .header__box__bottom__left

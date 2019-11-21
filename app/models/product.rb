@@ -24,4 +24,6 @@ class Product < ApplicationRecord
   validates :images, presence: true
   serialize :categories, JSON
 
+  validates :image_url, presence: true
+
 end

@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_20_030147) do
+
+ActiveRecord::Schema.define(version: 2019_11_21_040010) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -22,7 +23,7 @@ ActiveRecord::Schema.define(version: 2019_11_20_030147) do
 
   create_table "conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "condition", null: false
-    t.bigint "product_id"
+    t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_conditions_on_product_id"
@@ -75,6 +76,7 @@ ActiveRecord::Schema.define(version: 2019_11_20_030147) do
     t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_images_on_product_id"
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -83,10 +85,10 @@ ActiveRecord::Schema.define(version: 2019_11_20_030147) do
     t.text "title", null: false
     t.text "text"
     t.integer "price", null: false
-    t.bigint "user_id"
-    t.integer "saler_id"
     t.integer "buyer_id"
+    t.integer "saler_id"
     t.text "categories"
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
@@ -106,7 +108,7 @@ ActiveRecord::Schema.define(version: 2019_11_20_030147) do
     t.string "first_name_kana", null: false
     t.date "birthday", null: false
     t.integer "sex"
-    t.integer "tel_number", null: false
+    t.string "tel_number", null: false
     t.text "profile_text"
     t.text "profile_image"
     t.string "email", default: "", null: false
@@ -122,6 +124,8 @@ ActiveRecord::Schema.define(version: 2019_11_20_030147) do
     t.string "city"
     t.string "address"
     t.string "building"
+    t.string "uid"
+    t.string "provider"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -131,6 +135,7 @@ ActiveRecord::Schema.define(version: 2019_11_20_030147) do
   add_foreign_key "days", "products"
   add_foreign_key "delivery_addresses", "users"
   add_foreign_key "freights", "products"
+  add_foreign_key "images", "products"
   add_foreign_key "products", "users"
   add_foreign_key "root_areas", "products"
 end

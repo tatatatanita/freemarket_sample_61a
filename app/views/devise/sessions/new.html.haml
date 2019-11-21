@@ -29,4 +29,4 @@
             = f.password_field :password, placeholder: 'パスワード', autocomplete: "off", class: "login-form-inner__form-group__login-input-password"
             = f.submit "ログイン", class: 'btn-default__btn-red'
           = link_to "パスワードをお忘れの方", new_password_path(resource_name), class: "forgot-password"
-  = render partial: "shared/new_footer.html.haml"
+  = render partial: "signup/new-account-footer"

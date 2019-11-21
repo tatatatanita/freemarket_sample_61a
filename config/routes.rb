@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     member do
       get :show_exhibit
       get :logout
+      get :show_bought
     end
   end
   resources :products do

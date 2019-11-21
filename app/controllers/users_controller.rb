@@ -11,6 +11,10 @@ class UsersController < ApplicationController
     @sold_products = User.find(params[:id]).sold_products
   end
 
+  def show_bought
+    @bought_products = User.find(params[:id]).buyed_products
+  end
+
   def edit
     @user = User.find(params[:id])
     # @user.delivery_addresses.build

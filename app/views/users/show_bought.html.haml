@@ -1,0 +1,62 @@
+.wrapper
+  = render 'shared/header'
+  - breadcrumb :show_bought_user, current_user
+  = render 'layouts/breadcrumbs'
+  .show-bought__main
+    .show-bought__main__box
+      = render 'shared/side-menu-bar'
+      .show-bought__main__box__right
+        .show-bought__main__box__right__head
+          .show-bought__main__box__right__head-title 購入した商品
+        
+        .show-bought__main__box__right__tabs
+          %ul.show-bought__main__box__right__tabs__tab
+            %li 取引中
+            %li.active 過去の取引
+        
+        .show-bought__main__box__right__body-group
+          %li.show-bought__main__box__right__body.show
+            - @bought_products.each do |bought_p|
+              = link_to product_path(bought_p.id), class: "show-bought__main__box__right__body__product-link" do
+                .show-bought__main__box__right__body__product-link--box
+                  .show-bought__main__box__right__body__product-link--box__left
+                    - bought_p.images.each_with_index do |image, index|
+                      = image_tag(image.image_url.url, id: "product_image", class: "bought-image eximg#{index}")
+                  .show-bought__main__box__right__body__product-link--box__center
+                    .show-bought__main__box__right__body__product-link--box__center__top
+                      = bought_p.title
+                    .show-bought__main__box__right__body__product-link--box__center__bottom
+                      .show-bought__main__box__right__body__product-link--box__center__bottom__likes
+                        = fa_icon "heart-o", class: "show-bought__main__box__right__body__product-link--box__center__bottom__likes--icon"
+                        0
+                      .show-bought__main__box__right__body__product-link--box__center__bottom__comments
+                        = fa_icon "comment-o", class: "show-bought__main__box__right__body__product-link--box__center__bottom__comments--icon"
+                        0
+                      .show-bought__main__box__right__body__product-link--box__center__bottom__salling
+                        取引中
+                  = fa_icon "angle-right", class: "show-bought__main__box__right__body__product-link--box__right"
+          %li.show-bought__main__box__right__body
+            - @bought_products.each do |bought_p|
+              = link_to product_path(bought_p.id), class: "show-bought__main__box__right__body__product-link" do
+                .show-bought__main__box__right__body__product-link--box
+                  .show-bought__main__box__right__body__product-link--box__left
+                    - bought_p.images.each do |image|
+                      = image_tag(image.image_url.url, id: "product_image", class: 'bought-image')
+                  .show-bought__main__box__right__body__product-link--box__center
+                    .show-bought__main__box__right__body__product-link--box__center__top
+                      = bought_p.title
+                    .show-bought__main__box__right__body__product-link--box__center__bottom
+                      .show-bought__main__box__right__body__product-link--box__center__bottom__likes
+                        = fa_icon "heart-o", class: "show-bought__main__box__right__body__product-link--box__center__bottom__likes--icon"
+                        0
+                      .show-bought__main__box__right__body__product-link--box__center__bottom__comments
+                        = fa_icon "comment-o", class: "show-bought__main__box__right__body__product-link--box__center__bottom__comments--icon"
+                        0
+                      .show-bought__main__box__right__body__product-link--box__center__bottom__salling
+                        過去の取引
+                  = fa_icon "angle-right", class: "show-bought__main__box__right__body__product-link--box__right"
+
+        .show-bought__main__box__right__foot
+    
+        
+    = render 'shared/footer'

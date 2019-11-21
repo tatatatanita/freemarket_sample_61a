@@ -23,6 +23,10 @@ crumb :buyer_show_product do |product|
   parent :root
 end
 
+crumb :show_bought_user do
+  link "購入した商品 - 過去の取引", show_bought_user_path(current_user)
+  parent :user
+end
 
 # crumb :projects do
 #   link "Projects", projects_path

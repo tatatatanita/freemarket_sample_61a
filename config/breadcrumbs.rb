@@ -13,11 +13,20 @@ crumb :show_exhibit_user do
   parent :user
 end
 
-crumb :buyer_show_product do
+crumb :product do
   link "出品商品画面", product_path(current_user)
   parent :show_exhibit_user
 end
 
+crumb :buyer_show_product do |product|
+  link "#{product.title}", buyer_show_product_path(current_user)
+  parent :root
+end
+
+crumb :show_bought_user do
+  link "購入した商品 - 過去の取引", show_bought_user_path(current_user)
+  parent :user
+end
 
 # crumb :projects do
 #   link "Projects", projects_path

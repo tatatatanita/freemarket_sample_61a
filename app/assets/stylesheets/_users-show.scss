@@ -5,7 +5,7 @@
     box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
     background: #fff;
 
-    .breadcrumbs-list{
+    &__list{
       width: 1020px;
       height: 25px;
       overflow: visible;
@@ -13,7 +13,12 @@
       padding: 12px 0px;
       white-space: normal;
       font-size: 14px;
+      color: #333333;
       font-weight: 600;
+    }
+
+    &__list a {
+      color: #333333;
     }
   }
 

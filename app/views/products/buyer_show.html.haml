@@ -3,5 +3,7 @@
   .buyer-show-main
     = render "shared/product_box"
     = render "shared/message_box"
+    - breadcrumb :buyer_show_product, @product
+    .breadcrumbs-buyer
+      = breadcrumbs pretext: "",separator: " &rsaquo; ", class: "breadcrumbs-buyer__list"
     = render 'shared/footer'
-

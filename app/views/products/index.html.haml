@@ -42,22 +42,98 @@
             .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap
               %ul.product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list
                 - @product.each do |p|
-                  %li.product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items
-                    .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item
-                      = link_to buyer_show_product_path(p.id), class: "product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link" do
-                        .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure
-                          .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__image-box
-                            %span.product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__image-box__price
-                              ¥
-                              = p.price
-                            - p.images.each do |image|
-                              = image_tag(image.image_url.url, class:"product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__image-box__image")
-                          .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__text
-                            %span
-                              = p.title
+                  - if p.categories[0] == "レディース"
+                    %li.product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items
+                      .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item
+                        = link_to buyer_show_product_path(p.id), class: "product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link" do
+                          .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure
+                            .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__image-box
+                              %span.product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__image-box__price
+                                ¥#{p.price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,')}
+                              - p.images.each do |image|
+                                = image_tag(image.image_url.url, class:"product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__image-box__image")
+                            .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__text
+                              %span
+                                = p.title
+
+      .product-index-main__contents-box__popular-categories-contents
+        .product-index-main__contents-box__popular-categories-contents__box
+          .product-index-main__contents-box__popular-categories-contents__box__title
+            %h3.product-index-main__contents-box__popular-categories-contents__box__title__text
+              メンズ新着アイテム
+            =link_to "もっと見る", "", class: "product-index-main__contents-box__popular-categories-contents__box__title__more-contents"
+
+          .product-index-main__contents-box__popular-categories-contents__box__main-contents
+            .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap
+              %ul.product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list
+                - @product.each do |p|
+                  - if p.categories[0] == "メンズ"
+                    %li.product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items
+                      .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item
+                        = link_to buyer_show_product_path(p.id), class: "product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link" do
+                          .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure
+                            .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__image-box
+                              %span.product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__image-box__price
+                                ¥#{p.price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,')}
+                              - p.images.each do |image|
+                                = image_tag(image.image_url.url, class:"product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__image-box__image")
+                            .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__text
+                              %span
+                                = p.title
+
+      .product-index-main__contents-box__popular-categories-contents
+        .product-index-main__contents-box__popular-categories-contents__box
+          .product-index-main__contents-box__popular-categories-contents__box__title
+            %h3.product-index-main__contents-box__popular-categories-contents__box__title__text
+              家電・スマホ・カメラ新着アイテム
+            =link_to "もっと見る", "", class: "product-index-main__contents-box__popular-categories-contents__box__title__more-contents"
+
+          .product-index-main__contents-box__popular-categories-contents__box__main-contents
+            .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap
+              %ul.product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list
+                - @product.each do |p|
+                  - if p.categories[0] == "家電・スマホ・カメラ"
+                    %li.product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items
+                      .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item
+                        = link_to buyer_show_product_path(p.id), class: "product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link" do
+                          .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure
+                            .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__image-box
+                              %span.product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__image-box__price
+                                ¥#{p.price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,')}
+                              - p.images.each do |image|
+                                = image_tag(image.image_url.url, class:"product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__image-box__image")
+                            .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__text
+                              %span
+                                = p.title
+
+      .product-index-main__contents-box__popular-categories-contents
+        .product-index-main__contents-box__popular-categories-contents__box
+          .product-index-main__contents-box__popular-categories-contents__box__title
+            %h3.product-index-main__contents-box__popular-categories-contents__box__title__text
+              おもちゃ・ホビー・グッズ新着アイテム
+            =link_to "もっと見る", "", class: "product-index-main__contents-box__popular-categories-contents__box__title__more-contents"
+
+          .product-index-main__contents-box__popular-categories-contents__box__main-contents
+            .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap
+              %ul.product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list
+                - @product.each do |p|
+                  - if p.categories[0] == "おもちゃ・ホビー・グッズ"
+                    %li.product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items
+                      .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item
+                        = link_to buyer_show_product_path(p.id), class: "product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link" do
+                          .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure
+                            .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__image-box
+                              %span.product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__image-box__price
+                                ¥#{p.price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,')}
+                              - p.images.each do |image|
+                                = image_tag(image.image_url.url, class:"product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__image-box__image")
+                            .product-index-main__contents-box__popular-categories-contents__box__main-contents__wrap__contents-list__items__item__link__figure__text
+                              %span
+                                = p.title
 
       .product-index-main__contents-box__popular-brands
       .product-index-main__contents-box__popular-brands-contents
   
+.footer
   = render 'shared/footer'
 

@@ -1,65 +1,134 @@
 .wrapper
-  .header
-    .header__box
-      .header__box__upper
-        .header__box__upper-logo
-          = link_to image_tag("https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg", size: "134x36", alt: "mercari"), root_path
-        %input.header__box__upper-search{name: "search", placeholder: "何かお探しですか？", type: "text"}
-          %button.header__box__upper-search-btn{type: "submit"}
-            %i.fa.fa-search
-      .header__box__bottom
-        .header__box__bottom__left
-          .header__box__bottom__left__categories カテゴリーから探す
-          .header__box__bottom__left__brands ブランドから探す
-        .header__box__bottom__right
-          .header__box__bottom__right--like いいね!一覧
-          .header__box__bottom__right--info お知らせ
-          .header__box__bottom__right--todo やることリスト
-          .header__box__bottom__right--my_page
-            = link_to "マイページ", user_path(current_user.id), class: "header__box__bottom__right--my_page--link"
-      - breadcrumb :mypage
-      = render "layouts/breadcrumbs"
+  = render 'shared/header'
+  - breadcrumb :user, current_user
+  = render 'layouts/breadcrumbs'
+  .large-mp-main-contents
+    .mp-main-contents
+      = render "shared/side-menu-bar"
+      .mp-right-box
+        .mp-right-box__user-icon
+          = link_to(user_path, class: "mp-right-box__user-icon__bar") do
+            .mp-right-box__user-icon__bar__figure
+              .mp-right-box__user-icon__bar__figure__img
+                = image_tag("https://static.mercdn.net/images/member_photo_noimage_thumb.png", height: '60', width: '60')
+            .mp-right-box__user-icon__bar__name
+              61_mercari_team-B
+            .mp-right-box__user-icon__bar__my-data
+              評価&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;出品数&nbsp;&nbsp;0
+        .mp-right-box__tab-container-top
+          .mp-right-box__tab-container-top__tabs
+            .mp-right-box__tab-container-top__tabs__inform
+              .mp-right-box__tab-container-top__tabs__inform__2
+                .mp-right-box__tab-container-top__tabs__inform__2__3
+                  お知らせ
+            .mp-right-box__tab-container-top__tabs__todo
+              .mp-right-box__tab-container-top__tabs__todo__2
+                .mp-right-box__tab-container-top__tabs__inform__2__3
+                  やることリスト
+          .mp-right-box__tab-container-top__contents
+            .mp-right-box__tab-container-top__contents__inform
+              .mp-right-box__tab-container-top__contents__inform__li1
+                .mp-right-box__tab-container-top__contents__inform__li1__link
+                  .mp-right-box__tab-container-top__contents__inform__li1__link__figure
+                    = image_tag("https://www.juku90.com/wp-content/uploads/2019/05/000-2.jpg", size: "53x53", alt: "mercari")
+                  .mp-right-box__tab-container-top__contents__inform__li1__link__body
+                    .mp-right-box__tab-container-top__contents__inform__li1__link__body__text
+                    《友達・家族を招待するとP1,000プレゼント》お互いの招待コードを交換して一緒にはじめればそれぞれP2,000もらえる
+                    .mp-right-box__tab-container-top__contents__inform__li1__link__body__timecombi
+                      .mp-right-box__tab-container-top__contents__inform__li1__link__body__timecombi__icontime
+                        = fa_icon "clock-o", class: "mp-right-box__tab-container-top__contents__inform__li1__link__body__timecombi__icontime__icon"
+                        &nbsp;6時間前
+                    .mp-right-box__tab-container-top__contents__inform__li1__link__body__right-icon
+                      %i.far.fa-angle-right
 
-マイページ
-%li
-お知らせ
-%li
-やることリスト
-%li
-いいね！一覧
-%li
-= link_to "出品する", new_product_path, class: 'new_exhibit'
-%li
-= link_to "出品した商品 - 出品中", show_exhibit_user_path, class: ''
-%li
-出品した商品 - 取引中 
-%li
-出品した商品 - 売却済み
-%li
-購入した商品 - 取引中
-%li
-購入した商品 - 過去の取引
-%li
-ニュース一覧
-%li
-評価一覧
-%li
-ガイド
-%li
-お問い合わせ
-%li
-= link_to "プロフィール", {controller: "users", action: "edit", name: "profile"}
-%li
-= link_to "発送元・お届け先住所変更", {controller: "users", action: "edit", name: "delivery_address"}
-%li
-= link_to "支払い方法", {controller: "users", action: "edit", name: "card"}
-%li
-= link_to "メール/パスワード", {controller: "users", action: "edit", name: "email_password"}
-%li
-= link_to "本人情報", {controller: "users", action: "edit", name: "identification"}
-%li
-= link_to "電話番号の確認", {controller: "users", action: "edit", name: "sms_confirmation"}
-%li
-= link_to destroy_user_session_path, method: :delete do
-  ログアウト
+          .mp-right-box__tab-container-top__contents
+            .mp-right-box__tab-container-top__contents__inform
+              .mp-right-box__tab-container-top__contents__inform__li1
+                .mp-right-box__tab-container-top__contents__inform__li1__link
+                  .mp-right-box__tab-container-top__contents__inform__li1__link__figure
+                    = image_tag("https://www.juku90.com/wp-content/uploads/2019/05/000-2.jpg", size: "53x53", alt: "mercari")
+                  .mp-right-box__tab-container-top__contents__inform__li1__link__body
+                    .mp-right-box__tab-container-top__contents__inform__li1__link__body__text
+                    《販売手数料も梱包資材も実質無料！》超！出品祭開催中♪大好評につき第二弾！
+                    .mp-right-box__tab-container-top__contents__inform__li1__link__body__timecombi
+                      .mp-right-box__tab-container-top__contents__inform__li1__link__body__timecombi__icontime
+                        = fa_icon "clock-o", class: "mp-right-box__tab-container-top__contents__inform__li1__link__body__timecombi__icontime__icon"
+                        &nbsp;1日前
+                    .mp-right-box__tab-container-top__contents__inform__li1__link__body__right-icon
+                      %i.far.fa-angle-right
+          .mp-right-box__tab-container-top__contents
+            .mp-right-box__tab-container-top__contents__inform
+              .mp-right-box__tab-container-top__contents__inform__li1
+                .mp-right-box__tab-container-top__contents__inform__li1__link
+                  .mp-right-box__tab-container-top__contents__inform__li1__link__figure
+                    = image_tag("https://www.juku90.com/wp-content/uploads/2019/05/000-2.jpg", size: "53x53", alt: "mercari")
+                  .mp-right-box__tab-container-top__contents__inform__li1__link__body
+                    .mp-right-box__tab-container-top__contents__inform__li1__link__body__text
+                      7日後、P999還元クーポンの有効期限が切れます！タップして詳細を確認しましょう。
+                    .mp-right-box__tab-container-top__contents__inform__li1__link__body__timecombi
+                      .mp-right-box__tab-container-top__contents__inform__li1__link__body__timecombi__icontime
+                        = fa_icon "clock-o", class: "mp-right-box__tab-container-top__contents__inform__li1__link__body__timecombi__icontime__icon"
+                        &nbsp;1日前
+                    .mp-right-box__tab-container-top__contents__inform__li1__link__body__right-icon
+                      %i.far.fa-angle-right
+          .mp-right-box__tab-container-top__contents
+            .mp-right-box__tab-container-top__contents__inform
+              .mp-right-box__tab-container-top__contents__inform__li1
+                .mp-right-box__tab-container-top__contents__inform__li1__link
+                  .mp-right-box__tab-container-top__contents__inform__li1__link__figure
+                    = image_tag("https://www.juku90.com/wp-content/uploads/2019/05/000-2.jpg", size: "53x53", alt: "mercari")
+                  .mp-right-box__tab-container-top__contents__inform__li1__link__body
+                    .mp-right-box__tab-container-top__contents__inform__li1__link__body__text
+                      メルカリの商品が世界100か国以上のお客さまにも売れるようになりました！
+                    .mp-right-box__tab-container-top__contents__inform__li1__link__body__timecombi
+                      .mp-right-box__tab-container-top__contents__inform__li1__link__body__timecombi__icontime
+                        = fa_icon "clock-o", class: "mp-right-box__tab-container-top__contents__inform__li1__link__body__timecombi__icontime__icon"
+                        &nbsp;1日前
+                    .mp-right-box__tab-container-top__contents__inform__li1__link__body__right-icon
+                      %i.far.fa-angle-right
+          .mp-right-box__tab-container-top__contents
+            .mp-right-box__tab-container-top__contents__inform
+              .mp-right-box__tab-container-top__contents__inform__li1
+                .mp-right-box__tab-container-top__contents__inform__li1__link
+                  .mp-right-box__tab-container-top__contents__inform__li1__link__figure
+                    = image_tag("https://www.juku90.com/wp-content/uploads/2019/05/000-2.jpg", size: "53x53", alt: "mercari")
+                  .mp-right-box__tab-container-top__contents__inform__li1__link__body
+                    .mp-right-box__tab-container-top__contents__inform__li1__link__body__text
+                      招待コード「MOTTAINAI」を入力してメルペイをはじめるとP1,000が必ずもらえる！
+                    .mp-right-box__tab-container-top__contents__inform__li1__link__body__timecombi
+                      .mp-right-box__tab-container-top__contents__inform__li1__link__body__timecombi__icontime
+                        = fa_icon "clock-o", class: "mp-right-box__tab-container-top__contents__inform__li1__link__body__timecombi__icontime__icon"
+                        &nbsp;6日前
+                    .mp-right-box__tab-container-top__contents__inform__li1__link__body__right-icon
+                      %i.far.fa-angle-right
 
+          .mp-right-box__tab-container-top__list
+            = link_to "一覧を見る", user_path, class: "mp-right-box__tab-container-top__list__btn"
+              
+          .mp-right-box__tab-container-top__contents__todo
+          
+        .mp-right-box__data-modal
+
+        .mp-right-box__tab-container-bottom
+          .mp-right-box__tab-container-bottom__head
+            購入した商品
+          .mp-right-box__tab-container-bottom__head__tabs
+            .mp-right-box__tab-container-bottom__head__tabs__trade
+              .mp-right-box__tab-container-bottom__head__tabs__trade__2
+                .mp-right-box__tab-container-bottom__head__tabs__trade__2__3
+                  取引中
+            .mp-right-box__tab-container-bottom__head__tabs__old-trade
+              .mp-right-box__tab-container-bottom__head__tabs__old-trade__2
+                .mp-right-box__tab-container-bottom__head__tabs__old-trade__2__3
+                  過去の取引
+          
+          .mp-right-box__tab-container-bottom__contents
+            .mp-right-box__tab-container-bottom__contents__deal-now
+              .mp-right-box__tab-container-bottom__contents__deal-now__logo
+                = link_to image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?404657508", size: "120x120", alt: "mercari")
+              .mp-right-box__tab-container-bottom__contents__deal-now__list
+                取引中の商品がありません
+            .mp-right-box__tab-container-bottom__contents__old-deal
+              .mp-right-box__tab-container-bottom__contents__old-deal__list
+
+    = render 'shared/footer'

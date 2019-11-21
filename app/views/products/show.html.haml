@@ -1,5 +1,7 @@
 .wrapper
   = render "shared/header"
+  - breadcrumb :product, current_user
+  = render 'layouts/breadcrumbs'
   .buyer-show-main
     .show_main-box
       = render "shared/product_box"
@@ -15,4 +17,3 @@
               = link_to "この商品を削除する", product_path, method: :delete , class: 'destroy-btn'
       = render "shared/message_box"
     = render 'shared/footer'
-

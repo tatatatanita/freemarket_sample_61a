@@ -2,16 +2,15 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :buyer_show]
 
   before_action :set_product, only: [:update, :destroy, :show, :edit, :buyer_show] 
+  before_action :load_mydata, only: [:show, :destroy, :buyer_show, :edit]
 
   def index
-    @product = Product.includes(:images)
-    @parents = Category.where(ancestry: nil)
+    @product = Product.includes(:images).order("id DESC")
   end
-
 
   def new
     @product = Product.new
-    @product.images.build
+    10.times {@product.images.build}
     @product.build_condition
     @product.build_freight
     @product.build_root_area
@@ -22,12 +21,15 @@ class ProductsController < ApplicationController
     end
   end
 
-  def get_category_children
-    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
-  end
-
-  def get_category_grandchildren
-    @category_grandchildren = Category.find("#{params[:child_id]}").children
+  def edit
+    # @products = current_user.products.includes(:images)
+    @product = Product.find(params[:id])
+    @user = current_user
+    @image = Image.where(product_id: @product)
+    @category_parent_array = ["---"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
   end
 
   def create
@@ -41,36 +43,63 @@ class ProductsController < ApplicationController
 
   def destroy
     @products = current_user.products
-    if @product.user_id == current_user.id
+    if @product.saler_id == current_user.id
       @product.destroy
-      redirect_to show_exhibit_user_path
+      redirect_to show_exhibit_user_path(current_user)
     else
       render :show, notice: '削除できませんでした'
     end
   end
  
   def show
-    buyer_show
   end
 
  
-  def edit
-    @products = current_user.products.includes(:images)
-    @user = current_user
-    @image = Image.where(product_id: @product)
-  end
-
+  
   def update
     if @product.update(product_params)
-      redirect_to product_path, notice: ''
+      redirect_to product_path
     else
-      render 'edit'
+      render 'buyer_show'
     end
   end
 
   def buyer_show
+  end
+
+
+  def get_category_children
+    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+  end
+
+  def get_category_grandchildren
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
+
+  # 今後実装予定
+  # def image_destroy
+  #   @image = Image.find_by(id: 'image_id')
+  #     @image.destroy
+  # end
+  
+  private
+  def product_params
+    params.require(:product).permit(
+      :title, :image, :text, :price, :saler_id, {categories: []},
+      images_attributes: [:image_url],
+      condition_attributes: [:condition],
+      freight_attributes: [:freight],
+      root_area_attributes: [:root_area],
+      day_attributes: [:day]
+    )
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
+  def load_mydata
     @image = Image.where(product_id: @product)
-    @parents = Category.where(ancestry: nil)
     @conditions = Condition.find_by product_id: @product
     case @conditions.condition
     when 1
@@ -106,21 +135,4 @@ class ProductsController < ApplicationController
       @day = "4~7日で発送"
     end
   end
-  
-  private
-  def product_params
-    params.require(:product).permit(
-      :title, :image, :text, :price, :saler_id, {categories: []},
-      images_attributes: [:image_url],
-      condition_attributes: [:condition],
-      freight_attributes: [:freight],
-      root_area_attributes: [:root_area],
-      day_attributes: [:day]
-    )
-  end
-
-  def set_product
-    @product = Product.find(params[:id])
-  end
-
 end

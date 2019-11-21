@@ -1,7 +1,13 @@
 .single-container{
   background: rgb(245, 245, 245);
-  padding: 0 0 220px;
+  &__new-header{
+    height: 128px;
+    text-align: center;
 
+    h1{
+      padding: 40px 0 0;
+    }
+  }
   &__single-main{
     &__l-single-container{
       background: #fff;
@@ -17,7 +23,8 @@
       }
       &__registration-form{
         border-top: 1px solid #f5f5f5;
-        padding: 24px 16px 40px;
+        padding: 40px 40px 64px;
+
 
         &__l-single-content{
           max-width: 343px;

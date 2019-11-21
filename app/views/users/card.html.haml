@@ -1,2 +1,31 @@
-支払い方法
--# credit_infosテーブルが出来次第追記
+.wrapper
+  = render 'shared/header'
+  .large-mp-main-contents
+    .mp-main-contents
+      = render "shared/side-menu-bar"
+      .mp-right-box
+        .l-chapter-container
+          %h2.l-chapter-container__title
+            支払い方法
+          .l-chapter-container__card-info-box
+            .l-chapter-container__card-info-box__section
+              .l-chapter-container__card-info-box__section__middle-title
+                %h3.l-chapter-container__card-info-box__section__middle-title__text
+                  クレジットカード一覧
+              %ul.l-chapter-container__card-info-box__section__payment-list
+                %li
+                  .credit-form
+                    .credit-form__card-image
+                      = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?3703848211", alt: "visa", height: "23", width: "36")
+                    .credit-form__card-number
+                      ************4242
+                    .credit-form__card-limit
+                      03 / 21
+                    %button.credit-form__delete-btn
+                      削除する
+            .l-chapter-container__card-info-box__help
+              = link_to "" , class: "l-chapter-container__card-info-box__help__link" do
+                %span 支払い方法について
+                = fa_icon "chevron-right", class: "icon-arrow-right"
+
+    = render 'shared/footer'

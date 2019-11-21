@@ -1,3 +1,13 @@
-完了
-%br
-確認済みです
+.wrapper
+  = render 'shared/header'
+  .large-mp-main-contents
+    .mp-main-contents
+      = render "shared/side-menu-bar"
+      .mp-right-box
+        .l-chapter-container
+          %h2.l-chapter-container__title
+            完了
+          .sms-confirmation
+            %p 確認済みです
+
+    = render 'shared/footer'

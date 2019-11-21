@@ -3,11 +3,30 @@ crumb :root do
 end
 
 # マイページ
-crumb :mypage do
-  link "マイページ", user_path
+crumb :user do
+  link "マイページ", user_path(current_user)
+  parent :root
 end
 
+crumb :show_exhibit_user do
+  link "出品した商品 - 出品中", show_exhibit_user_path(current_user)
+  parent :user
+end
 
+crumb :product do
+  link "出品商品画面", product_path(current_user)
+  parent :show_exhibit_user
+end
+
+crumb :buyer_show_product do |product|
+  link "#{product.title}"
+  parent :root
+end
+
+crumb :show_bought_user do
+  link "購入した商品 - 過去の取引", show_bought_user_path(current_user)
+  parent :user
+end
 
 # crumb :projects do
 #   link "Projects", projects_path

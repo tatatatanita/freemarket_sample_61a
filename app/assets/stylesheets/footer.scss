@@ -1,5 +1,12 @@
 .footer-image {
   position: relative;
+  vertical-align: bottom;
+  box-sizing: border-box;
+  .footer-back-img {
+    object-fit: cover;
+    height: 280px;
+    width: 100%;
+  }
   &__smartphone {
     position: absolute;
     right: 350px;

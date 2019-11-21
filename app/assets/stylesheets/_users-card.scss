@@ -1,0 +1,82 @@
+.l-chapter-container{
+  &__card-info-box{
+    padding: 64px;
+
+    &__section{
+      
+      &__middle-title{
+        max-width: 320px;
+        margin: 0 auto;
+
+        &__text{
+          font-size: 16px;
+          margin-block-start: 1em;
+          margin-block-end: 1em;
+          margin-inline-start: 0px;
+          margin-inline-end: 0px;
+          font-weight: bold;
+        }
+      }
+      &__payment-list{
+        list-style: none;
+        margin: 0;
+
+        li{
+          padding: 24px 0;
+          border-bottom: 1px solid #eee;
+
+          .credit-form{
+            position: relative;
+            max-width: 320px;
+            margin: 0 auto;
+            font-size: 14px;
+
+            &__card-image{
+              img{
+                vertical-align: middle;
+              }
+            }
+            &__card-number{
+              margin: 8px 0 0;
+              font-size: 16px;
+            }
+            &__card-limit{
+              margin: 8px 0 0;
+              font-size: 16px;
+            }
+
+            &__delete-btn{
+              position: absolute;
+              top: 0;
+              right: 0;
+              padding: 1px 5px;
+              background: #fff;
+              border-radius: 3px;
+              border: 1px solid #ea352d;
+              color: #ea352d;
+              outline: 0;
+              cursor: pointer;
+              -webkit-appearance: button;
+              overflow: visible;
+            }
+          }
+        }
+      }
+    }
+
+    &__help{
+
+      &__link{
+        display: block;
+        margin: 40px 0 0;
+        text-align: right;
+        color: #0099e8;
+        text-decoration: none;
+
+      .icon-arrow-right{
+
+      }
+      }
+    }
+  }
+}

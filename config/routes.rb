@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   resources :purchase, only: [:show] do
     collection do
-      get 'show/:id', to: 'purchase#show'
       post 'pay/:id', to: 'purchase#pay'
       get 'done/:id', to: 'purchase#done'
       get 'update/:id', to: 'purchase#update'
@@ -9,7 +8,6 @@ Rails.application.routes.draw do
   end
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :signup, except: [:index, :show] do
-
     collection do
       get 'step1'
       get 'step2'
@@ -27,6 +25,8 @@ Rails.application.routes.draw do
     get 'users/:name', controller: 'users', action: 'edit'
     member do
       get :show_exhibit
+      get :logout
+      get :show_bought
     end
   end
   resources :products do
@@ -37,5 +37,14 @@ Rails.application.routes.draw do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
+    member do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+
+    # 今後実装予定
+    # member do
+    #   get 'image_destroy', defaults: { format: 'json' }
+    # end
   end
 end

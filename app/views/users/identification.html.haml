@@ -1,43 +1,64 @@
-本人情報の登録
-%br
-お客さまの本人情報をご登録ください。
-%br
-登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
-%br
-本人確認書類のアップロードについて
-%br
-お名前
-%br
-= @user.last_name_kanji
-= @user.first_name_kanji
-%br
-お名前カナ
-%br
-= @user.last_name_kana
-= @user.first_name_kana
-%br
-生年月日
-%br
-= @user.birthday.strftime("%Y/%m/%d")
-= form_with model: @user do |f|
-  郵便番号
-  %br
-  = f.text_field :postal_code
-  %br
-  都道府県
-  %br
-  = f.text_field :prefectures
-  %br
-  市区町村
-  %br
-  = f.text_field :city
-  %br
-  番地
-  %br
-  = f.text_field :address
-  %br
-  建物名
-  %br
-  = f.text_field :building
-  %br
-  = f.submit '登録する'
+.wrapper
+  = render 'shared/header'
+  .large-mp-main-contents
+    .mp-main-contents
+      = render "shared/side-menu-bar"
+      .mp-right-box
+        .l-chapter-container
+          %h2.l-chapter-container__title
+            本人情報の登録
+          .l-chapter-container__mypage-identification
+            .l-chapter-container__mypage-identification__explanation
+              %p.l-chapter-container__mypage-identification__explanation__text
+                お客さまの本人情報をご登録ください。
+                %br 登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+              %p.l-chapter-container__mypage-identification__explanation__text-right
+                = link_to "" , class: "l-chapter-container__mypage-identification__explanation__text-right__link" do
+                  本人確認書類のアップロードについて
+                  = fa_icon "chevron-right", class: "icon-arrow-right"
+            .l-chapter-container__mypage-identification__unalterable
+              %label お名前
+              %p
+                = @user.last_name_kanji
+                = @user.first_name_kanji
+            .l-chapter-container__mypage-identification__unalterable
+              %label お名前カナ
+              %p
+                = @user.last_name_kana
+                = @user.first_name_kana
+            .l-chapter-container__mypage-identification__unalterable
+              %label 生年月日
+              %p
+                = @user.birthday.strftime("%Y/%m/%d")
+            .l-chapter-container__mypage-identification__input-lists
+              = form_with model: @user do |f|
+                .l-chapter-container__mypage-identification__input-lists__input-box
+                  %label 郵便番号
+                  %span 任意
+                  = f.text_field :postal_code, class: "l-chapter-container__mypage-identification__input-lists__input-box__text"
+                .l-chapter-container__mypage-identification__input-lists__input-box
+                  %label 都道府県
+                  %span 任意
+                  = f.text_field :prefectures, class: "l-chapter-container__mypage-identification__input-lists__input-box__text"
+                .l-chapter-container__mypage-identification__input-lists__input-box
+                  %label 市区町村
+                  %span 任意
+                  = f.text_field :city, class: "l-chapter-container__mypage-identification__input-lists__input-box__text"
+                .l-chapter-container__mypage-identification__input-lists__input-box
+                  %label 番地
+                  %span 任意
+                  = f.text_field :address, class: "l-chapter-container__mypage-identification__input-lists__input-box__text"
+                .l-chapter-container__mypage-identification__input-lists__input-box
+                  %label 建物名
+                  %span 任意
+                  = f.text_field :building, class: "l-chapter-container__mypage-identification__input-lists__input-box__text"
+
+                = f.submit '登録する', class: "btn-default_btn-red"
+
+            .l-chapter-container__mypage-identification__explanation-bottom
+              %p.l-chapter-container__mypage-identification__explanation-bottom__text-right
+                = link_to "" , class: "l-chapter-container__mypage-identification__explanation-bottom__text-right__link" do
+                  本人情報の登録について
+                  = fa_icon "chevron-right", class: "icon-arrow-right"
+
+    = render 'shared/footer'

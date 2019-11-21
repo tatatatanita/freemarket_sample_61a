@@ -30,4 +30,15 @@ class User < ApplicationRecord
   has_many :saling_products, -> { where("buyer_id is NULL") }, foreign_key: "saler_id", class_name: "Product"
   has_many :sold_products, -> { where("buyer_id is not NULL") }, foreign_key: "saler_id", class_name: "Product"
 
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email,                   presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }, on: :save_step1_to_session
+  validates :nickname,                presence: true, length: {maximum: 20}, on: :save_step1_to_session
+  validates :password,                presence: true, length: {minimum: 6, maximum: 128}, on: :save_step1_to_session
+  validates :password_confirmation,   presence: true, length: {minimum: 6, maximum: 128}, on: :save_step1_to_session
+  validates :last_name_kanji,         presence: true, format: {with: /\A[ぁ-んァ-ン一-龥]/}, on: :save_step1_to_session
+  validates :first_name_kanji,         presence: true, format: {with: /\A[ぁ-んァ-ン一-龥]/}, on: :save_step1_to_session
+  validates :last_name_kana,          presence: true, format: {with: /\A[ぁ-んァ-ヶー－]+\z/}, on: :save_step1_to_session
+  validates :first_name_kana,         presence: true, format: {with: /\A[ぁ-んァ-ヶー－]+\z/}, on: :save_step1_to_session
+  validates :birthday,                presence: true, on: :save_step1_to_session
+  validates :tel_number,              presence: true, format: {with: /\A\d{10,11}\z/}, on: :save_step2_to_session
 end

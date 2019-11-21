@@ -6,7 +6,7 @@
       %h2.single-container__single-main__account-single-container__registration-title
         電話番号の確認
       .single-container__single-main__account-single-container__registration-form
-        = form_for @user, url: step3_signup_index_path, method: :get do |f|
+        = form_for @user, url: step3_signup_index_path, :builder => FormHelper::CustomFormHelper, method: :get do |f|
           .single-container__single-main__account-single-container__registration-form__upper-box
             .single-container__single-main__account-single-container__registration-form__upper-box__input-box
               = f.label "携帯電話の確認"
@@ -21,3 +21,4 @@
                   = fa_icon "chevron-right", class: "single-container__single-main__account-single-container__registration-form__bottom-box__text-right__icon"
 
   = render partial: "new-account-footer"
+

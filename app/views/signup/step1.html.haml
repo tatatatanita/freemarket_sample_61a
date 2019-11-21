@@ -4,8 +4,9 @@
     .single-container__single-main__account-single-container
       %h2.single-container__single-main__account-single-container__registration-title
         会員情報入力
+
       .single-container__single-main__account-single-container__registration-form
-        = form_for @user, url: step2_signup_index_path, method: :get do |f|
+        = form_for @user, url: step2_signup_index_path, :builder => FormHelper::CustomFormHelper, method: :get do |f|
           .single-container__single-main__account-single-container__registration-form__upper-box
             .single-container__single-main__account-single-container__registration-form__upper-box__input-box
               = f.label "ニックネーム"

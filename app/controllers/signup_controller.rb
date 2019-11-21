@@ -1,28 +1,59 @@
 class SignupController < ApplicationController
   require "payjp"
   before_action :set_card, except: [:step1, :step2, :step3, :step4, :create, :done]
+  before_action :save_step1_to_session, only: :step2
+  before_action :save_step2_to_session, only: :step3
+  # before_action :save_step3_to_session, only: :step4
   def step1
     @user = User.new
+
+    # @snsusername = session["devise.provider_data"]["info"]["name"]
+    # @snsuseremail = session["devise.provider_data"]["info"]["email"]
+
     @user.build_credit_info
     if session["devise.provider_data"] != nil
       @snsusername = session["devise.provider_data"]["info"]["name"]
       @snsuseremail = session["devise.provider_data"]["info"]["email"]
     end
+
   end
   
-  def step2
+  def save_step1_to_session
     params[:user][:birthday] = birthday_join
     session[:user_params_after_step1] = user_params
+    # @user = User.new(params[:user][:birthday])
+    @user = User.new(session[:user_params_after_step1])
+    render '/signup/step1' unless @user.valid?(:save_step1_to_session)
+  end
+
+  def step2
+    # params[:user][:birthday] = birthday_join
+    # session[:user_params_after_step1] = user_params
     @user = User.new
   end
 
-  def step3
+  def save_step2_to_session
     session[:user_params_after_step2] = user_params
     session[:user_params_after_step2].merge!(session[:user_params_after_step1])
+    @user = User.new(session[:user_params_after_step2])
+    render '/signup/step2' unless @user.valid?(:save_step2_to_session)
+  end
+
+  def step3
+    # session[:user_params_after_step2] = user_params
+    # session[:user_params_after_step2].merge!(session[:user_params_after_step1])
     @user = User.new
     @user.build_delivery_address
   end
 
+  # def save_step3_to_session
+  #   session[:delivery_address_attributes] = user_params[:delivery_address_attributes]
+  #   @user = User.new
+  #   @user.build_delivery_address(session[:delivery_address_attributes])
+  #   deli = DeliveryAddress.new(session[:delivery_address_attributes])
+  #   # binding.pry
+  #   render '/signup/step3' unless deli.valid?(:save_step3_to_session)
+  # end
   def step4
     session[:delivery_address_attributes] = user_params[:delivery_address_attributes]
     @user = User.new

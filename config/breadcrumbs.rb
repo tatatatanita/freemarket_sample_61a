@@ -19,7 +19,7 @@ crumb :product do
 end
 
 crumb :buyer_show_product do |product|
-  link "#{product.title}", buyer_show_product_path(current_user)
+  link "#{product.title}"
   parent :root
 end
 

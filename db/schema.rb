@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_12_025318) do
+ActiveRecord::Schema.define(version: 2019_11_20_042725) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
+    t.string "ancestry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "ancestry"
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2019_11_12_025318) do
     t.string "first_name_kana", null: false
     t.string "last_name_kana", null: false
     t.integer "postal_code", null: false
-    t.integer "prefectures", null: false
+    t.string "prefectures", null: false
     t.string "city", null: false
     t.string "address", null: false
     t.string "building"
@@ -70,22 +70,13 @@ ActiveRecord::Schema.define(version: 2019_11_12_025318) do
     t.index ["product_id"], name: "index_freights_on_product_id"
   end
 
-  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "image_url", null: false
-    t.bigint "product_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_images_on_product_id"
-  end
-
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "image", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "title", null: false
     t.text "text"
     t.integer "price", null: false
-    t.integer "buyer_id"
-    t.integer "saler_id"
     t.text "categories"
     t.bigint "user_id"
     t.index ["user_id"], name: "index_products_on_user_id"
@@ -105,6 +96,8 @@ ActiveRecord::Schema.define(version: 2019_11_12_025318) do
     t.string "first_name_kanji", null: false
     t.string "last_name_kana", null: false
     t.string "first_name_kana", null: false
+    t.date "birthday", null: false
+    t.text "current_address"
     t.integer "sex"
     t.integer "tel_number", null: false
     t.text "profile_text"
@@ -116,7 +109,6 @@ ActiveRecord::Schema.define(version: 2019_11_12_025318) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "birthday"
     t.integer "certification_number"
     t.integer "postal_code"
     t.integer "prefectures"
@@ -134,7 +126,6 @@ ActiveRecord::Schema.define(version: 2019_11_12_025318) do
   add_foreign_key "days", "products"
   add_foreign_key "delivery_addresses", "users"
   add_foreign_key "freights", "products"
-  add_foreign_key "images", "products"
   add_foreign_key "products", "users"
   add_foreign_key "root_areas", "products"
 end

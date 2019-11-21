@@ -94,7 +94,10 @@
         #{params[:keyword]}
         %span の検索結果
       .search-contents__search-results__count
-        件表示
+        - if @products.count == 0
+          %span 該当する商品が見つかりません。検索条件を変えて、再度お試しください。
+        - else
+          1 - #{@products.count}件表示
       .search-contents__search-results__search-items
         .search-contents__search-results__search-items__main-contents
           .search-contents__search-results__search-items__main-contents__wrap

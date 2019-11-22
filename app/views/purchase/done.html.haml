@@ -14,7 +14,7 @@
           - @image.each do |i|
             = image_tag(i.image_url.url, id: "product_image", class: "purchase-conteiner__box__purchase-image__box__image-top")
         .purchase-conteiner__box__purchase-image__text
-          = @product.text
+          = @product.title
         .purchase-conteiner__box__purchase-image__price
           = "¥ #{@product.price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,')}"
           = @freight

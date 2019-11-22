@@ -34,7 +34,6 @@ class User < ApplicationRecord
   validates :email,                   presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }, on: :save_step1_to_session
   validates :nickname,                presence: true, length: {maximum: 20}, on: :save_step1_to_session
   validates :password,                presence: true, length: {minimum: 6, maximum: 128}, on: :save_step1_to_session
-  validates :password_confirmation,   presence: true, length: {minimum: 6, maximum: 128}, on: :save_step1_to_session
   validates :last_name_kanji,         presence: true, format: {with: /\A[ぁ-んァ-ン一-龥]/}, on: :save_step1_to_session
   validates :first_name_kanji,         presence: true, format: {with: /\A[ぁ-んァ-ン一-龥]/}, on: :save_step1_to_session
   validates :last_name_kana,          presence: true, format: {with: /\A[ぁ-んァ-ヶー－]+\z/}, on: :save_step1_to_session

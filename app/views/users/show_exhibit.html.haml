@@ -41,8 +41,8 @@
               = link_to product_path(trading_p.id), class: "show-exhibit__main__box__right__body__product-link" do
                 .show-exhibit__main__box__right__body__product-link--box
                   .show-exhibit__main__box__right__body__product-link--box__left
-                    - trading_p.images.each do |image|
-                      = image_tag(image.image_url.url, id: "product_image", class: 'exhibit-image')
+                    - trading_p.images.each_with_index do |image, index|
+                      = image_tag(image.image_url.url, id: "product_image", class: "exhibit-image eximg#{index}")
                   .show-exhibit__main__box__right__body__product-link--box__center
                     .show-exhibit__main__box__right__body__product-link--box__center__top
                       = trading_p.title
@@ -61,8 +61,8 @@
               = link_to product_path(sold_p.id), class: "show-exhibit__main__box__right__body__product-link" do
                 .show-exhibit__main__box__right__body__product-link--box
                   .show-exhibit__main__box__right__body__product-link--box__left
-                    - sold_p.images.each do |image|
-                      = image_tag(image.image_url.url, id: "product_image", class: 'exhibit-image')
+                    - sold_p.images.each_with_index do |image, index|
+                      = image_tag(image.image_url.url, id: "product_image", class: "exhibit-image eximg#{index}")
                   .show-exhibit__main__box__right__body__product-link--box__center
                     .show-exhibit__main__box__right__body__product-link--box__center__top
                       = sold_p.title

@@ -39,6 +39,7 @@ a {
           &__sub {
             display: flex;
             margin-top: 15px;
+            flex-wrap: wrap;
             .image-subtop {
               width: 60px;
               height: 60px;

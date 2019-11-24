@@ -32,12 +32,12 @@ $( document ).on('turbolinks:load', function() {
   });
 });
 
-$( document ).on('turbolinks:load', function() {
-  $(function(){
-    $(document).on('click', '.change_btn-text', function(){
-      var clickEle = $(this)
-      var imageID = clickEle.parent().parent().parent().attr('data-image-id')
-      $("#edit-file" + imageID).click();
-    })
+
+$(function(){
+  $(document).on('click', '.change_btn-text', function(){
+    var clickEle = $(this)
+    var imageID = clickEle.parent().parent().parent().attr('data-image-id')
+    $("#edit-file" + imageID).click();
   })
-});
+})
+

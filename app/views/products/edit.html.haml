@@ -7,11 +7,20 @@
         .image
           %h4 出品画像
           .image__images
-            - @image.each_with_index do |i, index|
-              - if i.image_url.present?
-                .image__images__box{"data-image-id": "#{i.id}"}
-                  = image_tag(i.image_url.url, id: "product_image", class: "image-top imagemain#{index}", height: '120', width: '120')
-                  -# .delete_btn 削除 今後実装予定
+
+
+            = f.fields_for :images do |image|
+              .image__images__box{"data-image-id": "#{image.object.id}"}
+                = image.file_field :image_url, class: "file-field", style: "display:none;", id: "edit-file#{image.object.id}", value: "#{image.object.image_url.url}"
+                = image_tag(image.object.image_url.url, id: "product_image",  height: '120', width: '120')
+                = image.hidden_field :id, value: image.object.id  
+                .edit_btns
+                  .change_btn
+                    .change_btn-text 編集                     
+                  .delete_btn 
+                    .delete_btn-text 削除
+
+                  
 
         .title
           .form-group

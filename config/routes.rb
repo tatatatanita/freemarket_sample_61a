@@ -42,9 +42,8 @@ Rails.application.routes.draw do
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
 
-    # 今後実装予定
-    # member do
-    #   get 'image_destroy', defaults: { format: 'json' }
-    # end
+    member do
+      post 'image_destroy', defaults: { format: 'json' }
+    end
   end
 end

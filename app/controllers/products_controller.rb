@@ -23,10 +23,9 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    # @products = current_user.products.includes(:images)
     @product = Product.find(params[:id])
     @user = current_user
-    @image = Image.where(product_id: @product)
+    @images = Image.where(product_id: @product)
     @category_parent_array = ["---"]
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
@@ -77,17 +76,17 @@ class ProductsController < ApplicationController
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
 
-  # 今後実装予定
-  # def image_destroy
-  #   @image = Image.find_by(id: 'image_id')
-  #     @image.destroy
-  # end
+
+  def image_destroy
+    @image = Image.find(params[:image_id])
+    @image.destroy
+  end
   
   private
   def product_params
     params.require(:product).permit(
       :title, :image, :text, :price, :saler_id, {categories: []},
-      images_attributes: [:image_url],
+      images_attributes: [:image_url, :id],
       condition_attributes: [:condition],
       freight_attributes: [:freight],
       root_area_attributes: [:root_area],

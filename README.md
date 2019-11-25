@@ -18,6 +18,7 @@
 - has_ancestry
 
 
+
 ## conditionsテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -28,6 +29,7 @@
 
 ### Association
 - belongs_to :product
+
 
 
 ## credit_infosテーブル
@@ -43,6 +45,7 @@
 - belongs_to :user, class_name: 'User'
 
 
+
 ## daysテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -53,6 +56,7 @@
 
 ### Association
 - belongs_to :product
+
 
 
 ## delivery_addressesテーブル
@@ -76,6 +80,7 @@
 - belongs_to :user, class_name: 'User'
 
 
+
 ## freightsテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -88,6 +93,7 @@
 - belongs_to :product
 
 
+
 ## imagesテーブル
 |Column|Type|Options|
 |------|----|———|
@@ -98,6 +104,7 @@
 
 ### Association
 - belongs_to :product, inverse_of: :images
+
 
 
 ## productsテーブル
@@ -128,6 +135,7 @@
 - accepts_nested_attributes_for :images
 
 
+
 ## root_areasテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -138,6 +146,7 @@
 
 ### Association
 - belongs_to :product
+
 
 
 ## usersテーブル
